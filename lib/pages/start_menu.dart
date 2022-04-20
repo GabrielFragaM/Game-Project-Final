@@ -230,7 +230,73 @@ class StartGameState extends State<StartGame> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 110),
+                  child: InkWell(
+                    onTap: () async {
 
+                      setState(() {
+                        is_loading2 =true;
+                      });
+
+                      //PROCURANDO A SALA
+                      QuerySnapshot rooms =  await FirebaseFirestore.instance.collection('rooms')
+                          .where('room', isEqualTo: input_text_room).get();
+
+                      if(input_text_name != ''){
+                        if(rooms.docs.length != 0){
+
+                          //CRIANDO PARTICIPANTE
+                          Map <String, dynamic> user_config = await define_participant_config(input_text_name, rooms.docs[0]);
+
+                          //SALVANDO
+                          DocumentReference _user = await FirebaseFirestore.instance.collection('rooms')
+                              .doc(rooms.docs[0].id).collection('participants').add(user_config);
+
+                          //SALVANDO AS INFO DO PARTICIPANTE NO STORAGE DO NAVEGADOR
+                          setState((){
+                            user_local['name'] = input_text_name;
+                            user_local['id'] = _user.id;
+                            user_local['room'] = input_text_room;
+                            user_local['host'] = false;
+                          });
+                          await save_local_storage(input_text_name, _user.id, input_text_room, 'false');
+
+                          if(rooms.docs[0].data()['game_mode'] == 1) {
+                            //MUDANDANDO PARA A PAGINA DA SALA DO JOGO
+                            change_screen(context, GamePageMode001());
+                          }else{
+                            //MUDANDANDO PARA A PAGINA DA SALA DO JOGO
+                            change_screen(context, GamePageMode000());
+                          }
+                        }else{
+                          message_room_not_found(context);
+                        }
+                      }else{
+                        message_name_empty(context);
+                      }
+
+                      setState(() {
+                        is_loading2 = false;
+                      });
+
+
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(color: Colors.blue,
+                          borderRadius: BorderRadius.circular(20)),
+                      alignment: Alignment.center,
+                      width: double.maxFinite,
+                      padding: EdgeInsets.symmetric(vertical: 16),
+                      child: is_loading2 == false ? Text("Entrar em uma Sala", style: TextStyle(color: Colors.white))
+                          : Container(
+                          height: 16,
+                          width: 16,
+                          child: CircularProgressIndicator(color: Colors.white,)
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           )
