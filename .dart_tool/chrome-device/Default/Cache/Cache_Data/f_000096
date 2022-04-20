@@ -1,0 +1,2204 @@
+define(['dart_sdk', 'packages/flutter/src/services/system_channels.dart', 'packages/flare_flutter/base/dependency_sorter.dart', 'packages/flare_flutter/base/path_point.dart', 'packages/flare_flutter/base/math/transform_components.dart', 'packages/flare_flutter/base/math/aabb.dart', 'packages/flutter/src/material/colors.dart', 'packages/flare_flutter/trim_path.dart'], (function load__packages__flare_flutter__flare_dart(dart_sdk, packages__flutter__src__services__system_channels$46dart, packages__flare_flutter__base__dependency_sorter$46dart, packages__flare_flutter__base__path_point$46dart, packages__flare_flutter__base__math__transform_components$46dart, packages__flare_flutter__base__math__aabb$46dart, packages__flutter__src__material__colors$46dart, packages__flare_flutter__trim_path$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const typed_data = dart_sdk.typed_data;
+  const _internal = dart_sdk._internal;
+  const math = dart_sdk.math;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _engine = dart_sdk._engine;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const asset_bundle = packages__flutter__src__services__system_channels$46dart.src__services__asset_bundle;
+  const actor = packages__flare_flutter__base__dependency_sorter$46dart.base__actor;
+  const actor_color = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_color;
+  const actor_drop_shadow = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_drop_shadow;
+  const actor_inner_shadow = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_inner_shadow;
+  const actor_layer_effect_renderer = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_layer_effect_renderer;
+  const actor_artboard = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_artboard;
+  const actor_ellipse = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_ellipse;
+  const actor_image = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_image;
+  const actor_mask = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_mask;
+  const actor_path = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_path;
+  const actor_polygon = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_polygon;
+  const actor_rectangle = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_rectangle;
+  const actor_shape = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_shape;
+  const actor_star = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_star;
+  const actor_triangle = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_triangle;
+  const actor_component = packages__flare_flutter__base__dependency_sorter$46dart.base__actor_component;
+  const path_point = packages__flare_flutter__base__path_point$46dart.base__path_point;
+  const vec2d = packages__flare_flutter__base__math__transform_components$46dart.base__math__vec2d;
+  const mat2d = packages__flare_flutter__base__math__transform_components$46dart.base__math__mat2d;
+  const aabb = packages__flare_flutter__base__math__aabb$46dart.base__math__aabb;
+  const colors$ = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const trim_path = packages__flare_flutter__trim_path$46dart.trim_path;
+  var flare = Object.create(dart.library);
+  var $clear = dartx.clear;
+  var $addAll = dartx.addAll;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $lastIndexOf = dartx.lastIndexOf;
+  var $substring = dartx.substring;
+  var $buffer = dartx.buffer;
+  var $_get = dartx._get;
+  var $isEmpty = dartx.isEmpty;
+  var $length = dartx.length;
+  var $add = dartx.add;
+  var $modulo = dartx['%'];
+  var $_set = dartx._set;
+  var $truncate = dartx.truncate;
+  var $clamp = dartx.clamp;
+  var $toDouble = dartx.toDouble;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $abs = dartx.abs;
+  var $round = dartx.round;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    JSArrayOfImage: () => (T.JSArrayOfImage = dart.constFn(_interceptors.JSArray$(ui.Image)))(),
+    FutureOfCodec: () => (T.FutureOfCodec = dart.constFn(async.Future$(ui.Codec)))(),
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    Uint8List__ToFutureOfCodec: () => (T.Uint8List__ToFutureOfCodec = dart.constFn(dart.fnType(T.FutureOfCodec(), [typed_data.Uint8List], {allowUpscaling: core.bool, targetHeight: T.intN(), targetWidth: T.intN()}, {})))(),
+    FutureOfFrameInfo: () => (T.FutureOfFrameInfo = dart.constFn(async.Future$(ui.FrameInfo)))(),
+    CodecToFutureOfFrameInfo: () => (T.CodecToFutureOfFrameInfo = dart.constFn(dart.fnType(T.FutureOfFrameInfo(), [ui.Codec])))(),
+    FrameInfoToImage: () => (T.FrameInfoToImage = dart.constFn(dart.fnType(ui.Image, [ui.FrameInfo])))(),
+    JSArrayOfPathPoint: () => (T.JSArrayOfPathPoint = dart.constFn(_interceptors.JSArray$(path_point.PathPoint)))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    JSArrayOfColor: () => (T.JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.fn(ui.instantiateImageCodec, T.Uint8List__ToFutureOfCodec());
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: path_point.PointType.prototype,
+        [_name]: "PointType.straight",
+        index: 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -1, 255], T.doubleL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: _engine._CkMatrixColorFilter.prototype,
+        [_CkMatrixColorFilter_matrix]: C[3] || CT.C3
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 255], T.doubleL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: _engine._CkMatrixColorFilter.prototype,
+        [_CkMatrixColorFilter_matrix]: C[5] || CT.C5
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: actor_mask.MaskType.prototype,
+        [_name$]: "MaskType.invertedAlpha",
+        index: 1
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.33, 0.59, 0.11, 0, 0], T.doubleL());
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: _engine._CkMatrixColorFilter.prototype,
+        [_CkMatrixColorFilter_matrix]: C[8] || CT.C8
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: actor_mask.MaskType.prototype,
+        [_name$]: "MaskType.luminance",
+        index: 2
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.33, -0.59, -0.11, 0, 255], T.doubleL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: _engine._CkMatrixColorFilter.prototype,
+        [_CkMatrixColorFilter_matrix]: C[11] || CT.C11
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: actor_mask.MaskType.prototype,
+        [_name$]: "MaskType.invertedLuminance",
+        index: 3
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], T.doubleL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: _engine._CkMatrixColorFilter.prototype,
+        [_CkMatrixColorFilter_matrix]: C[14] || CT.C14
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: actor_mask.MaskType.prototype,
+        [_name$]: "MaskType.alpha",
+        index: 0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: actor_color.FillRule.prototype,
+        [_name$0]: "FillRule.evenOdd",
+        index: 0
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: actor_color.FillRule.prototype,
+        [_name$0]: "FillRule.nonZero",
+        index: 1
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: actor_color.StrokeCap.prototype,
+        [_name$0]: "StrokeCap.butt",
+        index: 0
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: actor_color.StrokeCap.prototype,
+        [_name$0]: "StrokeCap.round",
+        index: 1
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: actor_color.StrokeCap.prototype,
+        [_name$0]: "StrokeCap.square",
+        index: 2
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: actor_color.StrokeJoin.prototype,
+        [_name$0]: "StrokeJoin.miter",
+        index: 0
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: actor_color.StrokeJoin.prototype,
+        [_name$0]: "StrokeJoin.round",
+        index: 1
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: actor_color.StrokeJoin.prototype,
+        [_name$0]: "StrokeJoin.bevel",
+        index: 2
+      });
+    }
+  }, false);
+  var C = Array(24).fill(void 0);
+  var I = [
+    "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flare_flutter-3.0.2/lib/flare.dart",
+    "package:flare_flutter/flare.dart"
+  ];
+  var filename$ = dart.privateName(flare, "AssetBundleContext.filename");
+  var bundle$ = dart.privateName(flare, "AssetBundleContext.bundle");
+  flare.AssetBundleContext = class AssetBundleContext extends core.Object {
+    get filename() {
+      return this[filename$];
+    }
+    set filename(value) {
+      super.filename = value;
+    }
+    get bundle() {
+      return this[bundle$];
+    }
+    set bundle(value) {
+      super.bundle = value;
+    }
+  };
+  (flare.AssetBundleContext.new = function(bundle, filename) {
+    if (bundle == null) dart.nullFailed(I[0], 51, 27, "bundle");
+    if (filename == null) dart.nullFailed(I[0], 51, 40, "filename");
+    this[bundle$] = bundle;
+    this[filename$] = filename;
+    ;
+  }).prototype = flare.AssetBundleContext.prototype;
+  dart.addTypeTests(flare.AssetBundleContext);
+  dart.addTypeCaches(flare.AssetBundleContext);
+  dart.setLibraryUri(flare.AssetBundleContext, I[1]);
+  dart.setFieldSignature(flare.AssetBundleContext, () => ({
+    __proto__: dart.getFields(flare.AssetBundleContext.__proto__),
+    filename: dart.finalFieldType(core.String),
+    bundle: dart.finalFieldType(asset_bundle.AssetBundle)
+  }));
+  var _images = dart.privateName(flare, "_images");
+  var _rawAtlasData = dart.privateName(flare, "_rawAtlasData");
+  const load = Symbol("load");
+  flare.FlutterActor = class FlutterActor extends actor.Actor {
+    get images() {
+      return this[_images];
+    }
+    copyFlutterActor(actor) {
+      if (actor == null) dart.nullFailed(I[0], 61, 38, "actor");
+      this.copyActor(actor);
+      this[_images][$clear]();
+      this[_images][$addAll](actor[_images]);
+    }
+    dispose() {
+    }
+    loadAtlases(rawAtlases) {
+      if (rawAtlases == null) dart.nullFailed(I[0], 70, 44, "rawAtlases");
+      return async.async(core.bool, (function* loadAtlases() {
+        this[_rawAtlasData] = rawAtlases;
+        return true;
+      }).bind(this));
+    }
+    loadFromBundle(assetBundle, filename) {
+      if (assetBundle == null) dart.nullFailed(I[0], 75, 43, "assetBundle");
+      if (filename == null) dart.nullFailed(I[0], 75, 63, "filename");
+      return async.async(core.bool, (function* loadFromBundle() {
+        let data = (yield assetBundle.load(filename));
+        return this[load](data, new flare.AssetBundleContext.new(assetBundle, filename));
+      }).bind(this));
+    }
+    loadImages() {
+      return async.async(core.bool, (function* loadImages() {
+        if (this[_rawAtlasData] == null) {
+          return false;
+        }
+        let data = dart.nullCheck(this[_rawAtlasData]);
+        this[_rawAtlasData] = null;
+        let codecs = (yield async.Future.wait(ui.Codec, data[$map](T.FutureOfCodec(), C[0] || CT.C0)));
+        let frames = (yield async.Future.wait(ui.FrameInfo, codecs[$map](T.FutureOfFrameInfo(), dart.fn(codec => {
+          if (codec == null) dart.nullFailed(I[0], 89, 48, "codec");
+          return codec.getNextFrame();
+        }, T.CodecToFutureOfFrameInfo()))));
+        this[_images][$addAll](frames[$map](ui.Image, dart.fn(frame => {
+          if (frame == null) dart.nullFailed(I[0], 91, 28, "frame");
+          return frame.image;
+        }, T.FrameInfoToImage()))[$toList]({growable: false}));
+        return true;
+      }).bind(this));
+    }
+    makeArtboard() {
+      return new flare.FlutterActorArtboard.new(this);
+    }
+    makeColorFill() {
+      return new flare.FlutterColorFill.new();
+    }
+    makeColorStroke() {
+      return new flare.FlutterColorStroke.new();
+    }
+    makeDropShadow() {
+      return new flare.FlutterActorDropShadow.new();
+    }
+    makeEllipse() {
+      return new flare.FlutterActorEllipse.new();
+    }
+    makeGradientFill() {
+      return new flare.FlutterGradientFill.new();
+    }
+    makeGradientStroke() {
+      return new flare.FlutterGradientStroke.new();
+    }
+    makeImageNode() {
+      return new flare.FlutterActorImage.new();
+    }
+    makeInnerShadow() {
+      return new flare.FlutterActorInnerShadow.new();
+    }
+    makeLayerEffectRenderer() {
+      return new flare.FlutterActorLayerEffectRenderer.new();
+    }
+    makePathNode() {
+      return new flare.FlutterActorPath.new();
+    }
+    makePolygon() {
+      return new flare.FlutterActorPolygon.new();
+    }
+    makeRadialFill() {
+      return new flare.FlutterRadialFill.new();
+    }
+    makeRadialStroke() {
+      return new flare.FlutterRadialStroke.new();
+    }
+    makeRectangle() {
+      return new flare.FlutterActorRectangle.new();
+    }
+    makeShapeNode(source) {
+      let t0, t0$;
+      return dart.test((t0$ = (t0 = source, t0 == null ? null : t0.transformAffectsStroke), t0$ == null ? false : t0$)) ? new flare.FlutterActorShapeWithTransformedStroke.new() : new flare.FlutterActorShape.new();
+    }
+    makeStar() {
+      return new flare.FlutterActorStar.new();
+    }
+    makeTriangle() {
+      return new flare.FlutterActorTriangle.new();
+    }
+    readOutOfBandAsset(assetFilename, context) {
+      if (assetFilename == null) dart.nullFailed(I[0], 155, 14, "assetFilename");
+      return async.async(typed_data.Uint8List, function* readOutOfBandAsset() {
+        let bundleContext = flare.AssetBundleContext.as(context);
+        let pathIdx = bundleContext.filename[$lastIndexOf]("/") + 1;
+        let basePath = bundleContext.filename[$substring](0, pathIdx);
+        let data = (yield bundleContext.bundle.load(basePath + dart.notNull(assetFilename)));
+        return typed_data.Uint8List.view(data[$buffer]);
+      });
+    }
+    static loadFromByteData(data) {
+      if (data == null) dart.nullFailed(I[0], 163, 57, "data");
+      return async.async(flare.FlutterActor, function* loadFromByteData() {
+        let actor = new flare.FlutterActor.new();
+        yield actor.load(data, null);
+        return actor;
+      });
+    }
+    [load](data, context) {
+      return super.load(data, context);
+    }
+  };
+  (flare.FlutterActor.new = function() {
+    this[_images] = T.JSArrayOfImage().of([]);
+    this[_rawAtlasData] = null;
+    flare.FlutterActor.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActor.prototype;
+  dart.addTypeTests(flare.FlutterActor);
+  dart.addTypeCaches(flare.FlutterActor);
+  dart.setMethodSignature(flare.FlutterActor, () => ({
+    __proto__: dart.getMethods(flare.FlutterActor.__proto__),
+    copyFlutterActor: dart.fnType(dart.void, [flare.FlutterActor]),
+    dispose: dart.fnType(dart.void, []),
+    loadAtlases: dart.fnType(async.Future$(core.bool), [core.List$(typed_data.Uint8List)]),
+    loadFromBundle: dart.fnType(async.Future$(core.bool), [asset_bundle.AssetBundle, core.String]),
+    loadImages: dart.fnType(async.Future$(core.bool), []),
+    makeColorFill: dart.fnType(actor_color.ColorFill, []),
+    makeColorStroke: dart.fnType(actor_color.ColorStroke, []),
+    makeDropShadow: dart.fnType(actor_drop_shadow.ActorDropShadow, []),
+    makeGradientFill: dart.fnType(actor_color.GradientFill, []),
+    makeGradientStroke: dart.fnType(actor_color.GradientStroke, []),
+    makeInnerShadow: dart.fnType(actor_inner_shadow.ActorInnerShadow, []),
+    makeLayerEffectRenderer: dart.fnType(actor_layer_effect_renderer.ActorLayerEffectRenderer, []),
+    makeRadialFill: dart.fnType(actor_color.RadialGradientFill, []),
+    makeRadialStroke: dart.fnType(actor_color.RadialGradientStroke, []),
+    readOutOfBandAsset: dart.fnType(async.Future$(typed_data.Uint8List), [core.String, dart.dynamic])
+  }));
+  dart.setGetterSignature(flare.FlutterActor, () => ({
+    __proto__: dart.getGetters(flare.FlutterActor.__proto__),
+    images: core.List$(ui.Image)
+  }));
+  dart.setLibraryUri(flare.FlutterActor, I[1]);
+  dart.setFieldSignature(flare.FlutterActor, () => ({
+    __proto__: dart.getFields(flare.FlutterActor.__proto__),
+    [_images]: dart.finalFieldType(core.List$(ui.Image)),
+    [_rawAtlasData]: dart.fieldType(dart.nullable(core.List$(typed_data.Uint8List)))
+  }));
+  var _antialias = dart.privateName(flare, "_antialias");
+  flare.FlutterActorArtboard = class FlutterActorArtboard extends actor_artboard.ActorArtboard {
+    get antialias() {
+      return this[_antialias];
+    }
+    set antialias(value) {
+      if (value == null) dart.nullFailed(I[0], 175, 22, "value");
+      if (this[_antialias] != value) {
+        this[_antialias] = value;
+        for (let drawable of this.drawableNodes) {
+          flare.FlutterActorDrawable.as(drawable).antialias = this[_antialias];
+        }
+      }
+    }
+    dispose() {
+    }
+    draw(canvas) {
+      if (canvas == null) dart.nullFailed(I[0], 187, 23, "canvas");
+      if (dart.test(this.clipContents)) {
+        canvas.save();
+        let aabb = this.artboardAABB();
+        canvas.clipRect(new ui.Rect.fromLTRB(aabb._get(0), aabb._get(1), aabb._get(2), aabb._get(3)));
+      }
+      for (let drawable of this.drawableNodes) {
+        if (flare.FlutterActorDrawable.is(drawable)) {
+          flare.FlutterActorDrawable.as(drawable).draw(canvas);
+        }
+      }
+      if (dart.test(this.clipContents)) {
+        canvas.restore();
+      }
+    }
+  };
+  (flare.FlutterActorArtboard.new = function(actor) {
+    if (actor == null) dart.nullFailed(I[0], 172, 37, "actor");
+    this[_antialias] = true;
+    flare.FlutterActorArtboard.__proto__.new.call(this, actor);
+    ;
+  }).prototype = flare.FlutterActorArtboard.prototype;
+  dart.addTypeTests(flare.FlutterActorArtboard);
+  dart.addTypeCaches(flare.FlutterActorArtboard);
+  dart.setMethodSignature(flare.FlutterActorArtboard, () => ({
+    __proto__: dart.getMethods(flare.FlutterActorArtboard.__proto__),
+    dispose: dart.fnType(dart.void, []),
+    draw: dart.fnType(dart.void, [ui.Canvas])
+  }));
+  dart.setGetterSignature(flare.FlutterActorArtboard, () => ({
+    __proto__: dart.getGetters(flare.FlutterActorArtboard.__proto__),
+    antialias: core.bool
+  }));
+  dart.setSetterSignature(flare.FlutterActorArtboard, () => ({
+    __proto__: dart.getSetters(flare.FlutterActorArtboard.__proto__),
+    antialias: core.bool
+  }));
+  dart.setLibraryUri(flare.FlutterActorArtboard, I[1]);
+  dart.setFieldSignature(flare.FlutterActorArtboard, () => ({
+    __proto__: dart.getFields(flare.FlutterActorArtboard.__proto__),
+    [_antialias]: dart.fieldType(core.bool)
+  }));
+  var _antialias$ = dart.privateName(flare, "FlutterActorDrawable._antialias");
+  var _blendMode = dart.privateName(flare, "FlutterActorDrawable._blendMode");
+  var _blendMode$ = dart.privateName(flare, "_blendMode");
+  flare.FlutterActorDrawable = class FlutterActorDrawable extends core.Object {
+    get [_antialias]() {
+      return this[_antialias$];
+    }
+    set [_antialias](value) {
+      this[_antialias$] = value;
+    }
+    get [_blendMode$]() {
+      return this[_blendMode];
+    }
+    set [_blendMode$](value) {
+      this[_blendMode] = value;
+    }
+    get antialias() {
+      return this[_antialias];
+    }
+    set antialias(value) {
+      if (value == null) dart.nullFailed(I[0], 211, 22, "value");
+      if (value != this[_antialias]) {
+        this[_antialias] = value;
+        this.onAntialiasChanged(this[_antialias]);
+      }
+    }
+    get blendMode() {
+      return this[_blendMode$];
+    }
+    set blendMode(mode) {
+      if (mode == null) dart.nullFailed(I[0], 221, 30, "mode");
+      if (this[_blendMode$] == mode) {
+        return;
+      }
+      this[_blendMode$] = mode;
+      this.onBlendModeChanged(this[_blendMode$]);
+    }
+    get blendModeId() {
+      return this[_blendMode$].index;
+    }
+    set blendModeId(index) {
+      if (index == null) dart.nullFailed(I[0], 233, 23, "index");
+      this.blendMode = ui.BlendMode.values[$_get](index);
+    }
+    clip(canvas) {
+      if (canvas == null) dart.nullFailed(I[0], 239, 23, "canvas");
+      for (let clips of this.clipShapes) {
+        for (let clipShape of clips) {
+          let shape = clipShape.shape;
+          if (dart.test(shape.renderCollapsed)) {
+            continue;
+          }
+          if (dart.test(clipShape.intersect)) {
+            canvas.clipPath(flare.FlutterActorShape.as(shape).path);
+          } else {
+            let artboardRect = new ui.Rect.fromLTWH(dart.notNull(this.artboard.origin._get(0)) * dart.notNull(this.artboard.width), dart.notNull(this.artboard.origin._get(1)) * dart.notNull(this.artboard.height), this.artboard.width, this.artboard.height);
+            if (shape.fill != null && dart.nullCheck(shape.fill).fillRule == actor_color.FillRule.evenOdd) {
+              let clipPath = ui.Path.new();
+              clipPath.addRect(artboardRect);
+              for (let path of shape.paths) {
+                clipPath.addPath(flare.FlutterPath.as(path).path, ui.Offset.zero, {matrix4: path.pathTransform.mat4});
+              }
+              clipPath.fillType = ui.PathFillType.evenOdd;
+              canvas.clipPath(clipPath);
+            } else {
+              for (let path of shape.paths) {
+                let clipPath = ui.Path.new();
+                clipPath.addRect(artboardRect);
+                clipPath.addPath(flare.FlutterPath.as(path).path, ui.Offset.zero, {matrix4: path.pathTransform.mat4});
+                clipPath.fillType = ui.PathFillType.evenOdd;
+                canvas.clipPath(clipPath);
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+  (flare.FlutterActorDrawable.new = function() {
+    this[_antialias$] = true;
+    this[_blendMode] = ui.BlendMode.srcOver;
+    ;
+  }).prototype = flare.FlutterActorDrawable.prototype;
+  dart.addTypeTests(flare.FlutterActorDrawable);
+  dart.addTypeCaches(flare.FlutterActorDrawable);
+  dart.setMethodSignature(flare.FlutterActorDrawable, () => ({
+    __proto__: dart.getMethods(flare.FlutterActorDrawable.__proto__),
+    clip: dart.fnType(dart.void, [ui.Canvas])
+  }));
+  dart.setGetterSignature(flare.FlutterActorDrawable, () => ({
+    __proto__: dart.getGetters(flare.FlutterActorDrawable.__proto__),
+    antialias: core.bool,
+    blendMode: ui.BlendMode,
+    blendModeId: core.int
+  }));
+  dart.setSetterSignature(flare.FlutterActorDrawable, () => ({
+    __proto__: dart.getSetters(flare.FlutterActorDrawable.__proto__),
+    antialias: core.bool,
+    blendMode: ui.BlendMode,
+    blendModeId: core.int
+  }));
+  dart.setLibraryUri(flare.FlutterActorDrawable, I[1]);
+  dart.setFieldSignature(flare.FlutterActorDrawable, () => ({
+    __proto__: dart.getFields(flare.FlutterActorDrawable.__proto__),
+    [_antialias]: dart.fieldType(core.bool),
+    [_blendMode$]: dart.fieldType(ui.BlendMode)
+  }));
+  var blendMode = dart.privateName(flare, "FlutterActorDropShadow.blendMode");
+  flare.FlutterActorDropShadow = class FlutterActorDropShadow extends actor_drop_shadow.ActorDropShadow {
+    get blendMode() {
+      return this[blendMode];
+    }
+    set blendMode(value) {
+      this[blendMode] = value;
+    }
+    get blendModeId() {
+      return this.blendMode.index;
+    }
+    set blendModeId(index) {
+      if (index == null) dart.nullFailed(I[0], 296, 23, "index");
+      this.blendMode = ui.BlendMode.values[$_get](index);
+    }
+  };
+  (flare.FlutterActorDropShadow.new = function() {
+    this[blendMode] = ui.BlendMode.srcOver;
+    flare.FlutterActorDropShadow.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorDropShadow.prototype;
+  dart.addTypeTests(flare.FlutterActorDropShadow);
+  dart.addTypeCaches(flare.FlutterActorDropShadow);
+  dart.setLibraryUri(flare.FlutterActorDropShadow, I[1]);
+  dart.setFieldSignature(flare.FlutterActorDropShadow, () => ({
+    __proto__: dart.getFields(flare.FlutterActorDropShadow.__proto__),
+    blendMode: dart.fieldType(ui.BlendMode)
+  }));
+  var _$35FlutterPathPointsPath$35_path = dart.privateName(flare, "FlutterPathPointsPath._#FlutterPathPointsPath#_path");
+  var _$35FlutterPathPointsPath$35_path$35isSet = dart.privateName(flare, "FlutterPathPointsPath._#FlutterPathPointsPath#_path#isSet");
+  var _isValid = dart.privateName(flare, "FlutterPathPointsPath._isValid");
+  var __FlutterPathPointsPath__path = dart.privateName(flare, "_#FlutterPathPointsPath#_path");
+  var __FlutterPathPointsPath__path_isSet = dart.privateName(flare, "_#FlutterPathPointsPath#_path#isSet");
+  var _isValid$ = dart.privateName(flare, "_isValid");
+  var _path = dart.privateName(flare, "_path");
+  var _makePath = dart.privateName(flare, "_makePath");
+  var _name = dart.privateName(path_point, "_name");
+  flare.FlutterPathPointsPath = class FlutterPathPointsPath extends core.Object {
+    get [__FlutterPathPointsPath__path]() {
+      return this[_$35FlutterPathPointsPath$35_path];
+    }
+    set [__FlutterPathPointsPath__path](value) {
+      this[_$35FlutterPathPointsPath$35_path] = value;
+    }
+    get [__FlutterPathPointsPath__path_isSet]() {
+      return this[_$35FlutterPathPointsPath$35_path$35isSet];
+    }
+    set [__FlutterPathPointsPath__path_isSet](value) {
+      this[_$35FlutterPathPointsPath$35_path$35isSet] = value;
+    }
+    get [_isValid$]() {
+      return this[_isValid];
+    }
+    set [_isValid$](value) {
+      this[_isValid] = value;
+    }
+    get [_path]() {
+      let t0;
+      return dart.test(this[__FlutterPathPointsPath__path_isSet]) ? (t0 = this[__FlutterPathPointsPath__path], t0) : dart.throw(new _internal.LateError.fieldNI("_path"));
+    }
+    set [_path](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 1209, 16, "null");
+      this[__FlutterPathPointsPath__path_isSet] = true;
+      this[__FlutterPathPointsPath__path] = t0;
+    }
+    get path() {
+      if (dart.test(this[_isValid$])) {
+        return this[_path];
+      }
+      return this[_makePath]();
+    }
+    initializeGraphics() {
+      this[_path] = ui.Path.new();
+    }
+    invalidatePath() {
+      this[_isValid$] = false;
+    }
+    [_makePath]() {
+      let t2, t1, t2$, t1$, t2$0, t1$0, t2$1, t1$1;
+      this[_isValid$] = true;
+      this[_path].reset();
+      let pts = this.deformedPoints;
+      if (dart.test(pts[$isEmpty])) {
+        return this[_path];
+      }
+      let renderPoints = T.JSArrayOfPathPoint().of([]);
+      let pl = pts[$length];
+      let previous = dart.test(this.isClosed) ? pts[$_get](dart.notNull(pl) - 1) : null;
+      for (let i = 0; i < dart.notNull(pl); i = i + 1) {
+        let point = pts[$_get](i);
+        switch (point.pointType) {
+          case C[1] || CT.C1:
+          {
+            {
+              let straightPoint = path_point.StraightPathPoint.as(point);
+              let radius = straightPoint.radius;
+              if (dart.notNull(radius) > 0) {
+                if (!dart.test(this.isClosed) && (i === 0 || i === dart.notNull(pl) - 1)) {
+                  renderPoints[$add](point);
+                  previous = point;
+                } else {
+                  if (!(previous != null)) dart.assertFailed(null, I[0], 1257, 24, "previous != null");
+                  let next = pts[$_get]((i + 1)[$modulo](pl));
+                  let prevPoint = path_point.CubicPathPoint.is(previous) ? previous.outPoint : dart.nullCheck(previous).translation;
+                  let nextPoint = path_point.CubicPathPoint.is(next) ? next.inPoint : next.translation;
+                  let pos = point.translation;
+                  let toPrev = vec2d.Vec2D.subtract(new vec2d.Vec2D.new(), prevPoint, pos);
+                  let toPrevLength = vec2d.Vec2D.length(toPrev);
+                  t1 = toPrev;
+                  t2 = 0;
+                  t1._set(t2, dart.notNull(t1._get(t2)) / dart.notNull(toPrevLength));
+                  t1$ = toPrev;
+                  t2$ = 1;
+                  t1$._set(t2$, dart.notNull(t1$._get(t2$)) / dart.notNull(toPrevLength));
+                  let toNext = vec2d.Vec2D.subtract(new vec2d.Vec2D.new(), nextPoint, pos);
+                  let toNextLength = vec2d.Vec2D.length(toNext);
+                  t1$0 = toNext;
+                  t2$0 = 0;
+                  t1$0._set(t2$0, dart.notNull(t1$0._get(t2$0)) / dart.notNull(toNextLength));
+                  t1$1 = toNext;
+                  t2$1 = 1;
+                  t1$1._set(t2$1, dart.notNull(t1$1._get(t2$1)) / dart.notNull(toNextLength));
+                  let renderRadius = math.min(core.double, toPrevLength, math.min(core.double, toNextLength, radius));
+                  let translation = vec2d.Vec2D.scaleAndAdd(new vec2d.Vec2D.new(), pos, toPrev, renderRadius);
+                  renderPoints[$add](new path_point.CubicPathPoint.fromValues(translation, translation, vec2d.Vec2D.scaleAndAdd(new vec2d.Vec2D.new(), pos, toPrev, 0.44999999999999996 * renderRadius)));
+                  translation = vec2d.Vec2D.scaleAndAdd(new vec2d.Vec2D.new(), pos, toNext, renderRadius);
+                  previous = new path_point.CubicPathPoint.fromValues(translation, vec2d.Vec2D.scaleAndAdd(new vec2d.Vec2D.new(), pos, toNext, 0.44999999999999996 * renderRadius), translation);
+                  renderPoints[$add](previous);
+                }
+              } else {
+                renderPoints[$add](point);
+                previous = point;
+              }
+              break;
+            }
+          }
+          default:
+          {
+            renderPoints[$add](point);
+            previous = point;
+            break;
+          }
+        }
+      }
+      let firstPoint = renderPoints[$_get](0);
+      this[_path].moveTo(firstPoint.translation._get(0), firstPoint.translation._get(1));
+      for (let i = 0, l = dart.test(this.isClosed) ? renderPoints[$length] : dart.notNull(renderPoints[$length]) - 1, pl = renderPoints[$length]; i < dart.notNull(l); i = i + 1) {
+        let point = renderPoints[$_get](i);
+        let nextPoint = renderPoints[$_get]((i + 1)[$modulo](pl));
+        let cin = path_point.CubicPathPoint.is(nextPoint) ? nextPoint.inPoint : null;
+        let cout = path_point.CubicPathPoint.is(point) ? point.outPoint : null;
+        if (cin == null && cout == null) {
+          this[_path].lineTo(nextPoint.translation._get(0), nextPoint.translation._get(1));
+        } else {
+          cout == null ? cout = point.translation : null;
+          cin == null ? cin = nextPoint.translation : null;
+          this[_path].cubicTo(cout._get(0), cout._get(1), cin._get(0), cin._get(1), nextPoint.translation._get(0), nextPoint.translation._get(1));
+        }
+      }
+      if (dart.test(this.isClosed)) {
+        this[_path].close();
+      }
+      return this[_path];
+    }
+  };
+  (flare.FlutterPathPointsPath.new = function() {
+    this[_$35FlutterPathPointsPath$35_path] = null;
+    this[_$35FlutterPathPointsPath$35_path$35isSet] = false;
+    this[_isValid] = false;
+    ;
+  }).prototype = flare.FlutterPathPointsPath.prototype;
+  dart.addTypeTests(flare.FlutterPathPointsPath);
+  dart.addTypeCaches(flare.FlutterPathPointsPath);
+  flare.FlutterPathPointsPath[dart.implements] = () => [flare.FlutterPath];
+  dart.setMethodSignature(flare.FlutterPathPointsPath, () => ({
+    __proto__: dart.getMethods(flare.FlutterPathPointsPath.__proto__),
+    initializeGraphics: dart.fnType(dart.void, []),
+    invalidatePath: dart.fnType(dart.void, []),
+    [_makePath]: dart.fnType(ui.Path, [])
+  }));
+  dart.setGetterSignature(flare.FlutterPathPointsPath, () => ({
+    __proto__: dart.getGetters(flare.FlutterPathPointsPath.__proto__),
+    [_path]: ui.Path,
+    path: ui.Path
+  }));
+  dart.setSetterSignature(flare.FlutterPathPointsPath, () => ({
+    __proto__: dart.getSetters(flare.FlutterPathPointsPath.__proto__),
+    [_path]: ui.Path
+  }));
+  dart.setLibraryUri(flare.FlutterPathPointsPath, I[1]);
+  dart.setFieldSignature(flare.FlutterPathPointsPath, () => ({
+    __proto__: dart.getFields(flare.FlutterPathPointsPath.__proto__),
+    [__FlutterPathPointsPath__path]: dart.fieldType(dart.nullable(ui.Path)),
+    [__FlutterPathPointsPath__path_isSet]: dart.fieldType(core.bool),
+    [_isValid$]: dart.fieldType(core.bool)
+  }));
+  const ActorEllipse_FlutterPathPointsPath$36 = class ActorEllipse_FlutterPathPointsPath extends actor_ellipse.ActorEllipse {};
+  (ActorEllipse_FlutterPathPointsPath$36.new = function() {
+    flare.FlutterPathPointsPath.new.call(this);
+    ActorEllipse_FlutterPathPointsPath$36.__proto__.new.call(this);
+  }).prototype = ActorEllipse_FlutterPathPointsPath$36.prototype;
+  dart.applyMixin(ActorEllipse_FlutterPathPointsPath$36, flare.FlutterPathPointsPath);
+  flare.FlutterActorEllipse = class FlutterActorEllipse extends ActorEllipse_FlutterPathPointsPath$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 303, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterActorEllipse.new();
+      instanceNode.copyPath(this, resetArtboard);
+      return instanceNode;
+    }
+  };
+  (flare.FlutterActorEllipse.new = function() {
+    flare.FlutterActorEllipse.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorEllipse.prototype;
+  dart.addTypeTests(flare.FlutterActorEllipse);
+  dart.addTypeCaches(flare.FlutterActorEllipse);
+  dart.setLibraryUri(flare.FlutterActorEllipse, I[1]);
+  var __FlutterActorImage__vertexBuffer = dart.privateName(flare, "_#FlutterActorImage#_vertexBuffer");
+  var __FlutterActorImage__vertexBuffer_isSet = dart.privateName(flare, "_#FlutterActorImage#_vertexBuffer#isSet");
+  var __FlutterActorImage__uvBuffer = dart.privateName(flare, "_#FlutterActorImage#_uvBuffer");
+  var __FlutterActorImage__uvBuffer_isSet = dart.privateName(flare, "_#FlutterActorImage#_uvBuffer#isSet");
+  var __FlutterActorImage__paint = dart.privateName(flare, "_#FlutterActorImage#_paint");
+  var __FlutterActorImage__paint_isSet = dart.privateName(flare, "_#FlutterActorImage#_paint#isSet");
+  var _canvasVertices = dart.privateName(flare, "_canvasVertices");
+  var __FlutterActorImage__indices = dart.privateName(flare, "_#FlutterActorImage#_indices");
+  var __FlutterActorImage__indices_isSet = dart.privateName(flare, "_#FlutterActorImage#_indices#isSet");
+  var _identityMatrix = dart.privateName(flare, "_identityMatrix");
+  var _vertexBuffer = dart.privateName(flare, "_vertexBuffer");
+  var _uvBuffer = dart.privateName(flare, "_uvBuffer");
+  var _paint = dart.privateName(flare, "_paint");
+  var _indices = dart.privateName(flare, "_indices");
+  const ActorImage_FlutterActorDrawable$36 = class ActorImage_FlutterActorDrawable extends actor_image.ActorImage {};
+  (ActorImage_FlutterActorDrawable$36.new = function() {
+    flare.FlutterActorDrawable.new.call(this);
+    ActorImage_FlutterActorDrawable$36.__proto__.new.call(this);
+  }).prototype = ActorImage_FlutterActorDrawable$36.prototype;
+  dart.applyMixin(ActorImage_FlutterActorDrawable$36, flare.FlutterActorDrawable);
+  flare.FlutterActorImage = class FlutterActorImage extends ActorImage_FlutterActorDrawable$36 {
+    get [_vertexBuffer]() {
+      let t1;
+      return dart.test(this[__FlutterActorImage__vertexBuffer_isSet]) ? (t1 = this[__FlutterActorImage__vertexBuffer], t1) : dart.throw(new _internal.LateError.fieldNI("_vertexBuffer"));
+    }
+    set [_vertexBuffer](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 311, 20, "null");
+      this[__FlutterActorImage__vertexBuffer_isSet] = true;
+      this[__FlutterActorImage__vertexBuffer] = t1;
+    }
+    get [_uvBuffer]() {
+      let t2;
+      return dart.test(this[__FlutterActorImage__uvBuffer_isSet]) ? (t2 = this[__FlutterActorImage__uvBuffer], t2) : dart.throw(new _internal.LateError.fieldNI("_uvBuffer"));
+    }
+    set [_uvBuffer](t2) {
+      if (t2 == null) dart.nullFailed(I[0], 312, 20, "null");
+      this[__FlutterActorImage__uvBuffer_isSet] = true;
+      this[__FlutterActorImage__uvBuffer] = t2;
+    }
+    get [_paint]() {
+      let t3;
+      return dart.test(this[__FlutterActorImage__paint_isSet]) ? (t3 = this[__FlutterActorImage__paint], t3) : dart.throw(new _internal.LateError.fieldNI("_paint"));
+    }
+    set [_paint](t3) {
+      if (t3 == null) dart.nullFailed(I[0], 313, 17, "null");
+      this[__FlutterActorImage__paint_isSet] = true;
+      this[__FlutterActorImage__paint] = t3;
+    }
+    get [_indices]() {
+      let t4;
+      return dart.test(this[__FlutterActorImage__indices_isSet]) ? (t4 = this[__FlutterActorImage__indices], t4) : dart.throw(new _internal.LateError.fieldNI("_indices"));
+    }
+    set [_indices](t4) {
+      if (t4 == null) dart.nullFailed(I[0], 315, 19, "null");
+      this[__FlutterActorImage__indices_isSet] = true;
+      this[__FlutterActorImage__indices] = t4;
+    }
+    set textureIndex(value) {
+      let t5;
+      if (value == null) dart.nullFailed(I[0], 335, 24, "value");
+      if (this.textureIndex != value) {
+        let images = flare.FlutterActor.as(this.artboard.actor).images;
+        this[_paint] = (t5 = ui.Paint.new(), (() => {
+          t5.blendMode = this.blendMode;
+          t5.shader = dart.notNull(this.textureIndex) >= 0 && dart.notNull(this.textureIndex) < dart.notNull(images[$length]) ? ui.ImageShader.new(images[$_get](this.textureIndex), ui.TileMode.clamp, ui.TileMode.clamp, this[_identityMatrix]) : null;
+          t5.filterQuality = ui.FilterQuality.low;
+          t5.isAntiAlias = this.antialias;
+          return t5;
+        })());
+        this.onPaintUpdated(this[_paint]);
+      }
+    }
+    get textureIndex() {
+      return super.textureIndex;
+    }
+    changeImage(image) {
+      if (image == null) dart.nullFailed(I[0], 352, 29, "image");
+      if (this.triangles == null || this.dynamicUV == null) {
+        return false;
+      }
+      this[_uvBuffer] = this.makeVertexUVBuffer();
+      let count = this.vertexCount;
+      let duv = dart.nullCheck(this.dynamicUV);
+      let idx = 0;
+      for (let i = 0; i < dart.notNull(count); i = i + 1) {
+        this[_uvBuffer][$_set](idx, dart.notNull(duv[$_get](idx)) * dart.notNull(image.width));
+        this[_uvBuffer][$_set](idx + 1, dart.notNull(duv[$_get](idx + 1)) * dart.notNull(image.height));
+        idx = idx + 2;
+      }
+      this[_paint].shader = ui.ImageShader.new(image, ui.TileMode.clamp, ui.TileMode.clamp, this[_identityMatrix]);
+      this[_canvasVertices] = ui.Vertices.raw(ui.VertexMode.triangles, this[_vertexBuffer], {indices: this[_indices], textureCoordinates: this[_uvBuffer]});
+      this.onPaintUpdated(this[_paint]);
+      return true;
+    }
+    changeImageFromBundle(bundle, filename) {
+      if (bundle == null) dart.nullFailed(I[0], 383, 19, "bundle");
+      if (filename == null) dart.nullFailed(I[0], 383, 34, "filename");
+      return async.async(core.bool, (function* changeImageFromBundle() {
+        let data = (yield bundle.load(filename));
+        let codec = (yield ui.instantiateImageCodec(typed_data.Uint8List.view(data[$buffer])));
+        let frame = (yield codec.getNextFrame());
+        return this.changeImage(frame.image);
+      }).bind(this));
+    }
+    computeAABB() {
+      let t5, t5$;
+      this.updateVertices();
+      let minX = 1 / 0;
+      let minY = 1 / 0;
+      let maxX = -1 / 0;
+      let maxY = -1 / 0;
+      let readIdx = 0;
+      let nv = (dart.notNull(this[_vertexBuffer][$length]) / 2)[$truncate]();
+      for (let i = 0; i < nv; i = i + 1) {
+        let x = this[_vertexBuffer][$_get]((t5 = readIdx, readIdx = t5 + 1, t5));
+        let y = this[_vertexBuffer][$_get]((t5$ = readIdx, readIdx = t5$ + 1, t5$));
+        if (dart.notNull(x) < dart.notNull(minX)) {
+          minX = x;
+        }
+        if (dart.notNull(y) < dart.notNull(minY)) {
+          minY = y;
+        }
+        if (dart.notNull(x) > dart.notNull(maxX)) {
+          maxX = x;
+        }
+        if (dart.notNull(y) > dart.notNull(maxY)) {
+          maxY = y;
+        }
+      }
+      return new aabb.AABB.fromValues(minX, minY, maxX, maxY);
+    }
+    dispose() {
+    }
+    draw(canvas) {
+      if (canvas == null) dart.nullFailed(I[0], 427, 23, "canvas");
+      if (this.triangles == null || dart.test(this.renderCollapsed) || dart.notNull(this.renderOpacity) <= 0) {
+        return;
+      }
+      if (this[_canvasVertices] == null && !dart.test(this.updateVertices())) {
+        return;
+      }
+      canvas.save();
+      this.clip(canvas);
+      this[_paint].color = this[_paint].color.withOpacity(this.renderOpacity[$clamp](0.0, 1.0)[$toDouble]());
+      if (this.imageTransform != null) {
+        canvas.transform(dart.nullCheck(this.imageTransform).mat4);
+        canvas.drawVertices(dart.nullCheck(this[_canvasVertices]), ui.BlendMode.srcOver, this[_paint]);
+      } else {
+        canvas.drawVertices(dart.nullCheck(this[_canvasVertices]), ui.BlendMode.srcOver, this[_paint]);
+      }
+      canvas.restore();
+    }
+    initializeGraphics() {
+      let t5, t6, t5$, t6$, t5$0, t5$1;
+      super.initializeGraphics();
+      if (this.triangles == null) {
+        this[_paint] = ui.Paint.new();
+        return;
+      }
+      this[_vertexBuffer] = this.makeVertexPositionBuffer();
+      this[_uvBuffer] = this.makeVertexUVBuffer();
+      this[_indices] = dart.nullCheck(this.triangles);
+      this.updateVertexUVBuffer(this[_uvBuffer]);
+      let count = this.vertexCount;
+      let idx = 0;
+      let images = flare.FlutterActor.as(this.artboard.actor).images;
+      let image = images[$_get](this.textureIndex);
+      for (let i = 0; i < dart.notNull(count); i = i + 1) {
+        this[_uvBuffer][$_set](idx, dart.notNull(this[_uvBuffer][$_get](idx)) * dart.notNull(image.width));
+        this[_uvBuffer][$_set](idx + 1, dart.notNull(this[_uvBuffer][$_get](idx + 1)) * dart.notNull(image.height));
+        idx = idx + 2;
+      }
+      if (this.sequenceUVs != null) {
+        let suvs = dart.nullCheck(this.sequenceUVs);
+        for (let i = 0; i < dart.notNull(suvs[$length]); i = i + 1) {
+          t5$ = suvs;
+          t6 = (t5 = i, i = t5 + 1, t5);
+          t5$[$_set](t6, dart.notNull(t5$[$_get](t6)) * dart.notNull(image.width));
+          t5$0 = suvs;
+          t6$ = i;
+          t5$0[$_set](t6$, dart.notNull(t5$0[$_get](t6$)) * dart.notNull(image.height));
+        }
+      }
+      this[_paint] = (t5$1 = ui.Paint.new(), (() => {
+        t5$1.blendMode = this.blendMode;
+        t5$1.shader = ui.ImageShader.new(image, ui.TileMode.clamp, ui.TileMode.clamp, this[_identityMatrix]);
+        t5$1.filterQuality = ui.FilterQuality.low;
+        return t5$1;
+      })());
+      this.onPaintUpdated(this[_paint]);
+    }
+    invalidateDrawable() {
+      this[_canvasVertices] = null;
+    }
+    onAntialiasChanged(useAA) {
+      if (useAA == null) dart.nullFailed(I[0], 498, 32, "useAA");
+      this[_paint].isAntiAlias = useAA;
+      this.onPaintUpdated(this[_paint]);
+    }
+    onBlendModeChanged(mode) {
+      if (mode == null) dart.nullFailed(I[0], 504, 40, "mode");
+      this[_paint].blendMode = mode;
+      this.onPaintUpdated(this[_paint]);
+    }
+    onPaintUpdated(paint) {
+      if (paint == null) dart.nullFailed(I[0], 509, 32, "paint");
+    }
+    update(dirt) {
+      if (dirt == null) dart.nullFailed(I[0], 512, 19, "dirt");
+      super.update(dirt);
+      if ((dart.notNull(dirt) & 4) !== 0) {
+        this.onPaintUpdated(this[_paint]);
+      }
+    }
+    updateVertices() {
+      if (this.triangles == null) {
+        return false;
+      }
+      this.updateVertexPositionBuffer(this[_vertexBuffer], false);
+      this[_canvasVertices] = ui.Vertices.raw(ui.VertexMode.triangles, this[_vertexBuffer], {indices: this[_indices], textureCoordinates: this[_uvBuffer]});
+      return true;
+    }
+  };
+  (flare.FlutterActorImage.new = function() {
+    this[__FlutterActorImage__vertexBuffer] = null;
+    this[__FlutterActorImage__vertexBuffer_isSet] = false;
+    this[__FlutterActorImage__uvBuffer] = null;
+    this[__FlutterActorImage__uvBuffer_isSet] = false;
+    this[__FlutterActorImage__paint] = null;
+    this[__FlutterActorImage__paint_isSet] = false;
+    this[_canvasVertices] = null;
+    this[__FlutterActorImage__indices] = null;
+    this[__FlutterActorImage__indices_isSet] = false;
+    this[_identityMatrix] = _native_typed_data.NativeFloat64List.fromList(T.JSArrayOfdouble().of([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]));
+    flare.FlutterActorImage.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorImage.prototype;
+  dart.addTypeTests(flare.FlutterActorImage);
+  dart.addTypeCaches(flare.FlutterActorImage);
+  dart.setMethodSignature(flare.FlutterActorImage, () => ({
+    __proto__: dart.getMethods(flare.FlutterActorImage.__proto__),
+    changeImage: dart.fnType(core.bool, [ui.Image]),
+    changeImageFromBundle: dart.fnType(async.Future$(core.bool), [asset_bundle.AssetBundle, core.String]),
+    dispose: dart.fnType(dart.void, []),
+    draw: dart.fnType(dart.void, [ui.Canvas]),
+    onAntialiasChanged: dart.fnType(dart.void, [core.bool]),
+    onBlendModeChanged: dart.fnType(dart.void, [ui.BlendMode]),
+    onPaintUpdated: dart.fnType(dart.void, [ui.Paint]),
+    updateVertices: dart.fnType(core.bool, [])
+  }));
+  dart.setGetterSignature(flare.FlutterActorImage, () => ({
+    __proto__: dart.getGetters(flare.FlutterActorImage.__proto__),
+    [_vertexBuffer]: typed_data.Float32List,
+    [_uvBuffer]: typed_data.Float32List,
+    [_paint]: ui.Paint,
+    [_indices]: typed_data.Uint16List
+  }));
+  dart.setSetterSignature(flare.FlutterActorImage, () => ({
+    __proto__: dart.getSetters(flare.FlutterActorImage.__proto__),
+    [_vertexBuffer]: typed_data.Float32List,
+    [_uvBuffer]: typed_data.Float32List,
+    [_paint]: ui.Paint,
+    [_indices]: typed_data.Uint16List,
+    textureIndex: core.int
+  }));
+  dart.setLibraryUri(flare.FlutterActorImage, I[1]);
+  dart.setFieldSignature(flare.FlutterActorImage, () => ({
+    __proto__: dart.getFields(flare.FlutterActorImage.__proto__),
+    [__FlutterActorImage__vertexBuffer]: dart.fieldType(dart.nullable(typed_data.Float32List)),
+    [__FlutterActorImage__vertexBuffer_isSet]: dart.fieldType(core.bool),
+    [__FlutterActorImage__uvBuffer]: dart.fieldType(dart.nullable(typed_data.Float32List)),
+    [__FlutterActorImage__uvBuffer_isSet]: dart.fieldType(core.bool),
+    [__FlutterActorImage__paint]: dart.fieldType(dart.nullable(ui.Paint)),
+    [__FlutterActorImage__paint_isSet]: dart.fieldType(core.bool),
+    [_canvasVertices]: dart.fieldType(dart.nullable(ui.Vertices)),
+    [__FlutterActorImage__indices]: dart.fieldType(dart.nullable(typed_data.Uint16List)),
+    [__FlutterActorImage__indices_isSet]: dart.fieldType(core.bool),
+    [_identityMatrix]: dart.finalFieldType(typed_data.Float64List)
+  }));
+  var blendMode$ = dart.privateName(flare, "FlutterActorInnerShadow.blendMode");
+  flare.FlutterActorInnerShadow = class FlutterActorInnerShadow extends actor_inner_shadow.ActorInnerShadow {
+    get blendMode() {
+      return this[blendMode$];
+    }
+    set blendMode(value) {
+      this[blendMode$] = value;
+    }
+    get blendModeId() {
+      return this.blendMode.index;
+    }
+    set blendModeId(index) {
+      if (index == null) dart.nullFailed(I[0], 540, 23, "index");
+      this.blendMode = ui.BlendMode.values[$_get](index);
+    }
+  };
+  (flare.FlutterActorInnerShadow.new = function() {
+    this[blendMode$] = ui.BlendMode.srcOver;
+    flare.FlutterActorInnerShadow.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorInnerShadow.prototype;
+  dart.addTypeTests(flare.FlutterActorInnerShadow);
+  dart.addTypeCaches(flare.FlutterActorInnerShadow);
+  dart.setLibraryUri(flare.FlutterActorInnerShadow, I[1]);
+  dart.setFieldSignature(flare.FlutterActorInnerShadow, () => ({
+    __proto__: dart.getFields(flare.FlutterActorInnerShadow.__proto__),
+    blendMode: dart.fieldType(ui.BlendMode)
+  }));
+  var _CkMatrixColorFilter_matrix = dart.privateName(_engine, "_CkMatrixColorFilter.matrix");
+  var _name$ = dart.privateName(actor_mask, "_name");
+  const ActorLayerEffectRenderer_FlutterActorDrawable$36 = class ActorLayerEffectRenderer_FlutterActorDrawable extends actor_layer_effect_renderer.ActorLayerEffectRenderer {};
+  (ActorLayerEffectRenderer_FlutterActorDrawable$36.new = function() {
+    flare.FlutterActorDrawable.new.call(this);
+    ActorLayerEffectRenderer_FlutterActorDrawable$36.__proto__.new.call(this);
+  }).prototype = ActorLayerEffectRenderer_FlutterActorDrawable$36.prototype;
+  dart.applyMixin(ActorLayerEffectRenderer_FlutterActorDrawable$36, flare.FlutterActorDrawable);
+  flare.FlutterActorLayerEffectRenderer = class FlutterActorLayerEffectRenderer extends ActorLayerEffectRenderer_FlutterActorDrawable$36 {
+    draw(canvas) {
+      let t5, t5$, t5$0, t5$1, t5$2, t5$3, t5$4;
+      if (canvas == null) dart.nullFailed(I[0], 548, 23, "canvas");
+      let aabb = this.artboard.artboardAABB();
+      let bounds = new ui.Rect.fromLTRB(aabb._get(0), aabb._get(1), aabb._get(2), aabb._get(3));
+      let baseBlurX = 0.0;
+      let baseBlurY = 0.0;
+      let layerPaint = (t5 = ui.Paint.new(), (() => {
+        t5.isAntiAlias = this.antialias;
+        return t5;
+      })());
+      let layerColor = colors$.Colors.white.withOpacity(dart.nullCheck(this.parent).renderOpacity);
+      layerPaint.color = layerColor;
+      if (dart.test((t5$0 = (t5$ = this.blur, t5$ == null ? null : t5$.isActive), t5$0 == null ? false : t5$0))) {
+        baseBlurX = dart.nullCheck(this.blur).blurX;
+        baseBlurY = dart.nullCheck(this.blur).blurY;
+        layerPaint.imageFilter = flare._blurFilter(baseBlurX, baseBlurY);
+      }
+      if (dart.test(this.dropShadows[$isNotEmpty])) {
+        for (let dropShadow of this.dropShadows) {
+          if (!dart.test(dropShadow.isActive)) {
+            continue;
+          }
+          canvas.save();
+          let color = dropShadow.color;
+          canvas.translate(dropShadow.offsetX, dropShadow.offsetY);
+          let adjustedBounds = new ui.Rect.fromLTRB(dart.notNull(bounds.left) - dropShadow.offsetX[$abs](), dart.notNull(bounds.top) - dropShadow.offsetY[$abs](), dart.notNull(bounds.right) + dropShadow.offsetX[$abs](), dart.notNull(bounds.bottom) + dropShadow.offsetY[$abs]());
+          let shadowPaint = (t5$1 = ui.Paint.new(), (() => {
+            t5$1.isAntiAlias = this.antialias;
+            t5$1.color = layerColor;
+            t5$1.imageFilter = flare._blurFilter(dart.notNull(dropShadow.blurX) + dart.notNull(baseBlurX), dart.notNull(dropShadow.blurY) + dart.notNull(baseBlurY));
+            t5$1.colorFilter = new _engine._CkBlendModeColorFilter.new(new ui.Color.fromRGBO((dart.notNull(color[$_get](0)) * 255.0)[$round](), (dart.notNull(color[$_get](1)) * 255.0)[$round](), (dart.notNull(color[$_get](2)) * 255.0)[$round](), color[$_get](3)), ui.BlendMode.srcIn);
+            t5$1.blendMode = ui.BlendMode.values[$_get](dropShadow.blendModeId);
+            return t5$1;
+          })());
+          this.drawPass(canvas, adjustedBounds, shadowPaint);
+          canvas.restore();
+          canvas.restore();
+        }
+      }
+      this.drawPass(canvas, bounds, layerPaint);
+      if (dart.test(this.innerShadows[$isNotEmpty])) {
+        for (let innerShadow of this.innerShadows) {
+          if (!dart.test(innerShadow.isActive)) {
+            continue;
+          }
+          let blendMode = ui.BlendMode.values[$_get](innerShadow.blendModeId);
+          let extraBlendPass = blendMode != ui.BlendMode.srcOver;
+          if (extraBlendPass) {
+            let extraLayerPaint = (t5$2 = ui.Paint.new(), (() => {
+              t5$2.blendMode = blendMode;
+              t5$2.isAntiAlias = this.antialias;
+              return t5$2;
+            })());
+            this.drawPass(canvas, bounds, extraLayerPaint);
+          }
+          let color = innerShadow.color;
+          let shadowPaint = (t5$3 = ui.Paint.new(), (() => {
+            t5$3.isAntiAlias = this.antialias;
+            t5$3.color = layerColor;
+            t5$3.blendMode = extraBlendPass ? ui.BlendMode.srcIn : ui.BlendMode.srcATop;
+            t5$3.imageFilter = flare._blurFilter(dart.notNull(innerShadow.blurX) + dart.notNull(baseBlurX), dart.notNull(innerShadow.blurY) + dart.notNull(baseBlurY));
+            t5$3.colorFilter = new _engine._CkBlendModeColorFilter.new(new ui.Color.fromRGBO((dart.notNull(color[$_get](0)) * 255.0)[$round](), (dart.notNull(color[$_get](1)) * 255.0)[$round](), (dart.notNull(color[$_get](2)) * 255.0)[$round](), color[$_get](3)), ui.BlendMode.srcIn);
+            return t5$3;
+          })());
+          canvas.saveLayer(bounds, shadowPaint);
+          canvas.translate(innerShadow.offsetX, innerShadow.offsetY);
+          let adjustedBounds = new ui.Rect.fromLTRB(dart.notNull(bounds.left) - innerShadow.offsetX[$abs](), dart.notNull(bounds.top) - innerShadow.offsetY[$abs](), dart.notNull(bounds.right) + innerShadow.offsetX[$abs](), dart.notNull(bounds.bottom) + innerShadow.offsetY[$abs]());
+          let invertPaint = (t5$4 = ui.Paint.new(), (() => {
+            t5$4.isAntiAlias = this.antialias;
+            t5$4.colorFilter = C[2] || CT.C2;
+            return t5$4;
+          })());
+          this.drawPass(canvas, adjustedBounds, invertPaint);
+          canvas.restore();
+          canvas.restore();
+          if (extraBlendPass) {
+            canvas.restore();
+          }
+        }
+      }
+      canvas.restore();
+    }
+    drawPass(canvas, bounds, layerPaint) {
+      if (canvas == null) dart.nullFailed(I[0], 694, 27, "canvas");
+      if (bounds == null) dart.nullFailed(I[0], 694, 40, "bounds");
+      if (layerPaint == null) dart.nullFailed(I[0], 694, 54, "layerPaint");
+      canvas.saveLayer(bounds, layerPaint);
+      for (let drawable of this.drawables) {
+        if (flare.FlutterActorDrawable.is(drawable)) {
+          flare.FlutterActorDrawable.as(drawable).draw(canvas);
+        }
+      }
+      for (let renderMask of this.renderMasks) {
+        let mask = renderMask.mask;
+        if (!dart.test(mask.isActive)) {
+          continue;
+        }
+        let maskPaint = ui.Paint.new();
+        switch (mask.maskType) {
+          case C[6] || CT.C6:
+          {
+            maskPaint.colorFilter = C[4] || CT.C4;
+            break;
+          }
+          case C[9] || CT.C9:
+          {
+            maskPaint.colorFilter = C[7] || CT.C7;
+            break;
+          }
+          case C[12] || CT.C12:
+          {
+            maskPaint.colorFilter = C[10] || CT.C10;
+            break;
+          }
+          case C[15] || CT.C15:
+          default:
+          {
+            maskPaint.colorFilter = C[13] || CT.C13;
+            break;
+          }
+        }
+        maskPaint.blendMode = ui.BlendMode.dstIn;
+        maskPaint.isAntiAlias = this.antialias;
+        canvas.saveLayer(bounds, maskPaint);
+        for (let drawable of renderMask.drawables) {
+          let wasHidden = drawable.isHidden;
+          if (dart.test(wasHidden)) {
+            drawable.isHidden = false;
+          }
+          flare.FlutterActorDrawable.as(drawable).draw(canvas);
+          if (dart.test(wasHidden)) {
+            drawable.isHidden = true;
+          }
+        }
+        canvas.restore();
+      }
+    }
+    onAntialiasChanged(useAA) {
+      if (useAA == null) dart.nullFailed(I[0], 787, 32, "useAA");
+      for (let drawable of this.drawables) {
+        if (flare.FlutterActorDrawable.is(drawable)) {
+          flare.FlutterActorDrawable.as(drawable).antialias = useAA;
+        }
+      }
+    }
+    onBlendModeChanged(blendMode) {
+      if (blendMode == null) dart.nullFailed(I[0], 796, 40, "blendMode");
+    }
+  };
+  (flare.FlutterActorLayerEffectRenderer.new = function() {
+    flare.FlutterActorLayerEffectRenderer.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorLayerEffectRenderer.prototype;
+  dart.addTypeTests(flare.FlutterActorLayerEffectRenderer);
+  dart.addTypeCaches(flare.FlutterActorLayerEffectRenderer);
+  dart.setMethodSignature(flare.FlutterActorLayerEffectRenderer, () => ({
+    __proto__: dart.getMethods(flare.FlutterActorLayerEffectRenderer.__proto__),
+    draw: dart.fnType(dart.void, [ui.Canvas]),
+    drawPass: dart.fnType(dart.void, [ui.Canvas, ui.Rect, ui.Paint]),
+    onAntialiasChanged: dart.fnType(dart.void, [core.bool]),
+    onBlendModeChanged: dart.fnType(dart.void, [ui.BlendMode])
+  }));
+  dart.setLibraryUri(flare.FlutterActorLayerEffectRenderer, I[1]);
+  const ActorPath_FlutterPathPointsPath$36 = class ActorPath_FlutterPathPointsPath extends actor_path.ActorPath {};
+  (ActorPath_FlutterPathPointsPath$36.new = function() {
+    flare.FlutterPathPointsPath.new.call(this);
+    ActorPath_FlutterPathPointsPath$36.__proto__.new.call(this);
+  }).prototype = ActorPath_FlutterPathPointsPath$36.prototype;
+  dart.applyMixin(ActorPath_FlutterPathPointsPath$36, flare.FlutterPathPointsPath);
+  flare.FlutterActorPath = class FlutterActorPath extends ActorPath_FlutterPathPointsPath$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 804, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterActorPath.new();
+      instanceNode.copyPath(this, resetArtboard);
+      return instanceNode;
+    }
+  };
+  (flare.FlutterActorPath.new = function() {
+    flare.FlutterActorPath.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorPath.prototype;
+  dart.addTypeTests(flare.FlutterActorPath);
+  dart.addTypeCaches(flare.FlutterActorPath);
+  dart.setLibraryUri(flare.FlutterActorPath, I[1]);
+  const ActorPolygon_FlutterPathPointsPath$36 = class ActorPolygon_FlutterPathPointsPath extends actor_polygon.ActorPolygon {};
+  (ActorPolygon_FlutterPathPointsPath$36.new = function() {
+    flare.FlutterPathPointsPath.new.call(this);
+    ActorPolygon_FlutterPathPointsPath$36.__proto__.new.call(this);
+  }).prototype = ActorPolygon_FlutterPathPointsPath$36.prototype;
+  dart.applyMixin(ActorPolygon_FlutterPathPointsPath$36, flare.FlutterPathPointsPath);
+  flare.FlutterActorPolygon = class FlutterActorPolygon extends ActorPolygon_FlutterPathPointsPath$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 813, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterActorPolygon.new();
+      instanceNode.copyPolygon(this, resetArtboard);
+      return instanceNode;
+    }
+  };
+  (flare.FlutterActorPolygon.new = function() {
+    flare.FlutterActorPolygon.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorPolygon.prototype;
+  dart.addTypeTests(flare.FlutterActorPolygon);
+  dart.addTypeCaches(flare.FlutterActorPolygon);
+  dart.setLibraryUri(flare.FlutterActorPolygon, I[1]);
+  const ActorRectangle_FlutterPathPointsPath$36 = class ActorRectangle_FlutterPathPointsPath extends actor_rectangle.ActorRectangle {};
+  (ActorRectangle_FlutterPathPointsPath$36.new = function() {
+    flare.FlutterPathPointsPath.new.call(this);
+    ActorRectangle_FlutterPathPointsPath$36.__proto__.new.call(this);
+  }).prototype = ActorRectangle_FlutterPathPointsPath$36.prototype;
+  dart.applyMixin(ActorRectangle_FlutterPathPointsPath$36, flare.FlutterPathPointsPath);
+  flare.FlutterActorRectangle = class FlutterActorRectangle extends ActorRectangle_FlutterPathPointsPath$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 822, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterActorRectangle.new();
+      instanceNode.copyRectangle(this, resetArtboard);
+      return instanceNode;
+    }
+  };
+  (flare.FlutterActorRectangle.new = function() {
+    flare.FlutterActorRectangle.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorRectangle.prototype;
+  dart.addTypeTests(flare.FlutterActorRectangle);
+  dart.addTypeCaches(flare.FlutterActorRectangle);
+  dart.setLibraryUri(flare.FlutterActorRectangle, I[1]);
+  var __FlutterActorShape__path = dart.privateName(flare, "_#FlutterActorShape#_path");
+  var __FlutterActorShape__path_isSet = dart.privateName(flare, "_#FlutterActorShape#_path#isSet");
+  var _markPaintDirty = dart.privateName(flare, "_markPaintDirty");
+  const ActorShape_FlutterActorDrawable$36 = class ActorShape_FlutterActorDrawable extends actor_shape.ActorShape {};
+  (ActorShape_FlutterActorDrawable$36.new = function() {
+    flare.FlutterActorDrawable.new.call(this);
+    ActorShape_FlutterActorDrawable$36.__proto__.new.call(this);
+  }).prototype = ActorShape_FlutterActorDrawable$36.prototype;
+  dart.applyMixin(ActorShape_FlutterActorDrawable$36, flare.FlutterActorDrawable);
+  flare.FlutterActorShape = class FlutterActorShape extends ActorShape_FlutterActorDrawable$36 {
+    get [_path]() {
+      let t5;
+      return dart.test(this[__FlutterActorShape__path_isSet]) ? (t5 = this[__FlutterActorShape__path], t5) : dart.throw(new _internal.LateError.fieldNI("_path"));
+    }
+    set [_path](t5) {
+      if (t5 == null) dart.nullFailed(I[0], 830, 16, "null");
+      this[__FlutterActorShape__path_isSet] = true;
+      this[__FlutterActorShape__path] = t5;
+    }
+    get path() {
+      if (dart.test(this[_isValid$])) {
+        return this[_path];
+      }
+      this[_isValid$] = true;
+      this[_path].reset();
+      if (this.fill != null && dart.nullCheck(this.fill).fillRule == actor_color.FillRule.evenOdd) {
+        this[_path].fillType = ui.PathFillType.evenOdd;
+      } else {
+        this[_path].fillType = ui.PathFillType.nonZero;
+      }
+      for (let path of this.paths) {
+        let transform = path.pathTransform;
+        this[_path].addPath(flare.FlutterPath.as(path).path, ui.Offset.zero, {matrix4: transform.mat4});
+      }
+      return this[_path];
+    }
+    draw(canvas) {
+      if (canvas == null) dart.nullFailed(I[0], 855, 23, "canvas");
+      if (!dart.test(this.doesDraw)) {
+        return;
+      }
+      canvas.save();
+      this.clip(canvas);
+      let renderPath = this.getRenderPath(canvas);
+      for (let actorFill of this.fills) {
+        let fill = flare.FlutterFill.as(actorFill);
+        fill.paint(actorFill, canvas, renderPath);
+      }
+      for (let actorStroke of this.strokes) {
+        let stroke = flare.FlutterStroke.as(actorStroke);
+        stroke.paint(actorStroke, canvas, renderPath);
+      }
+      canvas.restore();
+    }
+    getRenderPath(canvas) {
+      if (canvas == null) dart.nullFailed(I[0], 878, 35, "canvas");
+      return this.path;
+    }
+    initializeGraphics() {
+      super.initializeGraphics();
+      this[_path] = ui.Path.new();
+      for (let path of this.paths) {
+        flare.FlutterPath.as(path).initializeGraphics();
+      }
+    }
+    invalidateShape() {
+      let t6;
+      this[_isValid$] = false;
+      t6 = this.stroke;
+      t6 == null ? null : t6.markPathEffectsDirty();
+    }
+    onAntialiasChanged(useAA) {
+      if (useAA == null) dart.nullFailed(I[0], 898, 32, "useAA");
+      this[_markPaintDirty]();
+    }
+    onBlendModeChanged(mode) {
+      if (mode == null) dart.nullFailed(I[0], 903, 40, "mode");
+      this[_markPaintDirty]();
+    }
+    [_markPaintDirty]() {
+      for (let actorFill of this.fills) {
+        actor_color.ActorPaint.as(actorFill).markPaintDirty();
+      }
+      for (let actorStroke of this.strokes) {
+        actor_color.ActorPaint.as(actorStroke).markPaintDirty();
+      }
+    }
+  };
+  (flare.FlutterActorShape.new = function() {
+    this[__FlutterActorShape__path] = null;
+    this[__FlutterActorShape__path_isSet] = false;
+    this[_isValid$] = false;
+    flare.FlutterActorShape.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorShape.prototype;
+  dart.addTypeTests(flare.FlutterActorShape);
+  dart.addTypeCaches(flare.FlutterActorShape);
+  dart.setMethodSignature(flare.FlutterActorShape, () => ({
+    __proto__: dart.getMethods(flare.FlutterActorShape.__proto__),
+    draw: dart.fnType(dart.void, [ui.Canvas]),
+    getRenderPath: dart.fnType(ui.Path, [ui.Canvas]),
+    onAntialiasChanged: dart.fnType(dart.void, [core.bool]),
+    onBlendModeChanged: dart.fnType(dart.void, [ui.BlendMode]),
+    [_markPaintDirty]: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(flare.FlutterActorShape, () => ({
+    __proto__: dart.getGetters(flare.FlutterActorShape.__proto__),
+    [_path]: ui.Path,
+    path: ui.Path
+  }));
+  dart.setSetterSignature(flare.FlutterActorShape, () => ({
+    __proto__: dart.getSetters(flare.FlutterActorShape.__proto__),
+    [_path]: ui.Path
+  }));
+  dart.setLibraryUri(flare.FlutterActorShape, I[1]);
+  dart.setFieldSignature(flare.FlutterActorShape, () => ({
+    __proto__: dart.getFields(flare.FlutterActorShape.__proto__),
+    [__FlutterActorShape__path]: dart.fieldType(dart.nullable(ui.Path)),
+    [__FlutterActorShape__path_isSet]: dart.fieldType(core.bool),
+    [_isValid$]: dart.fieldType(core.bool)
+  }));
+  var __FlutterActorShapeWithTransformedStroke__localPath = dart.privateName(flare, "_#FlutterActorShapeWithTransformedStroke#_localPath");
+  var __FlutterActorShapeWithTransformedStroke__localPath_isSet = dart.privateName(flare, "_#FlutterActorShapeWithTransformedStroke#_localPath#isSet");
+  var _isLocalValid = dart.privateName(flare, "_isLocalValid");
+  var _localPath = dart.privateName(flare, "_localPath");
+  flare.FlutterActorShapeWithTransformedStroke = class FlutterActorShapeWithTransformedStroke extends flare.FlutterActorShape {
+    get [_localPath]() {
+      let t6;
+      return dart.test(this[__FlutterActorShapeWithTransformedStroke__localPath_isSet]) ? (t6 = this[__FlutterActorShapeWithTransformedStroke__localPath], t6) : dart.throw(new _internal.LateError.fieldNI("_localPath"));
+    }
+    set [_localPath](t6) {
+      if (t6 == null) dart.nullFailed(I[0], 919, 16, "null");
+      this[__FlutterActorShapeWithTransformedStroke__localPath_isSet] = true;
+      this[__FlutterActorShapeWithTransformedStroke__localPath] = t6;
+    }
+    get localPath() {
+      if (dart.test(this[_isLocalValid])) {
+        return this[_localPath];
+      }
+      this[_isLocalValid] = true;
+      this[_localPath].reset();
+      let inverseWorld = new mat2d.Mat2D.new();
+      if (!dart.test(mat2d.Mat2D.invert(inverseWorld, this.worldTransform))) {
+        mat2d.Mat2D.identity(inverseWorld);
+      }
+      for (let path of this.paths) {
+        let transform = path.pathTransform;
+        let localTransform = new mat2d.Mat2D.new();
+        mat2d.Mat2D.multiply(localTransform, inverseWorld, transform);
+        this[_localPath].addPath(flare.FlutterPath.as(path).path, ui.Offset.zero, {matrix4: localTransform.mat4});
+      }
+      return this[_localPath];
+    }
+    getRenderPath(canvas) {
+      if (canvas == null) dart.nullFailed(I[0], 947, 35, "canvas");
+      canvas.transform(this.worldTransform.mat4);
+      return this.localPath;
+    }
+    initializeGraphics() {
+      super.initializeGraphics();
+      this[_localPath] = ui.Path.new();
+    }
+    invalidateShape() {
+      this[_isLocalValid] = false;
+      super.invalidateShape();
+    }
+  };
+  (flare.FlutterActorShapeWithTransformedStroke.new = function() {
+    this[__FlutterActorShapeWithTransformedStroke__localPath] = null;
+    this[__FlutterActorShapeWithTransformedStroke__localPath_isSet] = false;
+    this[_isLocalValid] = false;
+    flare.FlutterActorShapeWithTransformedStroke.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorShapeWithTransformedStroke.prototype;
+  dart.addTypeTests(flare.FlutterActorShapeWithTransformedStroke);
+  dart.addTypeCaches(flare.FlutterActorShapeWithTransformedStroke);
+  dart.setGetterSignature(flare.FlutterActorShapeWithTransformedStroke, () => ({
+    __proto__: dart.getGetters(flare.FlutterActorShapeWithTransformedStroke.__proto__),
+    [_localPath]: ui.Path,
+    localPath: ui.Path
+  }));
+  dart.setSetterSignature(flare.FlutterActorShapeWithTransformedStroke, () => ({
+    __proto__: dart.getSetters(flare.FlutterActorShapeWithTransformedStroke.__proto__),
+    [_localPath]: ui.Path
+  }));
+  dart.setLibraryUri(flare.FlutterActorShapeWithTransformedStroke, I[1]);
+  dart.setFieldSignature(flare.FlutterActorShapeWithTransformedStroke, () => ({
+    __proto__: dart.getFields(flare.FlutterActorShapeWithTransformedStroke.__proto__),
+    [__FlutterActorShapeWithTransformedStroke__localPath]: dart.fieldType(dart.nullable(ui.Path)),
+    [__FlutterActorShapeWithTransformedStroke__localPath_isSet]: dart.fieldType(core.bool),
+    [_isLocalValid]: dart.fieldType(core.bool)
+  }));
+  const ActorStar_FlutterPathPointsPath$36 = class ActorStar_FlutterPathPointsPath extends actor_star.ActorStar {};
+  (ActorStar_FlutterPathPointsPath$36.new = function() {
+    flare.FlutterPathPointsPath.new.call(this);
+    ActorStar_FlutterPathPointsPath$36.__proto__.new.call(this);
+  }).prototype = ActorStar_FlutterPathPointsPath$36.prototype;
+  dart.applyMixin(ActorStar_FlutterPathPointsPath$36, flare.FlutterPathPointsPath);
+  flare.FlutterActorStar = class FlutterActorStar extends ActorStar_FlutterPathPointsPath$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 967, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterActorStar.new();
+      instanceNode.copyStar(this, resetArtboard);
+      return instanceNode;
+    }
+  };
+  (flare.FlutterActorStar.new = function() {
+    flare.FlutterActorStar.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorStar.prototype;
+  dart.addTypeTests(flare.FlutterActorStar);
+  dart.addTypeCaches(flare.FlutterActorStar);
+  dart.setLibraryUri(flare.FlutterActorStar, I[1]);
+  const ActorTriangle_FlutterPathPointsPath$36 = class ActorTriangle_FlutterPathPointsPath extends actor_triangle.ActorTriangle {};
+  (ActorTriangle_FlutterPathPointsPath$36.new = function() {
+    flare.FlutterPathPointsPath.new.call(this);
+    ActorTriangle_FlutterPathPointsPath$36.__proto__.new.call(this);
+  }).prototype = ActorTriangle_FlutterPathPointsPath$36.prototype;
+  dart.applyMixin(ActorTriangle_FlutterPathPointsPath$36, flare.FlutterPathPointsPath);
+  flare.FlutterActorTriangle = class FlutterActorTriangle extends ActorTriangle_FlutterPathPointsPath$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 976, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterActorTriangle.new();
+      instanceNode.copyPath(this, resetArtboard);
+      return instanceNode;
+    }
+  };
+  (flare.FlutterActorTriangle.new = function() {
+    flare.FlutterActorTriangle.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterActorTriangle.prototype;
+  dart.addTypeTests(flare.FlutterActorTriangle);
+  dart.addTypeCaches(flare.FlutterActorTriangle);
+  dart.setLibraryUri(flare.FlutterActorTriangle, I[1]);
+  var _$35FlutterFill$35_paint = dart.privateName(flare, "FlutterFill._#FlutterFill#_paint");
+  var _$35FlutterFill$35_paint$35isSet = dart.privateName(flare, "FlutterFill._#FlutterFill#_paint#isSet");
+  var __FlutterFill__paint = dart.privateName(flare, "_#FlutterFill#_paint");
+  var __FlutterFill__paint_isSet = dart.privateName(flare, "_#FlutterFill#_paint#isSet");
+  var _name$0 = dart.privateName(actor_color, "_name");
+  flare.FlutterFill = class FlutterFill extends core.Object {
+    get [__FlutterFill__paint]() {
+      return this[_$35FlutterFill$35_paint];
+    }
+    set [__FlutterFill__paint](value) {
+      this[_$35FlutterFill$35_paint] = value;
+    }
+    get [__FlutterFill__paint_isSet]() {
+      return this[_$35FlutterFill$35_paint$35isSet];
+    }
+    set [__FlutterFill__paint_isSet](value) {
+      this[_$35FlutterFill$35_paint$35isSet] = value;
+    }
+    get [_paint]() {
+      let t7;
+      return dart.test(this[__FlutterFill__paint_isSet]) ? (t7 = this[__FlutterFill__paint], t7) : dart.throw(new _internal.LateError.fieldNI("_paint"));
+    }
+    set [_paint](t7) {
+      if (t7 == null) dart.nullFailed(I[0], 1054, 17, "null");
+      this[__FlutterFill__paint_isSet] = true;
+      this[__FlutterFill__paint] = t7;
+    }
+    initializeGraphics() {
+      let t8;
+      this[_paint] = (t8 = ui.Paint.new(), (() => {
+        t8.style = ui.PaintingStyle.fill;
+        return t8;
+      })());
+      this.onPaintUpdated(this[_paint]);
+    }
+    onPaintUpdated(paint) {
+      if (paint == null) dart.nullFailed(I[0], 1061, 32, "paint");
+    }
+    paint(fill, canvas, path) {
+      if (fill == null) dart.nullFailed(I[0], 1063, 24, "fill");
+      if (canvas == null) dart.nullFailed(I[0], 1063, 40, "canvas");
+      if (path == null) dart.nullFailed(I[0], 1063, 56, "path");
+      switch (fill.fillRule) {
+        case C[16] || CT.C16:
+        {
+          path.fillType = ui.PathFillType.evenOdd;
+          break;
+        }
+        case C[17] || CT.C17:
+        {
+          path.fillType = ui.PathFillType.nonZero;
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+      canvas.drawPath(path, this[_paint]);
+    }
+  };
+  (flare.FlutterFill.new = function() {
+    this[_$35FlutterFill$35_paint] = null;
+    this[_$35FlutterFill$35_paint$35isSet] = false;
+    ;
+  }).prototype = flare.FlutterFill.prototype;
+  dart.addTypeTests(flare.FlutterFill);
+  dart.addTypeCaches(flare.FlutterFill);
+  dart.setMethodSignature(flare.FlutterFill, () => ({
+    __proto__: dart.getMethods(flare.FlutterFill.__proto__),
+    initializeGraphics: dart.fnType(dart.void, []),
+    onPaintUpdated: dart.fnType(dart.void, [ui.Paint]),
+    paint: dart.fnType(dart.void, [actor_color.ActorFill, ui.Canvas, ui.Path])
+  }));
+  dart.setGetterSignature(flare.FlutterFill, () => ({
+    __proto__: dart.getGetters(flare.FlutterFill.__proto__),
+    [_paint]: ui.Paint
+  }));
+  dart.setSetterSignature(flare.FlutterFill, () => ({
+    __proto__: dart.getSetters(flare.FlutterFill.__proto__),
+    [_paint]: ui.Paint
+  }));
+  dart.setLibraryUri(flare.FlutterFill, I[1]);
+  dart.setFieldSignature(flare.FlutterFill, () => ({
+    __proto__: dart.getFields(flare.FlutterFill.__proto__),
+    [__FlutterFill__paint]: dart.fieldType(dart.nullable(ui.Paint)),
+    [__FlutterFill__paint_isSet]: dart.fieldType(core.bool)
+  }));
+  const ColorFill_FlutterFill$36 = class ColorFill_FlutterFill extends actor_color.ColorFill {};
+  (ColorFill_FlutterFill$36.new = function() {
+    flare.FlutterFill.new.call(this);
+    ColorFill_FlutterFill$36.__proto__.new.call(this);
+  }).prototype = ColorFill_FlutterFill$36.prototype;
+  dart.applyMixin(ColorFill_FlutterFill$36, flare.FlutterFill);
+  flare.FlutterColorFill = class FlutterColorFill extends ColorFill_FlutterFill$36 {
+    get uiColor() {
+      let c = this.displayColor;
+      let o = (dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]();
+      return new ui.Color.fromRGBO((dart.notNull(c[$_get](0)) * 255.0)[$round](), (dart.notNull(c[$_get](1)) * 255.0)[$round](), (dart.notNull(c[$_get](2)) * 255.0)[$round](), dart.notNull(c[$_get](3)) * o);
+    }
+    set uiColor(c) {
+      if (c == null) dart.nullFailed(I[0], 993, 21, "c");
+      this.color = _native_typed_data.NativeFloat32List.fromList(T.JSArrayOfdouble().of([dart.notNull(c.red) / 255, dart.notNull(c.green) / 255, dart.notNull(c.blue) / 255, c.opacity]));
+    }
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 999, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterColorFill.new();
+      instanceNode.copyColorFill(this, resetArtboard);
+      return instanceNode;
+    }
+    update(dirt) {
+      let t7;
+      if (dirt == null) dart.nullFailed(I[0], 1006, 19, "dirt");
+      super.update(dirt);
+      let parentShape = flare.FlutterActorShape.as(this.parent);
+      t7 = this[_paint];
+      (() => {
+        t7.color = this.uiColor;
+        t7.isAntiAlias = parentShape.antialias;
+        t7.blendMode = parentShape.blendMode;
+        return t7;
+      })();
+      this.onPaintUpdated(this[_paint]);
+    }
+  };
+  (flare.FlutterColorFill.new = function() {
+    flare.FlutterColorFill.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterColorFill.prototype;
+  dart.addTypeTests(flare.FlutterColorFill);
+  dart.addTypeCaches(flare.FlutterColorFill);
+  dart.setMethodSignature(flare.FlutterColorFill, () => ({
+    __proto__: dart.getMethods(flare.FlutterColorFill.__proto__),
+    makeInstance: dart.fnType(actor_component.ActorComponent, [actor_artboard.ActorArtboard])
+  }));
+  dart.setGetterSignature(flare.FlutterColorFill, () => ({
+    __proto__: dart.getGetters(flare.FlutterColorFill.__proto__),
+    uiColor: ui.Color
+  }));
+  dart.setSetterSignature(flare.FlutterColorFill, () => ({
+    __proto__: dart.getSetters(flare.FlutterColorFill.__proto__),
+    uiColor: ui.Color
+  }));
+  dart.setLibraryUri(flare.FlutterColorFill, I[1]);
+  var _$35FlutterStroke$35_paint = dart.privateName(flare, "FlutterStroke._#FlutterStroke#_paint");
+  var _$35FlutterStroke$35_paint$35isSet = dart.privateName(flare, "FlutterStroke._#FlutterStroke#_paint#isSet");
+  var effectPath = dart.privateName(flare, "FlutterStroke.effectPath");
+  var __FlutterStroke__paint = dart.privateName(flare, "_#FlutterStroke#_paint");
+  var __FlutterStroke__paint_isSet = dart.privateName(flare, "_#FlutterStroke#_paint#isSet");
+  flare.FlutterStroke = class FlutterStroke extends core.Object {
+    get [__FlutterStroke__paint]() {
+      return this[_$35FlutterStroke$35_paint];
+    }
+    set [__FlutterStroke__paint](value) {
+      this[_$35FlutterStroke$35_paint] = value;
+    }
+    get [__FlutterStroke__paint_isSet]() {
+      return this[_$35FlutterStroke$35_paint$35isSet];
+    }
+    set [__FlutterStroke__paint_isSet](value) {
+      this[_$35FlutterStroke$35_paint$35isSet] = value;
+    }
+    get effectPath() {
+      return this[effectPath];
+    }
+    set effectPath(value) {
+      this[effectPath] = value;
+    }
+    get [_paint]() {
+      let t8;
+      return dart.test(this[__FlutterStroke__paint_isSet]) ? (t8 = this[__FlutterStroke__paint], t8) : dart.throw(new _internal.LateError.fieldNI("_paint"));
+    }
+    set [_paint](t8) {
+      if (t8 == null) dart.nullFailed(I[0], 1467, 17, "null");
+      this[__FlutterStroke__paint_isSet] = true;
+      this[__FlutterStroke__paint] = t8;
+    }
+    initializeGraphics() {
+      let t9;
+      let stroke = actor_color.ActorStroke.as(this);
+      this[_paint] = (t9 = ui.Paint.new(), (() => {
+        t9.style = ui.PaintingStyle.stroke;
+        t9.strokeWidth = stroke.width;
+        t9.strokeCap = flare.FlutterStroke.getStrokeCap(stroke.cap);
+        t9.strokeJoin = flare.FlutterStroke.getStrokeJoin(stroke.join);
+        return t9;
+      })());
+      this.onPaintUpdated(this[_paint]);
+    }
+    markPathEffectsDirty() {
+      this.effectPath = null;
+    }
+    onPaintUpdated(paint) {
+      if (paint == null) dart.nullFailed(I[0], 1485, 32, "paint");
+    }
+    paint(stroke, canvas, path) {
+      if (stroke == null) dart.nullFailed(I[0], 1487, 26, "stroke");
+      if (canvas == null) dart.nullFailed(I[0], 1487, 44, "canvas");
+      if (path == null) dart.nullFailed(I[0], 1487, 60, "path");
+      if (stroke.width === 0) {
+        return;
+      }
+      if (dart.test(stroke.isTrimmed)) {
+        if (this.effectPath == null) {
+          let isSequential = stroke.trim == actor_color.TrimPath.sequential;
+          let start = stroke.trimStart[$clamp](0, 1)[$toDouble]();
+          let end = stroke.trimEnd[$clamp](0, 1)[$toDouble]();
+          let offset = stroke.trimOffset;
+          let inverted = start > end;
+          if ((start - end)[$abs]() !== 1.0) {
+            start = (start + dart.notNull(offset))[$modulo](1.0);
+            end = (end + dart.notNull(offset))[$modulo](1.0);
+            if (start < 0) {
+              start = start + 1.0;
+            }
+            if (end < 0) {
+              end = end + 1.0;
+            }
+            if (inverted) {
+              let swap = end;
+              end = start;
+              start = swap;
+            }
+            if (end >= start) {
+              this.effectPath = trim_path.trimPath(path, start, end, false, isSequential);
+            } else {
+              this.effectPath = trim_path.trimPath(path, end, start, true, isSequential);
+            }
+          } else {
+            this.effectPath = path;
+          }
+        }
+        path = dart.nullCheck(this.effectPath);
+      }
+      canvas.drawPath(path, this[_paint]);
+    }
+    static getStrokeCap(cap) {
+      if (cap == null) dart.nullFailed(I[0], 1529, 46, "cap");
+      switch (cap) {
+        case C[18] || CT.C18:
+        {
+          return ui.StrokeCap.butt;
+        }
+        case C[19] || CT.C19:
+        {
+          return ui.StrokeCap.round;
+        }
+        case C[20] || CT.C20:
+        {
+          return ui.StrokeCap.square;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    static getStrokeJoin(join) {
+      if (join == null) dart.nullFailed(I[0], 1540, 49, "join");
+      switch (join) {
+        case C[21] || CT.C21:
+        {
+          return ui.StrokeJoin.miter;
+        }
+        case C[22] || CT.C22:
+        {
+          return ui.StrokeJoin.round;
+        }
+        case C[23] || CT.C23:
+        {
+          return ui.StrokeJoin.bevel;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+  };
+  (flare.FlutterStroke.new = function() {
+    this[_$35FlutterStroke$35_paint] = null;
+    this[_$35FlutterStroke$35_paint$35isSet] = false;
+    this[effectPath] = null;
+    ;
+  }).prototype = flare.FlutterStroke.prototype;
+  dart.addTypeTests(flare.FlutterStroke);
+  dart.addTypeCaches(flare.FlutterStroke);
+  dart.setMethodSignature(flare.FlutterStroke, () => ({
+    __proto__: dart.getMethods(flare.FlutterStroke.__proto__),
+    initializeGraphics: dart.fnType(dart.void, []),
+    markPathEffectsDirty: dart.fnType(dart.void, []),
+    onPaintUpdated: dart.fnType(dart.void, [ui.Paint]),
+    paint: dart.fnType(dart.void, [actor_color.ActorStroke, ui.Canvas, ui.Path])
+  }));
+  dart.setGetterSignature(flare.FlutterStroke, () => ({
+    __proto__: dart.getGetters(flare.FlutterStroke.__proto__),
+    [_paint]: ui.Paint
+  }));
+  dart.setSetterSignature(flare.FlutterStroke, () => ({
+    __proto__: dart.getSetters(flare.FlutterStroke.__proto__),
+    [_paint]: ui.Paint
+  }));
+  dart.setLibraryUri(flare.FlutterStroke, I[1]);
+  dart.setFieldSignature(flare.FlutterStroke, () => ({
+    __proto__: dart.getFields(flare.FlutterStroke.__proto__),
+    [__FlutterStroke__paint]: dart.fieldType(dart.nullable(ui.Paint)),
+    [__FlutterStroke__paint_isSet]: dart.fieldType(core.bool),
+    effectPath: dart.fieldType(dart.nullable(ui.Path))
+  }));
+  const ColorStroke_FlutterStroke$36 = class ColorStroke_FlutterStroke extends actor_color.ColorStroke {};
+  (ColorStroke_FlutterStroke$36.new = function() {
+    flare.FlutterStroke.new.call(this);
+    ColorStroke_FlutterStroke$36.__proto__.new.call(this);
+  }).prototype = ColorStroke_FlutterStroke$36.prototype;
+  dart.applyMixin(ColorStroke_FlutterStroke$36, flare.FlutterStroke);
+  flare.FlutterColorStroke = class FlutterColorStroke extends ColorStroke_FlutterStroke$36 {
+    get uiColor() {
+      let c = this.displayColor;
+      let o = (dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]();
+      return new ui.Color.fromRGBO((dart.notNull(c[$_get](0)) * 255.0)[$round](), (dart.notNull(c[$_get](1)) * 255.0)[$round](), (dart.notNull(c[$_get](2)) * 255.0)[$round](), dart.notNull(c[$_get](3)) * o);
+    }
+    set uiColor(c) {
+      if (c == null) dart.nullFailed(I[0], 1027, 21, "c");
+      this.color = _native_typed_data.NativeFloat32List.fromList(T.JSArrayOfdouble().of([dart.notNull(c.red) / 255, dart.notNull(c.green) / 255, dart.notNull(c.blue) / 255, c.opacity]));
+    }
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 1033, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterColorStroke.new();
+      instanceNode.copyColorStroke(this, resetArtboard);
+      return instanceNode;
+    }
+    update(dirt) {
+      let t8;
+      if (dirt == null) dart.nullFailed(I[0], 1040, 19, "dirt");
+      super.update(dirt);
+      let parentShape = flare.FlutterActorShape.as(this.parent);
+      t8 = this[_paint];
+      (() => {
+        t8.color = this.uiColor;
+        t8.strokeWidth = this.width;
+        t8.isAntiAlias = parentShape.antialias;
+        t8.blendMode = parentShape.blendMode;
+        return t8;
+      })();
+      this.onPaintUpdated(this[_paint]);
+    }
+  };
+  (flare.FlutterColorStroke.new = function() {
+    flare.FlutterColorStroke.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterColorStroke.prototype;
+  dart.addTypeTests(flare.FlutterColorStroke);
+  dart.addTypeCaches(flare.FlutterColorStroke);
+  dart.setMethodSignature(flare.FlutterColorStroke, () => ({
+    __proto__: dart.getMethods(flare.FlutterColorStroke.__proto__),
+    makeInstance: dart.fnType(actor_component.ActorComponent, [actor_artboard.ActorArtboard])
+  }));
+  dart.setGetterSignature(flare.FlutterColorStroke, () => ({
+    __proto__: dart.getGetters(flare.FlutterColorStroke.__proto__),
+    uiColor: ui.Color
+  }));
+  dart.setSetterSignature(flare.FlutterColorStroke, () => ({
+    __proto__: dart.getSetters(flare.FlutterColorStroke.__proto__),
+    uiColor: ui.Color
+  }));
+  dart.setLibraryUri(flare.FlutterColorStroke, I[1]);
+  const GradientFill_FlutterFill$36 = class GradientFill_FlutterFill extends actor_color.GradientFill {};
+  (GradientFill_FlutterFill$36.new = function() {
+    flare.FlutterFill.new.call(this);
+    GradientFill_FlutterFill$36.__proto__.new.call(this);
+  }).prototype = GradientFill_FlutterFill$36.prototype;
+  dart.applyMixin(GradientFill_FlutterFill$36, flare.FlutterFill);
+  flare.FlutterGradientFill = class FlutterGradientFill extends GradientFill_FlutterFill$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 1078, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterGradientFill.new();
+      instanceNode.copyGradientFill(this, resetArtboard);
+      return instanceNode;
+    }
+    update(dirt) {
+      let t9;
+      if (dirt == null) dart.nullFailed(I[0], 1085, 19, "dirt");
+      super.update(dirt);
+      let colors = T.JSArrayOfColor().of([]);
+      let stops = T.JSArrayOfdouble().of([]);
+      let numStops = (dart.notNull(this.colorStops[$length]) / 5)[$round]();
+      let idx = 0;
+      for (let i = 0; i < numStops; i = i + 1) {
+        let o = this.colorStops[$_get](idx + 3)[$clamp](0.0, 1.0)[$toDouble]();
+        let color = new ui.Color.fromRGBO((dart.notNull(this.colorStops[$_get](idx)) * 255.0)[$round](), (dart.notNull(this.colorStops[$_get](idx + 1)) * 255.0)[$round](), (dart.notNull(this.colorStops[$_get](idx + 2)) * 255.0)[$round](), o);
+        colors[$add](color);
+        stops[$add](this.colorStops[$_get](idx + 4));
+        idx = idx + 5;
+      }
+      let paintColor = null;
+      if (this.artboard.overrideColor == null) {
+        paintColor = colors$.Colors.white.withOpacity((dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]());
+      } else {
+        let overrideColor = dart.nullCheck(this.artboard.overrideColor);
+        let o = (dart.notNull(overrideColor[$_get](3)) * dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]();
+        paintColor = new ui.Color.fromRGBO((dart.notNull(overrideColor[$_get](0)) * 255.0)[$round](), (dart.notNull(overrideColor[$_get](1)) * 255.0)[$round](), (dart.notNull(overrideColor[$_get](2)) * 255.0)[$round](), o);
+      }
+      let parentShape = flare.FlutterActorShape.as(this.parent);
+      t9 = this[_paint];
+      (() => {
+        t9.color = paintColor;
+        t9.isAntiAlias = parentShape.antialias;
+        t9.blendMode = parentShape.blendMode;
+        t9.shader = ui.Gradient.linear(new ui.Offset.new(this.renderStart._get(0), this.renderStart._get(1)), new ui.Offset.new(this.renderEnd._get(0), this.renderEnd._get(1)), colors, stops);
+        return t9;
+      })();
+      this.onPaintUpdated(this[_paint]);
+    }
+  };
+  (flare.FlutterGradientFill.new = function() {
+    flare.FlutterGradientFill.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterGradientFill.prototype;
+  dart.addTypeTests(flare.FlutterGradientFill);
+  dart.addTypeCaches(flare.FlutterGradientFill);
+  dart.setMethodSignature(flare.FlutterGradientFill, () => ({
+    __proto__: dart.getMethods(flare.FlutterGradientFill.__proto__),
+    makeInstance: dart.fnType(actor_component.ActorComponent, [actor_artboard.ActorArtboard])
+  }));
+  dart.setLibraryUri(flare.FlutterGradientFill, I[1]);
+  const GradientStroke_FlutterStroke$36 = class GradientStroke_FlutterStroke extends actor_color.GradientStroke {};
+  (GradientStroke_FlutterStroke$36.new = function() {
+    flare.FlutterStroke.new.call(this);
+    GradientStroke_FlutterStroke$36.__proto__.new.call(this);
+  }).prototype = GradientStroke_FlutterStroke$36.prototype;
+  dart.applyMixin(GradientStroke_FlutterStroke$36, flare.FlutterStroke);
+  flare.FlutterGradientStroke = class FlutterGradientStroke extends GradientStroke_FlutterStroke$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 1138, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterGradientStroke.new();
+      instanceNode.copyGradientStroke(this, resetArtboard);
+      return instanceNode;
+    }
+    update(dirt) {
+      let t9;
+      if (dirt == null) dart.nullFailed(I[0], 1145, 19, "dirt");
+      super.update(dirt);
+      let colors = T.JSArrayOfColor().of([]);
+      let stops = T.JSArrayOfdouble().of([]);
+      let numStops = (dart.notNull(this.colorStops[$length]) / 5)[$round]();
+      let idx = 0;
+      for (let i = 0; i < numStops; i = i + 1) {
+        let o = this.colorStops[$_get](idx + 3)[$clamp](0.0, 1.0)[$toDouble]();
+        let color = new ui.Color.fromRGBO((dart.notNull(this.colorStops[$_get](idx)) * 255.0)[$round](), (dart.notNull(this.colorStops[$_get](idx + 1)) * 255.0)[$round](), (dart.notNull(this.colorStops[$_get](idx + 2)) * 255.0)[$round](), o);
+        colors[$add](color);
+        stops[$add](this.colorStops[$_get](idx + 4));
+        idx = idx + 5;
+      }
+      let paintColor = null;
+      if (this.artboard.overrideColor == null) {
+        paintColor = colors$.Colors.white.withOpacity((dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]());
+      } else {
+        let overrideColor = dart.nullCheck(this.artboard.overrideColor);
+        let o = (dart.notNull(overrideColor[$_get](3)) * dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]();
+        paintColor = new ui.Color.fromRGBO((dart.notNull(overrideColor[$_get](0)) * 255.0)[$round](), (dart.notNull(overrideColor[$_get](1)) * 255.0)[$round](), (dart.notNull(overrideColor[$_get](2)) * 255.0)[$round](), o);
+      }
+      let parentShape = flare.FlutterActorShape.as(this.parent);
+      t9 = this[_paint];
+      (() => {
+        t9.color = paintColor;
+        t9.isAntiAlias = parentShape.antialias;
+        t9.blendMode = parentShape.blendMode;
+        t9.strokeWidth = this.width;
+        t9.shader = ui.Gradient.linear(new ui.Offset.new(this.renderStart._get(0), this.renderStart._get(1)), new ui.Offset.new(this.renderEnd._get(0), this.renderEnd._get(1)), colors, stops);
+        return t9;
+      })();
+      this.onPaintUpdated(this[_paint]);
+    }
+  };
+  (flare.FlutterGradientStroke.new = function() {
+    flare.FlutterGradientStroke.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterGradientStroke.prototype;
+  dart.addTypeTests(flare.FlutterGradientStroke);
+  dart.addTypeCaches(flare.FlutterGradientStroke);
+  dart.setMethodSignature(flare.FlutterGradientStroke, () => ({
+    __proto__: dart.getMethods(flare.FlutterGradientStroke.__proto__),
+    makeInstance: dart.fnType(actor_component.ActorComponent, [actor_artboard.ActorArtboard])
+  }));
+  dart.setLibraryUri(flare.FlutterGradientStroke, I[1]);
+  flare.FlutterPath = class FlutterPath extends core.Object {};
+  (flare.FlutterPath.new = function() {
+    ;
+  }).prototype = flare.FlutterPath.prototype;
+  dart.addTypeTests(flare.FlutterPath);
+  dart.addTypeCaches(flare.FlutterPath);
+  dart.setLibraryUri(flare.FlutterPath, I[1]);
+  const RadialGradientFill_FlutterFill$36 = class RadialGradientFill_FlutterFill extends actor_color.RadialGradientFill {};
+  (RadialGradientFill_FlutterFill$36.new = function() {
+    flare.FlutterFill.new.call(this);
+    RadialGradientFill_FlutterFill$36.__proto__.new.call(this);
+  }).prototype = RadialGradientFill_FlutterFill$36.prototype;
+  dart.applyMixin(RadialGradientFill_FlutterFill$36, flare.FlutterFill);
+  flare.FlutterRadialFill = class FlutterRadialFill extends RadialGradientFill_FlutterFill$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 1340, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterRadialFill.new();
+      instanceNode.copyRadialFill(this, resetArtboard);
+      return instanceNode;
+    }
+    update(dirt) {
+      let t9;
+      if (dirt == null) dart.nullFailed(I[0], 1347, 19, "dirt");
+      super.update(dirt);
+      let radius = vec2d.Vec2D.distance(this.renderStart, this.renderEnd);
+      let colors = T.JSArrayOfColor().of([]);
+      let stops = T.JSArrayOfdouble().of([]);
+      let numStops = (dart.notNull(this.colorStops[$length]) / 5)[$round]();
+      let idx = 0;
+      for (let i = 0; i < numStops; i = i + 1) {
+        let o = this.colorStops[$_get](idx + 3)[$clamp](0.0, 1.0)[$toDouble]();
+        let color = new ui.Color.fromRGBO((dart.notNull(this.colorStops[$_get](idx)) * 255.0)[$round](), (dart.notNull(this.colorStops[$_get](idx + 1)) * 255.0)[$round](), (dart.notNull(this.colorStops[$_get](idx + 2)) * 255.0)[$round](), o);
+        colors[$add](color);
+        stops[$add](this.colorStops[$_get](idx + 4));
+        idx = idx + 5;
+      }
+      let radial = ui.Gradient.radial(new ui.Offset.new(this.renderStart._get(0), this.renderStart._get(1)), radius, colors, stops, ui.TileMode.clamp);
+      let paintColor = null;
+      if (this.artboard.overrideColor == null) {
+        paintColor = colors$.Colors.white.withOpacity((dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]());
+      } else {
+        let overrideColor = dart.nullCheck(this.artboard.overrideColor);
+        let o = (dart.notNull(overrideColor[$_get](3)) * dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]();
+        paintColor = new ui.Color.fromRGBO((dart.notNull(overrideColor[$_get](0)) * 255.0)[$round](), (dart.notNull(overrideColor[$_get](1)) * 255.0)[$round](), (dart.notNull(overrideColor[$_get](2)) * 255.0)[$round](), o);
+      }
+      let parentShape = flare.FlutterActorShape.as(this.parent);
+      t9 = this[_paint];
+      (() => {
+        t9.color = paintColor;
+        t9.isAntiAlias = parentShape.antialias;
+        t9.blendMode = parentShape.blendMode;
+        t9.shader = radial;
+        return t9;
+      })();
+      this.onPaintUpdated(this[_paint]);
+    }
+  };
+  (flare.FlutterRadialFill.new = function() {
+    flare.FlutterRadialFill.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterRadialFill.prototype;
+  dart.addTypeTests(flare.FlutterRadialFill);
+  dart.addTypeCaches(flare.FlutterRadialFill);
+  dart.setMethodSignature(flare.FlutterRadialFill, () => ({
+    __proto__: dart.getMethods(flare.FlutterRadialFill.__proto__),
+    makeInstance: dart.fnType(actor_component.ActorComponent, [actor_artboard.ActorArtboard])
+  }));
+  dart.setLibraryUri(flare.FlutterRadialFill, I[1]);
+  const RadialGradientStroke_FlutterStroke$36 = class RadialGradientStroke_FlutterStroke extends actor_color.RadialGradientStroke {};
+  (RadialGradientStroke_FlutterStroke$36.new = function() {
+    flare.FlutterStroke.new.call(this);
+    RadialGradientStroke_FlutterStroke$36.__proto__.new.call(this);
+  }).prototype = RadialGradientStroke_FlutterStroke$36.prototype;
+  dart.applyMixin(RadialGradientStroke_FlutterStroke$36, flare.FlutterStroke);
+  flare.FlutterRadialStroke = class FlutterRadialStroke extends RadialGradientStroke_FlutterStroke$36 {
+    makeInstance(resetArtboard) {
+      if (resetArtboard == null) dart.nullFailed(I[0], 1406, 45, "resetArtboard");
+      let instanceNode = new flare.FlutterRadialStroke.new();
+      instanceNode.copyRadialStroke(this, resetArtboard);
+      return instanceNode;
+    }
+    update(dirt) {
+      let t9;
+      if (dirt == null) dart.nullFailed(I[0], 1413, 19, "dirt");
+      super.update(dirt);
+      let radius = vec2d.Vec2D.distance(this.renderStart, this.renderEnd);
+      let colors = T.JSArrayOfColor().of([]);
+      let stops = T.JSArrayOfdouble().of([]);
+      let numStops = (dart.notNull(this.colorStops[$length]) / 5)[$round]();
+      let idx = 0;
+      for (let i = 0; i < numStops; i = i + 1) {
+        let o = this.colorStops[$_get](idx + 3)[$clamp](0.0, 1.0)[$toDouble]();
+        let color = new ui.Color.fromRGBO((dart.notNull(this.colorStops[$_get](idx)) * 255.0)[$round](), (dart.notNull(this.colorStops[$_get](idx + 1)) * 255.0)[$round](), (dart.notNull(this.colorStops[$_get](idx + 2)) * 255.0)[$round](), o);
+        colors[$add](color);
+        stops[$add](this.colorStops[$_get](idx + 4));
+        idx = idx + 5;
+      }
+      let paintColor = null;
+      if (this.artboard.overrideColor == null) {
+        paintColor = colors$.Colors.white.withOpacity((dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]());
+      } else {
+        let overrideColor = dart.nullCheck(this.artboard.overrideColor);
+        let o = (dart.notNull(overrideColor[$_get](3)) * dart.notNull(this.artboard.modulateOpacity) * dart.notNull(this.opacity) * dart.notNull(this.shape.renderOpacity))[$clamp](0.0, 1.0)[$toDouble]();
+        paintColor = new ui.Color.fromRGBO((dart.notNull(overrideColor[$_get](0)) * 255.0)[$round](), (dart.notNull(overrideColor[$_get](1)) * 255.0)[$round](), (dart.notNull(overrideColor[$_get](2)) * 255.0)[$round](), o);
+      }
+      let parentShape = flare.FlutterActorShape.as(this.parent);
+      t9 = this[_paint];
+      (() => {
+        t9.color = paintColor;
+        t9.strokeWidth = this.width;
+        t9.isAntiAlias = parentShape.antialias;
+        t9.blendMode = parentShape.blendMode;
+        t9.shader = ui.Gradient.radial(new ui.Offset.new(this.renderStart._get(0), this.renderStart._get(1)), radius, colors, stops, ui.TileMode.clamp);
+        return t9;
+      })();
+      this.onPaintUpdated(this[_paint]);
+    }
+  };
+  (flare.FlutterRadialStroke.new = function() {
+    flare.FlutterRadialStroke.__proto__.new.call(this);
+    ;
+  }).prototype = flare.FlutterRadialStroke.prototype;
+  dart.addTypeTests(flare.FlutterRadialStroke);
+  dart.addTypeCaches(flare.FlutterRadialStroke);
+  dart.setMethodSignature(flare.FlutterRadialStroke, () => ({
+    __proto__: dart.getMethods(flare.FlutterRadialStroke.__proto__),
+    makeInstance: dart.fnType(actor_component.ActorComponent, [actor_artboard.ActorArtboard])
+  }));
+  dart.setLibraryUri(flare.FlutterRadialStroke, I[1]);
+  flare._blurFilter = function _blurFilter(x, y) {
+    if (x == null) dart.nullFailed(I[0], 40, 36, "x");
+    if (y == null) dart.nullFailed(I[0], 40, 46, "y");
+    let bx = x[$abs]() < 0.1 ? 0.0 : x;
+    let by = y[$abs]() < 0.1 ? 0.0 : y;
+    return bx === 0 && by === 0 ? null : ui.ImageFilter.blur({sigmaX: bx, sigmaY: by});
+  };
+  dart.trackLibraries("packages/flare_flutter/flare.dart", {
+    "package:flare_flutter/flare.dart": flare
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["flare.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../E:/packages/flare_flutter/flare.dart.lib.js"}');
+  // Exports:
+  return {
+    flare: flare
+  };
+}));
+
+//# sourceMappingURL=flare.dart.lib.js.map

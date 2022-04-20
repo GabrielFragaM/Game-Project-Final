@@ -1,0 +1,348 @@
+define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/foundation/collections.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/animated_widgets/core/chain_tweens.dart'], (function load__packages__animated_widgets__widgets__opacity_animated_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__flutter__src__foundation__collections$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__animated_widgets__core__chain_tweens$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const collections = packages__flutter__src__foundation__collections$46dart.src__foundation__collections;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const chain_tweens = packages__animated_widgets__core__chain_tweens$46dart.core__chain_tweens;
+  var opacity_animated = Object.create(dart.library);
+  var $length = dartx.length;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
+    AnimationStatusTovoid: () => (T.AnimationStatusTovoid = dart.constFn(dart.fnType(dart.void, [animation.AnimationStatus])))(),
+    AnimationOfdouble: () => (T.AnimationOfdouble = dart.constFn(animation.Animation$(core.double)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: curves._Linear.prototype
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 2000000
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([0, 1], T.doubleL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 500000
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 7,
+        [_Location_line]: 144,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 145,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 143,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/animated_widgets-1.1.0/lib/widgets/opacity_animated.dart"
+      });
+    }
+  }, false);
+  var C = Array(9).fill(void 0);
+  var I = [
+    "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/animated_widgets-1.1.0/lib/widgets/opacity_animated.dart",
+    "package:animated_widgets/widgets/opacity_animated.dart"
+  ];
+  var child$ = dart.privateName(opacity_animated, "OpacityAnimatedWidget.child");
+  var enabled$ = dart.privateName(opacity_animated, "OpacityAnimatedWidget.enabled");
+  var duration$ = dart.privateName(opacity_animated, "OpacityAnimatedWidget.duration");
+  var curve$ = dart.privateName(opacity_animated, "OpacityAnimatedWidget.curve");
+  var delay$ = dart.privateName(opacity_animated, "OpacityAnimatedWidget.delay");
+  var animationFinished$ = dart.privateName(opacity_animated, "OpacityAnimatedWidget.animationFinished");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _values = dart.privateName(opacity_animated, "_values");
+  opacity_animated.OpacityAnimatedWidget = class OpacityAnimatedWidget extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get enabled() {
+      return this[enabled$];
+    }
+    set enabled(value) {
+      super.enabled = value;
+    }
+    get duration() {
+      return this[duration$];
+    }
+    set duration(value) {
+      super.duration = value;
+    }
+    get curve() {
+      return this[curve$];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    get delay() {
+      return this[delay$];
+    }
+    set delay(value) {
+      super.delay = value;
+    }
+    get animationFinished() {
+      return this[animationFinished$];
+    }
+    set animationFinished(value) {
+      super.animationFinished = value;
+    }
+    get values() {
+      return this[_values];
+    }
+    createState() {
+      return new opacity_animated._State.new();
+    }
+    isAnimationEqual(other) {
+      if (other == null) dart.nullFailed(I[0], 71, 47, "other");
+      return dart.test(collections.listEquals(core.double, this.values, other.values)) && dart.equals(this.duration, other.duration) && dart.equals(this.curve, other.curve) && dart.equals(this.delay, other.delay);
+    }
+  };
+  (opacity_animated.OpacityAnimatedWidget.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let delay = opts && 'delay' in opts ? opts.delay : C[0] || CT.C0;
+    if (delay == null) dart.nullFailed(I[0], 29, 10, "delay");
+    let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
+    if (curve == null) dart.nullFailed(I[0], 30, 10, "curve");
+    let duration = opts && 'duration' in opts ? opts.duration : C[2] || CT.C2;
+    if (duration == null) dart.nullFailed(I[0], 31, 10, "duration");
+    let enabled = opts && 'enabled' in opts ? opts.enabled : false;
+    if (enabled == null) dart.nullFailed(I[0], 32, 10, "enabled");
+    let animationFinished = opts && 'animationFinished' in opts ? opts.animationFinished : null;
+    let values = opts && 'values' in opts ? opts.values : C[3] || CT.C3;
+    if (values == null) dart.nullFailed(I[0], 34, 18, "values");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[delay$] = delay;
+    this[curve$] = curve;
+    this[duration$] = duration;
+    this[enabled$] = enabled;
+    this[animationFinished$] = animationFinished;
+    this[_values] = values;
+    if (!(dart.notNull(values[$length]) > 1)) dart.assertFailed(null, I[0], 36, 16, "values.length > 1");
+    opacity_animated.OpacityAnimatedWidget.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = opacity_animated.OpacityAnimatedWidget.prototype;
+  (opacity_animated.OpacityAnimatedWidget.tween = function(opts) {
+    let duration = opts && 'duration' in opts ? opts.duration : C[4] || CT.C4;
+    if (duration == null) dart.nullFailed(I[0], 50, 14, "duration");
+    let opacityEnabled = opts && 'opacityEnabled' in opts ? opts.opacityEnabled : 1;
+    if (opacityEnabled == null) dart.nullFailed(I[0], 51, 12, "opacityEnabled");
+    let opacityDisabled = opts && 'opacityDisabled' in opts ? opts.opacityDisabled : 0;
+    if (opacityDisabled == null) dart.nullFailed(I[0], 52, 12, "opacityDisabled");
+    let enabled = opts && 'enabled' in opts ? opts.enabled : true;
+    if (enabled == null) dart.nullFailed(I[0], 53, 10, "enabled");
+    let animationFinished = opts && 'animationFinished' in opts ? opts.animationFinished : null;
+    let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
+    if (curve == null) dart.nullFailed(I[0], 55, 11, "curve");
+    let child = opts && 'child' in opts ? opts.child : null;
+    if (child == null) dart.nullFailed(I[0], 56, 21, "child");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    opacity_animated.OpacityAnimatedWidget.new.call(this, {duration: duration, enabled: enabled, curve: curve, child: child, animationFinished: animationFinished, values: T.JSArrayOfdouble().of([opacityDisabled, opacityEnabled]), $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  }).prototype = opacity_animated.OpacityAnimatedWidget.prototype;
+  dart.addTypeTests(opacity_animated.OpacityAnimatedWidget);
+  dart.addTypeCaches(opacity_animated.OpacityAnimatedWidget);
+  dart.setMethodSignature(opacity_animated.OpacityAnimatedWidget, () => ({
+    __proto__: dart.getMethods(opacity_animated.OpacityAnimatedWidget.__proto__),
+    createState: dart.fnType(framework.State$(framework.StatefulWidget), []),
+    isAnimationEqual: dart.fnType(core.bool, [opacity_animated.OpacityAnimatedWidget])
+  }));
+  dart.setGetterSignature(opacity_animated.OpacityAnimatedWidget, () => ({
+    __proto__: dart.getGetters(opacity_animated.OpacityAnimatedWidget.__proto__),
+    values: core.List$(core.double)
+  }));
+  dart.setLibraryUri(opacity_animated.OpacityAnimatedWidget, I[1]);
+  dart.setFieldSignature(opacity_animated.OpacityAnimatedWidget, () => ({
+    __proto__: dart.getFields(opacity_animated.OpacityAnimatedWidget.__proto__),
+    child: dart.finalFieldType(dart.nullable(framework.Widget)),
+    [_values]: dart.finalFieldType(core.List$(core.double)),
+    enabled: dart.finalFieldType(core.bool),
+    duration: dart.finalFieldType(core.Duration),
+    curve: dart.finalFieldType(curves.Curve),
+    delay: dart.finalFieldType(core.Duration),
+    animationFinished: dart.finalFieldType(dart.nullable(dart.fnType(dart.dynamic, [core.bool])))
+  }));
+  var _animationController = dart.privateName(opacity_animated, "_animationController");
+  var ___State__animation = dart.privateName(opacity_animated, "_#_State#_animation");
+  var ___State__animation_isSet = dart.privateName(opacity_animated, "_#_State#_animation#isSet");
+  var _animation = dart.privateName(opacity_animated, "_animation");
+  var _createAnimations = dart.privateName(opacity_animated, "_createAnimations");
+  var _updateAnimationState = dart.privateName(opacity_animated, "_updateAnimationState");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(opacity_animated.OpacityAnimatedWidget) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(opacity_animated.OpacityAnimatedWidget)[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(opacity_animated.OpacityAnimatedWidget));
+  opacity_animated._State = class _State extends State_TickerProviderStateMixin$36 {
+    get [_animation]() {
+      let t0;
+      return dart.test(this[___State__animation_isSet]) ? (t0 = this[___State__animation], t0) : dart.throw(new _internal.LateError.fieldNI("_animation"));
+    }
+    set [_animation](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 81, 26, "null");
+      this[___State__animation_isSet] = true;
+      this[___State__animation] = t0;
+    }
+    initState() {
+      super.initState();
+      this[_createAnimations]();
+      this[_updateAnimationState]();
+    }
+    didUpdateWidget(oldWidget) {
+      opacity_animated.OpacityAnimatedWidget.as(oldWidget);
+      if (oldWidget == null) dart.nullFailed(I[0], 91, 46, "oldWidget");
+      super.didUpdateWidget(oldWidget);
+      if (dart.test(this.widget.isAnimationEqual(oldWidget))) {
+        if (this.widget.enabled != oldWidget.enabled) {
+          this[_updateAnimationState]();
+        }
+      } else {
+        this[_createAnimations]();
+        if (this.widget.enabled != oldWidget.enabled) {
+          this[_updateAnimationState]();
+        }
+      }
+    }
+    [_updateAnimationState]() {
+      return async.async(dart.void, (function* _updateAnimationState() {
+        if (dart.test(this.widget.enabled)) {
+          yield async.Future.delayed(this.widget.delay);
+          dart.nullCheck(this[_animationController]).forward();
+        } else {
+          dart.nullCheck(this[_animationController]).reverse();
+        }
+      }).bind(this));
+    }
+    [_createAnimations]() {
+      let t1, t1$, t1$0;
+      t1 = this[_animationController];
+      t1 == null ? null : t1.dispose();
+      this[_animationController] = (t1$ = new animation_controller.AnimationController.new({vsync: this, duration: this.widget.duration}), (() => {
+        t1$.addStatusListener(dart.fn(status => {
+          if (status == null) dart.nullFailed(I[0], 119, 27, "status");
+          if (status == animation.AnimationStatus.completed) {
+            if (this.widget.animationFinished != null) {
+              dart.nullCheck(this.widget.animationFinished)(this.widget.enabled);
+            }
+          }
+        }, T.AnimationStatusTovoid()));
+        return t1$;
+      })());
+      this[_animation] = (t1$0 = T.AnimationOfdouble().as(chain_tweens.chainTweens(this.widget.values).animate(new animations.CurvedAnimation.new({parent: dart.nullCheck(this[_animationController]), curve: this.widget.curve}))), (() => {
+        t1$0.addListener(dart.fn(() => {
+          this.setState(dart.fn(() => {
+          }, T.VoidTovoid()));
+        }, T.VoidTovoid()));
+        return t1$0;
+      })());
+    }
+    dispose() {
+      dart.nullCheck(this[_animationController]).dispose();
+      super.dispose();
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 142, 29, "context");
+      return new basic.Opacity.new({opacity: this[_animation].value, child: this.widget.child, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+  };
+  (opacity_animated._State.new = function() {
+    this[_animationController] = null;
+    this[___State__animation] = null;
+    this[___State__animation_isSet] = false;
+    opacity_animated._State.__proto__.new.call(this);
+    ;
+  }).prototype = opacity_animated._State.prototype;
+  dart.addTypeTests(opacity_animated._State);
+  dart.addTypeCaches(opacity_animated._State);
+  dart.setMethodSignature(opacity_animated._State, () => ({
+    __proto__: dart.getMethods(opacity_animated._State.__proto__),
+    [_updateAnimationState]: dart.fnType(dart.void, []),
+    [_createAnimations]: dart.fnType(dart.void, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(opacity_animated._State, () => ({
+    __proto__: dart.getGetters(opacity_animated._State.__proto__),
+    [_animation]: animation.Animation$(core.double)
+  }));
+  dart.setSetterSignature(opacity_animated._State, () => ({
+    __proto__: dart.getSetters(opacity_animated._State.__proto__),
+    [_animation]: animation.Animation$(core.double)
+  }));
+  dart.setLibraryUri(opacity_animated._State, I[1]);
+  dart.setFieldSignature(opacity_animated._State, () => ({
+    __proto__: dart.getFields(opacity_animated._State.__proto__),
+    [_animationController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+    [___State__animation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [___State__animation_isSet]: dart.fieldType(core.bool)
+  }));
+  dart.trackLibraries("packages/animated_widgets/widgets/opacity_animated.dart", {
+    "package:animated_widgets/widgets/opacity_animated.dart": opacity_animated
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["opacity_animated.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAKgB;;;;;;IAEH;;;;;;IACI;;;;;;IACH;;;;;;IACG;;;;;;IACO;;;;;;;AAqDK;IAAO;;AAGjB;IAAQ;;UAGmB;AACxC,YAEqB,WAFrB,oCAAW,aAAQ,AAAM,KAAD,aACf,YAAT,eAAY,AAAM,KAAD,cACX,YAAN,YAAS,AAAM,KAAD,WACR,YAAN,YAAS,AAAM,KAAD;IAAM;;;QA/CjB;QACA;;QACA;;QACA;;QACA;;QACA;QACQ;;;IANR;IACA;IACA;IACA;IACA;IACA;IAEY,gBAAE,MAAM;UACA,aAAd,AAAO,MAAD,aAAU;AAT7B;;EAS+B;;QAcpB;;QACF;;QACA;;QACF;;QACW;QACV;;QACU;;;qEAEE,QAAQ,WACT,OAAO,SACT,KAAK,SACL,KAAK,qBACO,iBAAiB,UAC5B,wBAAC,eAAe,EAAE,cAAc;EAAE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAkB7B;IAAU;;;AAAV;;IAAU;;AAId,MAAX;AACa,MAAnB;AACuB,MAAvB;IACF;;gDAG2C;;AACT,MAA1B,sBAAgB,SAAS;AAC/B,oBAAI,AAAO,6BAAiB,SAAS;AACnC,YAAI,AAAO,uBAAW,AAAU,SAAD;AACN,UAAvB;;;AAGiB,QAAnB;AACA,YAAI,AAAO,uBAAW,AAAU,SAAD;AACN,UAAvB;;;IAGN;;AAE0B;AACxB,sBAAI,AAAO;AACyB,UAAlC,MAAa,qBAAQ,AAAO;AACG,UAAX,AAAE,eAAtB;;AAE+B,UAAX,AAAE,eAAtB;;MAEJ;;;;AAGiC,WAA/B;0BAAsB;AAUlB,MATJ,oCAAuB,yDACd,gBACG,AAAO,wBAFI;AAGpB,8BAAkB;cAAC;AAClB,cAAI,AAAO,MAAD,IAAoB;AAC5B,gBAAI,AAAO;AACgC,cAAjB,AAAC,eAAzB,AAAO,+BAAmB,AAAO;;;;;;AAUrC,MALJ,2BAEE,yBAFW,AAA2B,yBAAf,AAAO,4BAC9B,4CAA4C,eAApB,oCAA8B,AAAO,uBAC7D;AACE,yBAAY;AACG,UAAf,cAAS;;;;;IAEf;;AAIiC,MAAX,AAAE,eAAtB;AACe,MAAT;IACR;;UAG0B;AACxB,YAAO,iCACI,AAAW,+BACb,AAAO;IAElB;;;IAnEqB;gCACE;;;;EAmEzB","file":"../../../../../../../../../../../../E:/packages/animated_widgets/widgets/opacity_animated.dart.lib.js"}');
+  // Exports:
+  return {
+    widgets__opacity_animated: opacity_animated
+  };
+}));
+
+//# sourceMappingURL=opacity_animated.dart.lib.js.map

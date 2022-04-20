@@ -1,0 +1,548 @@
+define(['dart_sdk'], (function load__packages__flare_flutter__base__math__transform_components_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const typed_data = dart_sdk.typed_data;
+  const math = dart_sdk.math;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var transform_components = Object.create(dart.library);
+  var mat2d = Object.create(dart.library);
+  var vec2d = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $toString = dartx.toString;
+  var $sign = dartx.sign;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = [
+    "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flare_flutter-3.0.2/lib/base/math/transform_components.dart",
+    "package:flare_flutter/base/math/transform_components.dart",
+    "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flare_flutter-3.0.2/lib/base/math/mat2d.dart",
+    "package:flare_flutter/base/math/mat2d.dart",
+    "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flare_flutter-3.0.2/lib/base/math/vec2d.dart",
+    "package:flare_flutter/base/math/vec2d.dart"
+  ];
+  var _buffer = dart.privateName(transform_components, "_buffer");
+  transform_components.TransformComponents = class TransformComponents extends core.Object {
+    get rotation() {
+      return this[_buffer][$_get](4);
+    }
+    set rotation(value) {
+      if (value == null) dart.nullFailed(I[0], 18, 23, "value");
+      this[_buffer][$_set](4, value);
+    }
+    get scale() {
+      return new vec2d.Vec2D.fromValues(this[_buffer][$_get](2), this[_buffer][$_get](3));
+    }
+    get scaleX() {
+      return this[_buffer][$_get](2);
+    }
+    set scaleX(value) {
+      if (value == null) dart.nullFailed(I[0], 30, 21, "value");
+      this[_buffer][$_set](2, value);
+    }
+    get scaleY() {
+      return this[_buffer][$_get](3);
+    }
+    set scaleY(value) {
+      if (value == null) dart.nullFailed(I[0], 38, 21, "value");
+      this[_buffer][$_set](3, value);
+    }
+    get skew() {
+      return this[_buffer][$_get](5);
+    }
+    set skew(value) {
+      if (value == null) dart.nullFailed(I[0], 46, 19, "value");
+      this[_buffer][$_set](5, value);
+    }
+    get translation() {
+      return new vec2d.Vec2D.fromValues(this[_buffer][$_get](0), this[_buffer][$_get](1));
+    }
+    get values() {
+      return this[_buffer];
+    }
+    get x() {
+      return this[_buffer][$_get](0);
+    }
+    set x(value) {
+      if (value == null) dart.nullFailed(I[0], 62, 16, "value");
+      this[_buffer][$_set](0, value);
+    }
+    get y() {
+      return this[_buffer][$_get](1);
+    }
+    set y(value) {
+      if (value == null) dart.nullFailed(I[0], 70, 16, "value");
+      this[_buffer][$_set](1, value);
+    }
+    _get(index) {
+      if (index == null) dart.nullFailed(I[0], 74, 26, "index");
+      return this[_buffer][$_get](index);
+    }
+    _set(index, value$) {
+      let value = value$;
+      if (index == null) dart.nullFailed(I[0], 78, 25, "index");
+      if (value == null) dart.nullFailed(I[0], 78, 39, "value");
+      this[_buffer][$_set](index, value);
+      return value$;
+    }
+  };
+  (transform_components.TransformComponents.new = function() {
+    this[_buffer] = _native_typed_data.NativeFloat32List.fromList(T.JSArrayOfdouble().of([1.0, 0.0, 0.0, 1.0, 0.0, 0.0]));
+    ;
+  }).prototype = transform_components.TransformComponents.prototype;
+  (transform_components.TransformComponents.clone = function(copy) {
+    if (copy == null) dart.nullFailed(I[0], 11, 49, "copy");
+    this[_buffer] = _native_typed_data.NativeFloat32List.fromList(copy.values);
+    ;
+  }).prototype = transform_components.TransformComponents.prototype;
+  dart.addTypeTests(transform_components.TransformComponents);
+  dart.addTypeCaches(transform_components.TransformComponents);
+  dart.setMethodSignature(transform_components.TransformComponents, () => ({
+    __proto__: dart.getMethods(transform_components.TransformComponents.__proto__),
+    _get: dart.fnType(core.double, [core.int]),
+    _set: dart.fnType(dart.void, [core.int, core.double])
+  }));
+  dart.setGetterSignature(transform_components.TransformComponents, () => ({
+    __proto__: dart.getGetters(transform_components.TransformComponents.__proto__),
+    rotation: core.double,
+    scale: vec2d.Vec2D,
+    scaleX: core.double,
+    scaleY: core.double,
+    skew: core.double,
+    translation: vec2d.Vec2D,
+    values: typed_data.Float32List,
+    x: core.double,
+    y: core.double
+  }));
+  dart.setSetterSignature(transform_components.TransformComponents, () => ({
+    __proto__: dart.getSetters(transform_components.TransformComponents.__proto__),
+    rotation: core.double,
+    scaleX: core.double,
+    scaleY: core.double,
+    skew: core.double,
+    x: core.double,
+    y: core.double
+  }));
+  dart.setLibraryUri(transform_components.TransformComponents, I[1]);
+  dart.setFieldSignature(transform_components.TransformComponents, () => ({
+    __proto__: dart.getFields(transform_components.TransformComponents.__proto__),
+    [_buffer]: dart.finalFieldType(typed_data.Float32List)
+  }));
+  var _buffer$ = dart.privateName(mat2d, "_buffer");
+  mat2d.Mat2D = class Mat2D extends core.Object {
+    get mat4() {
+      return _native_typed_data.NativeFloat64List.fromList(T.JSArrayOfdouble().of([this[_buffer$][$_get](0), this[_buffer$][$_get](1), 0.0, 0.0, this[_buffer$][$_get](2), this[_buffer$][$_get](3), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, this[_buffer$][$_get](4), this[_buffer$][$_get](5), 0.0, 1.0]));
+    }
+    get values() {
+      return this[_buffer$];
+    }
+    _get(index) {
+      if (index == null) dart.nullFailed(I[2], 39, 26, "index");
+      return this[_buffer$][$_get](index);
+    }
+    _set(index, value$) {
+      let value = value$;
+      if (index == null) dart.nullFailed(I[2], 43, 25, "index");
+      if (value == null) dart.nullFailed(I[2], 43, 39, "value");
+      this[_buffer$][$_set](index, value);
+      return value$;
+    }
+    toString() {
+      return dart.toString(this[_buffer$]);
+    }
+    static areEqual(a, b) {
+      if (a == null) dart.nullFailed(I[2], 52, 30, "a");
+      if (b == null) dart.nullFailed(I[2], 52, 39, "b");
+      return a._get(0) == b._get(0) && a._get(1) == b._get(1) && a._get(2) == b._get(2) && a._get(3) == b._get(3) && a._get(4) == b._get(4) && a._get(5) == b._get(5);
+    }
+    static cCopy(o, a) {
+      if (o == null) dart.nullFailed(I[2], 61, 27, "o");
+      if (a == null) dart.nullFailed(I[2], 61, 36, "a");
+      o._set(0, a._get(0));
+      o._set(1, a._get(1));
+      o._set(2, a._get(2));
+      o._set(3, a._get(3));
+      o._set(4, a._get(4));
+      o._set(5, a._get(5));
+    }
+    static compose(m, result) {
+      if (m == null) dart.nullFailed(I[2], 70, 29, "m");
+      if (result == null) dart.nullFailed(I[2], 70, 52, "result");
+      let r = result._get(4);
+      if (r !== 0.0) {
+        mat2d.Mat2D.fromRotation(m, r);
+      } else {
+        mat2d.Mat2D.identity(m);
+      }
+      m._set(4, result._get(0));
+      m._set(5, result._get(1));
+      mat2d.Mat2D.scale(m, m, result.scale);
+      let sk = result._get(5);
+      if (sk !== 0.0) {
+        m._set(2, dart.notNull(m._get(0)) * dart.notNull(sk) + dart.notNull(m._get(2)));
+        m._set(3, dart.notNull(m._get(1)) * dart.notNull(sk) + dart.notNull(m._get(3)));
+      }
+    }
+    static copy(o, f) {
+      if (o == null) dart.nullFailed(I[2], 89, 26, "o");
+      if (f == null) dart.nullFailed(I[2], 89, 35, "f");
+      o._set(0, f._get(0));
+      o._set(1, f._get(1));
+      o._set(2, f._get(2));
+      o._set(3, f._get(3));
+      o._set(4, f._get(4));
+      o._set(5, f._get(5));
+    }
+    static copyFromList(o, f) {
+      if (o == null) dart.nullFailed(I[2], 98, 34, "o");
+      if (f == null) dart.nullFailed(I[2], 98, 49, "f");
+      o._set(0, f[$_get](0));
+      o._set(1, f[$_get](1));
+      o._set(2, f[$_get](2));
+      o._set(3, f[$_get](3));
+      o._set(4, f[$_get](4));
+      o._set(5, f[$_get](5));
+    }
+    static decompose(m, result) {
+      if (m == null) dart.nullFailed(I[2], 107, 31, "m");
+      if (result == null) dart.nullFailed(I[2], 107, 54, "result");
+      let m0 = m._get(0);
+      let m1 = m._get(1);
+      let m2 = m._get(2);
+      let m3 = m._get(3);
+      let rotation = math.atan2(m1, m0);
+      let denom = dart.notNull(m0) * dart.notNull(m0) + dart.notNull(m1) * dart.notNull(m1);
+      let scaleX = math.sqrt(denom);
+      let scaleY = scaleX === 0 ? 0.0 : (dart.notNull(m0) * dart.notNull(m3) - dart.notNull(m2) * dart.notNull(m1)) / scaleX;
+      let skewX = math.atan2(dart.notNull(m0) * dart.notNull(m2) + dart.notNull(m1) * dart.notNull(m3), denom);
+      result._set(0, m._get(4));
+      result._set(1, m._get(5));
+      result._set(2, scaleX);
+      result._set(3, scaleY);
+      result._set(4, rotation);
+      result._set(5, skewX);
+    }
+    static fromRotation(o, rad) {
+      if (o == null) dart.nullFailed(I[2], 124, 34, "o");
+      if (rad == null) dart.nullFailed(I[2], 124, 44, "rad");
+      let s = math.sin(rad);
+      let c = math.cos(rad);
+      o._set(0, c);
+      o._set(1, s);
+      o._set(2, -s);
+      o._set(3, c);
+      o._set(4, 0.0);
+      o._set(5, 0.0);
+    }
+    static getScale(m, s) {
+      if (m == null) dart.nullFailed(I[2], 135, 30, "m");
+      if (s == null) dart.nullFailed(I[2], 135, 39, "s");
+      let x = m._get(0);
+      let y = m._get(1);
+      s._set(0, x[$sign] * math.sqrt(dart.notNull(x) * dart.notNull(x) + dart.notNull(y) * dart.notNull(y)));
+      x = m._get(2);
+      y = m._get(3);
+      s._set(1, y[$sign] * math.sqrt(dart.notNull(x) * dart.notNull(x) + dart.notNull(y) * dart.notNull(y)));
+    }
+    static identity(mat) {
+      if (mat == null) dart.nullFailed(I[2], 145, 30, "mat");
+      mat._set(0, 1.0);
+      mat._set(1, 0.0);
+      mat._set(2, 0.0);
+      mat._set(3, 1.0);
+      mat._set(4, 0.0);
+      mat._set(5, 0.0);
+    }
+    static invert(o, a) {
+      if (o == null) dart.nullFailed(I[2], 154, 28, "o");
+      if (a == null) dart.nullFailed(I[2], 154, 37, "a");
+      let aa = a._get(0);
+      let ab = a._get(1);
+      let ac = a._get(2);
+      let ad = a._get(3);
+      let atx = a._get(4);
+      let aty = a._get(5);
+      let det = dart.notNull(aa) * dart.notNull(ad) - dart.notNull(ab) * dart.notNull(ac);
+      if (det === 0.0) {
+        return false;
+      }
+      det = 1.0 / det;
+      o._set(0, dart.notNull(ad) * det);
+      o._set(1, -dart.notNull(ab) * det);
+      o._set(2, -dart.notNull(ac) * det);
+      o._set(3, dart.notNull(aa) * det);
+      o._set(4, (dart.notNull(ac) * dart.notNull(aty) - dart.notNull(ad) * dart.notNull(atx)) * det);
+      o._set(5, (dart.notNull(ab) * dart.notNull(atx) - dart.notNull(aa) * dart.notNull(aty)) * det);
+      return true;
+    }
+    static multiply(o, a, b) {
+      if (o == null) dart.nullFailed(I[2], 172, 30, "o");
+      if (a == null) dart.nullFailed(I[2], 172, 39, "a");
+      if (b == null) dart.nullFailed(I[2], 172, 48, "b");
+      let a0 = a._get(0);
+      let a1 = a._get(1);
+      let a2 = a._get(2);
+      let a3 = a._get(3);
+      let a4 = a._get(4);
+      let a5 = a._get(5);
+      let b0 = b._get(0);
+      let b1 = b._get(1);
+      let b2 = b._get(2);
+      let b3 = b._get(3);
+      let b4 = b._get(4);
+      let b5 = b._get(5);
+      o._set(0, dart.notNull(a0) * dart.notNull(b0) + dart.notNull(a2) * dart.notNull(b1));
+      o._set(1, dart.notNull(a1) * dart.notNull(b0) + dart.notNull(a3) * dart.notNull(b1));
+      o._set(2, dart.notNull(a0) * dart.notNull(b2) + dart.notNull(a2) * dart.notNull(b3));
+      o._set(3, dart.notNull(a1) * dart.notNull(b2) + dart.notNull(a3) * dart.notNull(b3));
+      o._set(4, dart.notNull(a0) * dart.notNull(b4) + dart.notNull(a2) * dart.notNull(b5) + dart.notNull(a4));
+      o._set(5, dart.notNull(a1) * dart.notNull(b4) + dart.notNull(a3) * dart.notNull(b5) + dart.notNull(a5));
+    }
+    static scale(o, a, v) {
+      if (o == null) dart.nullFailed(I[2], 193, 27, "o");
+      if (a == null) dart.nullFailed(I[2], 193, 36, "a");
+      if (v == null) dart.nullFailed(I[2], 193, 45, "v");
+      let a0 = a._get(0);
+      let a1 = a._get(1);
+      let a2 = a._get(2);
+      let a3 = a._get(3);
+      let a4 = a._get(4);
+      let a5 = a._get(5);
+      let v0 = v._get(0);
+      let v1 = v._get(1);
+      o._set(0, dart.notNull(a0) * dart.notNull(v0));
+      o._set(1, dart.notNull(a1) * dart.notNull(v0));
+      o._set(2, dart.notNull(a2) * dart.notNull(v1));
+      o._set(3, dart.notNull(a3) * dart.notNull(v1));
+      o._set(4, a4);
+      o._set(5, a5);
+    }
+  };
+  (mat2d.Mat2D.new = function() {
+    this[_buffer$] = _native_typed_data.NativeFloat32List.fromList(T.JSArrayOfdouble().of([1.0, 0.0, 0.0, 1.0, 0.0, 0.0]));
+    ;
+  }).prototype = mat2d.Mat2D.prototype;
+  (mat2d.Mat2D.clone = function(copy) {
+    if (copy == null) dart.nullFailed(I[2], 12, 21, "copy");
+    this[_buffer$] = _native_typed_data.NativeFloat32List.fromList(copy.values);
+    ;
+  }).prototype = mat2d.Mat2D.prototype;
+  dart.addTypeTests(mat2d.Mat2D);
+  dart.addTypeCaches(mat2d.Mat2D);
+  dart.setMethodSignature(mat2d.Mat2D, () => ({
+    __proto__: dart.getMethods(mat2d.Mat2D.__proto__),
+    _get: dart.fnType(core.double, [core.int]),
+    _set: dart.fnType(dart.void, [core.int, core.double])
+  }));
+  dart.setGetterSignature(mat2d.Mat2D, () => ({
+    __proto__: dart.getGetters(mat2d.Mat2D.__proto__),
+    mat4: typed_data.Float64List,
+    values: typed_data.Float32List
+  }));
+  dart.setLibraryUri(mat2d.Mat2D, I[3]);
+  dart.setFieldSignature(mat2d.Mat2D, () => ({
+    __proto__: dart.getFields(mat2d.Mat2D.__proto__),
+    [_buffer$]: dart.finalFieldType(typed_data.Float32List)
+  }));
+  dart.defineExtensionMethods(mat2d.Mat2D, ['toString']);
+  var _buffer$0 = dart.privateName(vec2d, "_buffer");
+  vec2d.Vec2D = class Vec2D extends core.Object {
+    get values() {
+      return this[_buffer$0];
+    }
+    _get(index) {
+      if (index == null) dart.nullFailed(I[4], 12, 26, "index");
+      return this[_buffer$0][$_get](index);
+    }
+    _set(index, value$) {
+      let value = value$;
+      if (index == null) dart.nullFailed(I[4], 16, 25, "index");
+      if (value == null) dart.nullFailed(I[4], 16, 39, "value");
+      this[_buffer$0][$_set](index, value);
+      return value$;
+    }
+    static copy(o, a) {
+      if (o == null) dart.nullFailed(I[4], 26, 26, "o");
+      if (a == null) dart.nullFailed(I[4], 26, 35, "a");
+      o._set(0, a._get(0));
+      o._set(1, a._get(1));
+    }
+    static copyFromList(o, a) {
+      if (o == null) dart.nullFailed(I[4], 31, 34, "o");
+      if (a == null) dart.nullFailed(I[4], 31, 49, "a");
+      o._set(0, a[$_get](0));
+      o._set(1, a[$_get](1));
+    }
+    static transformMat2D(o, a, m) {
+      if (o == null) dart.nullFailed(I[4], 36, 37, "o");
+      if (a == null) dart.nullFailed(I[4], 36, 46, "a");
+      if (m == null) dart.nullFailed(I[4], 36, 55, "m");
+      let x = a._get(0);
+      let y = a._get(1);
+      o._set(0, dart.notNull(m._get(0)) * dart.notNull(x) + dart.notNull(m._get(2)) * dart.notNull(y) + dart.notNull(m._get(4)));
+      o._set(1, dart.notNull(m._get(1)) * dart.notNull(x) + dart.notNull(m._get(3)) * dart.notNull(y) + dart.notNull(m._get(5)));
+      return o;
+    }
+    static transformMat2(o, a, m) {
+      if (o == null) dart.nullFailed(I[4], 44, 36, "o");
+      if (a == null) dart.nullFailed(I[4], 44, 45, "a");
+      if (m == null) dart.nullFailed(I[4], 44, 54, "m");
+      let x = a._get(0);
+      let y = a._get(1);
+      o._set(0, dart.notNull(m._get(0)) * dart.notNull(x) + dart.notNull(m._get(2)) * dart.notNull(y));
+      o._set(1, dart.notNull(m._get(1)) * dart.notNull(x) + dart.notNull(m._get(3)) * dart.notNull(y));
+      return o;
+    }
+    static subtract(o, a, b) {
+      if (o == null) dart.nullFailed(I[4], 52, 31, "o");
+      if (a == null) dart.nullFailed(I[4], 52, 40, "a");
+      if (b == null) dart.nullFailed(I[4], 52, 49, "b");
+      o._set(0, dart.notNull(a._get(0)) - dart.notNull(b._get(0)));
+      o._set(1, dart.notNull(a._get(1)) - dart.notNull(b._get(1)));
+      return o;
+    }
+    static add(o, a, b) {
+      if (o == null) dart.nullFailed(I[4], 58, 26, "o");
+      if (a == null) dart.nullFailed(I[4], 58, 35, "a");
+      if (b == null) dart.nullFailed(I[4], 58, 44, "b");
+      o._set(0, dart.notNull(a._get(0)) + dart.notNull(b._get(0)));
+      o._set(1, dart.notNull(a._get(1)) + dart.notNull(b._get(1)));
+      return o;
+    }
+    static scale(o, a, scale) {
+      if (o == null) dart.nullFailed(I[4], 64, 28, "o");
+      if (a == null) dart.nullFailed(I[4], 64, 37, "a");
+      if (scale == null) dart.nullFailed(I[4], 64, 47, "scale");
+      o._set(0, dart.notNull(a._get(0)) * dart.notNull(scale));
+      o._set(1, dart.notNull(a._get(1)) * dart.notNull(scale));
+      return o;
+    }
+    static lerp(o, a, b, f) {
+      if (o == null) dart.nullFailed(I[4], 70, 27, "o");
+      if (a == null) dart.nullFailed(I[4], 70, 36, "a");
+      if (b == null) dart.nullFailed(I[4], 70, 45, "b");
+      if (f == null) dart.nullFailed(I[4], 70, 55, "f");
+      let ax = a._get(0);
+      let ay = a._get(1);
+      o._set(0, dart.notNull(ax) + dart.notNull(f) * (dart.notNull(b._get(0)) - dart.notNull(ax)));
+      o._set(1, dart.notNull(ay) + dart.notNull(f) * (dart.notNull(b._get(1)) - dart.notNull(ay)));
+      return o;
+    }
+    static length(a) {
+      if (a == null) dart.nullFailed(I[4], 78, 30, "a");
+      let x = a._get(0);
+      let y = a._get(1);
+      return math.sqrt(dart.notNull(x) * dart.notNull(x) + dart.notNull(y) * dart.notNull(y));
+    }
+    static squaredLength(a) {
+      if (a == null) dart.nullFailed(I[4], 84, 37, "a");
+      let x = a._get(0);
+      let y = a._get(1);
+      return dart.notNull(x) * dart.notNull(x) + dart.notNull(y) * dart.notNull(y);
+    }
+    static distance(a, b) {
+      if (a == null) dart.nullFailed(I[4], 90, 32, "a");
+      if (b == null) dart.nullFailed(I[4], 90, 41, "b");
+      let x = dart.notNull(b._get(0)) - dart.notNull(a._get(0));
+      let y = dart.notNull(b._get(1)) - dart.notNull(a._get(1));
+      return math.sqrt(x * x + y * y);
+    }
+    static squaredDistance(a, b) {
+      if (a == null) dart.nullFailed(I[4], 96, 39, "a");
+      if (b == null) dart.nullFailed(I[4], 96, 48, "b");
+      let x = dart.notNull(b._get(0)) - dart.notNull(a._get(0));
+      let y = dart.notNull(b._get(1)) - dart.notNull(a._get(1));
+      return x * x + y * y;
+    }
+    static negate(result, a) {
+      if (result == null) dart.nullFailed(I[4], 102, 29, "result");
+      if (a == null) dart.nullFailed(I[4], 102, 43, "a");
+      result._set(0, -1 * dart.notNull(a._get(0)));
+      result._set(1, -1 * dart.notNull(a._get(1)));
+      return result;
+    }
+    static normalize(result, a) {
+      if (result == null) dart.nullFailed(I[4], 109, 31, "result");
+      if (a == null) dart.nullFailed(I[4], 109, 45, "a");
+      let x = a._get(0);
+      let y = a._get(1);
+      let len = dart.notNull(x) * dart.notNull(x) + dart.notNull(y) * dart.notNull(y);
+      if (len > 0.0) {
+        len = 1.0 / math.sqrt(len);
+        result._set(0, dart.notNull(a._get(0)) * len);
+        result._set(1, dart.notNull(a._get(1)) * len);
+      }
+    }
+    static dot(a, b) {
+      if (a == null) dart.nullFailed(I[4], 120, 27, "a");
+      if (b == null) dart.nullFailed(I[4], 120, 36, "b");
+      return dart.notNull(a._get(0)) * dart.notNull(b._get(0)) + dart.notNull(a._get(1)) * dart.notNull(b._get(1));
+    }
+    static scaleAndAdd(result, a, b, scale) {
+      if (result == null) dart.nullFailed(I[4], 124, 34, "result");
+      if (a == null) dart.nullFailed(I[4], 124, 48, "a");
+      if (b == null) dart.nullFailed(I[4], 124, 57, "b");
+      if (scale == null) dart.nullFailed(I[4], 124, 67, "scale");
+      result._set(0, dart.notNull(a._get(0)) + dart.notNull(b._get(0)) * dart.notNull(scale));
+      result._set(1, dart.notNull(a._get(1)) + dart.notNull(b._get(1)) * dart.notNull(scale));
+      return result;
+    }
+    toString() {
+      return dart.str(this[_buffer$0][$_get](0)) + ", " + dart.str(this[_buffer$0][$_get](1));
+    }
+  };
+  (vec2d.Vec2D.new = function() {
+    this[_buffer$0] = _native_typed_data.NativeFloat32List.fromList(T.JSArrayOfdouble().of([0.0, 0.0]));
+    ;
+  }).prototype = vec2d.Vec2D.prototype;
+  (vec2d.Vec2D.clone = function(copy) {
+    if (copy == null) dart.nullFailed(I[4], 22, 21, "copy");
+    this[_buffer$0] = _native_typed_data.NativeFloat32List.fromList(copy[_buffer$0]);
+    ;
+  }).prototype = vec2d.Vec2D.prototype;
+  (vec2d.Vec2D.fromValues = function(x, y) {
+    if (x == null) dart.nullFailed(I[4], 24, 27, "x");
+    if (y == null) dart.nullFailed(I[4], 24, 37, "y");
+    this[_buffer$0] = _native_typed_data.NativeFloat32List.fromList(T.JSArrayOfdouble().of([x, y]));
+    ;
+  }).prototype = vec2d.Vec2D.prototype;
+  dart.addTypeTests(vec2d.Vec2D);
+  dart.addTypeCaches(vec2d.Vec2D);
+  dart.setMethodSignature(vec2d.Vec2D, () => ({
+    __proto__: dart.getMethods(vec2d.Vec2D.__proto__),
+    _get: dart.fnType(core.double, [core.int]),
+    _set: dart.fnType(dart.void, [core.int, core.double])
+  }));
+  dart.setGetterSignature(vec2d.Vec2D, () => ({
+    __proto__: dart.getGetters(vec2d.Vec2D.__proto__),
+    values: typed_data.Float32List
+  }));
+  dart.setLibraryUri(vec2d.Vec2D, I[5]);
+  dart.setFieldSignature(vec2d.Vec2D, () => ({
+    __proto__: dart.getFields(vec2d.Vec2D.__proto__),
+    [_buffer$0]: dart.finalFieldType(typed_data.Float32List)
+  }));
+  dart.defineExtensionMethods(vec2d.Vec2D, ['toString']);
+  dart.trackLibraries("packages/flare_flutter/base/math/transform_components.dart", {
+    "package:flare_flutter/base/math/transform_components.dart": transform_components,
+    "package:flare_flutter/base/math/mat2d.dart": mat2d,
+    "package:flare_flutter/base/math/vec2d.dart": vec2d
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["transform_components.dart","mat2d.dart","vec2d.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../E:/packages/flare_flutter/base/math/transform_components.dart.lib.js"}');
+  // Exports:
+  return {
+    base__math__transform_components: transform_components,
+    base__math__mat2d: mat2d,
+    base__math__vec2d: vec2d
+  };
+}));
+
+//# sourceMappingURL=transform_components.dart.lib.js.map

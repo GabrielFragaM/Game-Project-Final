@@ -1,0 +1,1091 @@
+define(['dart_sdk', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/widgets/spacer.dart', 'packages/flutter/src/widgets/layout_builder.dart', 'packages/flutter/src/widgets/scroll_view.dart', 'packages/flutter/src/rendering/layer.dart'], (function load__packages__responsive_grid__responsive_grid_dart(dart_sdk, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__widgets__spacer$46dart, packages__flutter__src__widgets__layout_builder$46dart, packages__flutter__src__widgets__scroll_view$46dart, packages__flutter__src__rendering__layer$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
+  const spacer = packages__flutter__src__widgets__spacer$46dart.src__widgets__spacer;
+  const layout_builder = packages__flutter__src__widgets__layout_builder$46dart.src__widgets__layout_builder;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  var responsive_grid = Object.create(dart.library);
+  var $add = dartx.add;
+  var $forEach = dartx.forEach;
+  var $length = dartx.length;
+  var $_set = dartx._set;
+  var $_get = dartx._get;
+  var $modulo = dartx['%'];
+  var $floor = dartx.floor;
+  var $ceil = dartx.ceil;
+  var $truncate = dartx.truncate;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    _GridTierL: () => (T._GridTierL = dart.constFn(dart.legacy(responsive_grid._GridTier)))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    ResponsiveGridColTovoid: () => (T.ResponsiveGridColTovoid = dart.constFn(dart.fnType(dart.void, [responsive_grid.ResponsiveGridCol])))(),
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    JSArrayOfintN: () => (T.JSArrayOfintN = dart.constFn(_interceptors.JSArray$(T.intN())))(),
+    BuildContextAndintToWidget: () => (T.BuildContextAndintToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, core.int])))(),
+    BuildContextAndBoxConstraintsToWidget: () => (T.BuildContextAndBoxConstraintsToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, box.BoxConstraints])))(),
+    WidgetTovoid: () => (T.WidgetTovoid = dart.constFn(dart.fnType(dart.void, [framework.Widget])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: responsive_grid._GridTier.prototype,
+        [_name$]: "_GridTier.xs",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: responsive_grid._GridTier.prototype,
+        [_name$]: "_GridTier.sm",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: responsive_grid._GridTier.prototype,
+        [_name$]: "_GridTier.md",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: responsive_grid._GridTier.prototype,
+        [_name$]: "_GridTier.lg",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: responsive_grid._GridTier.prototype,
+        [_name$]: "_GridTier.xl",
+        index: 4
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T._GridTierL());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: flex.CrossAxisAlignment.prototype,
+        [_name]: "CrossAxisAlignment.start",
+        index: 0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "flex",
+        [_Location_column]: 13,
+        [_Location_line]: 81,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([C[9] || CT.C9], T._LocationL());
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[8] || CT.C8,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 80,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 84,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "flex",
+        [_Location_column]: 11,
+        [_Location_line]: 99,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15], T._LocationL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 98,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 103,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 104,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19], T._LocationL());
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 102,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 109,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.constList([C[22] || CT.C22], T._LocationL());
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[21] || CT.C21,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 108,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "flex",
+        [_Location_column]: 7,
+        [_Location_line]: 140,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 141,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.constList([C[25] || CT.C25, C[26] || CT.C26], T._LocationL());
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[24] || CT.C24,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 139,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: flex.MainAxisAlignment.prototype,
+        [_name]: "MainAxisAlignment.start",
+        index: 0
+      });
+    },
+    get C29() {
+      return C[29] = dart.constList([], T._LocationL());
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[29] || CT.C29,
+        [_Location_name]: null,
+        [_Location_column]: 42,
+        [_Location_line]: 169,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 21,
+        [_Location_line]: 202,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 201,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 19,
+        [_Location_line]: 213,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemWidth",
+        [_Location_column]: 19,
+        [_Location_line]: 214,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "spacing",
+        [_Location_column]: 19,
+        [_Location_line]: 215,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "squareCells",
+        [_Location_column]: 19,
+        [_Location_line]: 216,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 19,
+        [_Location_line]: 217,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37, C[38] || CT.C38, C[39] || CT.C39], T._LocationL());
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[34] || CT.C34,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 212,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 15,
+        [_Location_line]: 196,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 15,
+        [_Location_line]: 197,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.constList([C[42] || CT.C42, C[43] || CT.C43], T._LocationL());
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[41] || CT.C41,
+        [_Location_name]: null,
+        [_Location_column]: 27,
+        [_Location_line]: 195,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 13,
+        [_Location_line]: 223,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.constList([C[46] || CT.C46], T._LocationL());
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[45] || CT.C45,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 222,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 15,
+        [_Location_line]: 235,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemWidth",
+        [_Location_column]: 15,
+        [_Location_line]: 236,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "spacing",
+        [_Location_column]: 15,
+        [_Location_line]: 237,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "squareCells",
+        [_Location_column]: 15,
+        [_Location_line]: 238,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 15,
+        [_Location_line]: 239,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51, C[52] || CT.C52, C[53] || CT.C53], T._LocationL());
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[48] || CT.C48,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 234,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 15,
+        [_Location_line]: 243,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.constList([C[56] || CT.C56], T._LocationL());
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[55] || CT.C55,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 242,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 248,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.constList([C[59] || CT.C59], T._LocationL());
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[58] || CT.C58,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 247,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 168,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.constList([C[62] || CT.C62], T._LocationL());
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[61] || CT.C61,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 167,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 7,
+        [_Location_line]: 273,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 7,
+        [_Location_line]: 274,
+        [_Location_file]: null
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 275,
+        [_Location_file]: null
+      });
+    },
+    get C64() {
+      return C[64] = dart.constList([C[65] || CT.C65, C[66] || CT.C66, C[67] || CT.C67], T._LocationL());
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[64] || CT.C64,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 272,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 7,
+        [_Location_line]: 283,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C[69] = dart.constList([C[70] || CT.C70], T._LocationL());
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[69] || CT.C69,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 282,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 9,
+        [_Location_line]: 288,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 9,
+        [_Location_line]: 289,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 290,
+        [_Location_file]: null
+      });
+    },
+    get C72() {
+      return C[72] = dart.constList([C[73] || CT.C73, C[74] || CT.C74, C[75] || CT.C75], T._LocationL());
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[72] || CT.C72,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 287,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 9,
+        [_Location_line]: 293,
+        [_Location_file]: null
+      });
+    },
+    get C77() {
+      return C[77] = dart.constList([C[78] || CT.C78], T._LocationL());
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[77] || CT.C77,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 292,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart"
+      });
+    }
+  }, false);
+  var C = Array(79).fill(void 0);
+  var I = [
+    "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/responsive_grid-2.0.0/lib/responsive_grid.dart",
+    "package:responsive_grid/responsive_grid.dart"
+  ];
+  var _name$ = dart.privateName(responsive_grid, "_name");
+  responsive_grid._GridTier = class _GridTier extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (responsive_grid._GridTier.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 35, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 35, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = responsive_grid._GridTier.prototype;
+  dart.addTypeTests(responsive_grid._GridTier);
+  dart.addTypeCaches(responsive_grid._GridTier);
+  dart.setLibraryUri(responsive_grid._GridTier, I[1]);
+  dart.setFieldSignature(responsive_grid._GridTier, () => ({
+    __proto__: dart.getFields(responsive_grid._GridTier.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(responsive_grid._GridTier, ['toString']);
+  responsive_grid._GridTier.xs = C[0] || CT.C0;
+  responsive_grid._GridTier.sm = C[1] || CT.C1;
+  responsive_grid._GridTier.md = C[2] || CT.C2;
+  responsive_grid._GridTier.lg = C[3] || CT.C3;
+  responsive_grid._GridTier.xl = C[4] || CT.C4;
+  responsive_grid._GridTier.values = C[5] || CT.C5;
+  var children$ = dart.privateName(responsive_grid, "ResponsiveGridRow.children");
+  var crossAxisAlignment$ = dart.privateName(responsive_grid, "ResponsiveGridRow.crossAxisAlignment");
+  var rowSegments$ = dart.privateName(responsive_grid, "ResponsiveGridRow.rowSegments");
+  var _name = dart.privateName(flex, "_name");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  responsive_grid.ResponsiveGridRow = class ResponsiveGridRow extends framework.StatelessWidget {
+    get children() {
+      return this[children$];
+    }
+    set children(value) {
+      super.children = value;
+    }
+    get crossAxisAlignment() {
+      return this[crossAxisAlignment$];
+    }
+    set crossAxisAlignment(value) {
+      super.crossAxisAlignment = value;
+    }
+    get rowSegments() {
+      return this[rowSegments$];
+    }
+    set rowSegments(value) {
+      super.rowSegments = value;
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 69, 29, "context");
+      let rows = T.JSArrayOfWidget().of([]);
+      let accumulatedWidth = 0;
+      let cols = T.JSArrayOfWidget().of([]);
+      this.children[$forEach](dart.fn(col => {
+        let t0;
+        if (col == null) dart.nullFailed(I[0], 75, 23, "col");
+        let colWidth = (t0 = col.currentConfig(context), t0 == null ? 1 : t0);
+        if (accumulatedWidth + dart.notNull(colWidth) > dart.notNull(this.rowSegments)) {
+          if (accumulatedWidth < dart.notNull(this.rowSegments)) {
+            cols[$add](new spacer.Spacer.new({flex: dart.notNull(this.rowSegments) - accumulatedWidth, $creationLocationd_0dea112b090073317d4: C[7] || CT.C7}));
+          }
+          rows[$add](new basic.Row.new({children: cols, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}));
+          cols = T.JSArrayOfWidget().of([]);
+          accumulatedWidth = 0;
+        }
+        cols[$add](col);
+        accumulatedWidth = accumulatedWidth + dart.notNull(colWidth);
+      }, T.ResponsiveGridColTovoid()));
+      if (accumulatedWidth >= 0) {
+        if (accumulatedWidth < dart.notNull(this.rowSegments)) {
+          cols[$add](new spacer.Spacer.new({flex: dart.notNull(this.rowSegments) - accumulatedWidth, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}));
+        }
+        rows[$add](new basic.Row.new({crossAxisAlignment: this.crossAxisAlignment, children: cols, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}));
+      }
+      return new basic.Column.new({children: rows, $creationLocationd_0dea112b090073317d4: C[20] || CT.C20});
+    }
+  };
+  (responsive_grid.ResponsiveGridRow.new = function(opts) {
+    let children = opts && 'children' in opts ? opts.children : null;
+    if (children == null) dart.nullFailed(I[0], 64, 22, "children");
+    let crossAxisAlignment = opts && 'crossAxisAlignment' in opts ? opts.crossAxisAlignment : C[6] || CT.C6;
+    if (crossAxisAlignment == null) dart.nullFailed(I[0], 65, 12, "crossAxisAlignment");
+    let rowSegments = opts && 'rowSegments' in opts ? opts.rowSegments : 12;
+    if (rowSegments == null) dart.nullFailed(I[0], 66, 12, "rowSegments");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[children$] = children;
+    this[crossAxisAlignment$] = crossAxisAlignment;
+    this[rowSegments$] = rowSegments;
+    responsive_grid.ResponsiveGridRow.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = responsive_grid.ResponsiveGridRow.prototype;
+  dart.addTypeTests(responsive_grid.ResponsiveGridRow);
+  dart.addTypeCaches(responsive_grid.ResponsiveGridRow);
+  dart.setMethodSignature(responsive_grid.ResponsiveGridRow, () => ({
+    __proto__: dart.getMethods(responsive_grid.ResponsiveGridRow.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(responsive_grid.ResponsiveGridRow, I[1]);
+  dart.setFieldSignature(responsive_grid.ResponsiveGridRow, () => ({
+    __proto__: dart.getFields(responsive_grid.ResponsiveGridRow.__proto__),
+    children: dart.finalFieldType(core.List$(responsive_grid.ResponsiveGridCol)),
+    crossAxisAlignment: dart.finalFieldType(flex.CrossAxisAlignment),
+    rowSegments: dart.finalFieldType(core.int)
+  }));
+  var child$ = dart.privateName(responsive_grid, "ResponsiveGridCol.child");
+  var _config = dart.privateName(responsive_grid, "_config");
+  responsive_grid.ResponsiveGridCol = class ResponsiveGridCol extends framework.StatelessWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    currentConfig(context) {
+      if (context == null) dart.nullFailed(I[0], 133, 35, "context");
+      return this[_config][$_get](responsive_grid._currentSize(context).index);
+    }
+    build(context) {
+      let t0;
+      if (context == null) dart.nullFailed(I[0], 138, 29, "context");
+      return new basic.Expanded.new({flex: (t0 = this.currentConfig(context), t0 == null ? 1 : t0), child: this.child, $creationLocationd_0dea112b090073317d4: C[23] || CT.C23});
+    }
+  };
+  (responsive_grid.ResponsiveGridCol.new = function(opts) {
+    let t0, t0$, t0$0, t0$1, t0$2;
+    let xs = opts && 'xs' in opts ? opts.xs : 12;
+    if (xs == null) dart.nullFailed(I[0], 119, 9, "xs");
+    let sm = opts && 'sm' in opts ? opts.sm : null;
+    let md = opts && 'md' in opts ? opts.md : null;
+    let lg = opts && 'lg' in opts ? opts.lg : null;
+    let xl = opts && 'xl' in opts ? opts.xl : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    if (child == null) dart.nullFailed(I[0], 124, 19, "child");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[_config] = (t0 = T.JSArrayOfintN().of([]), (() => {
+      t0[$length] = 5;
+      return t0;
+    })());
+    this[child$] = child;
+    responsive_grid.ResponsiveGridCol.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    this[_config][$_set](responsive_grid._GridTier.xs.index, xs);
+    this[_config][$_set](responsive_grid._GridTier.sm.index, (t0$ = sm, t0$ == null ? this[_config][$_get](responsive_grid._GridTier.xs.index) : t0$));
+    this[_config][$_set](responsive_grid._GridTier.md.index, (t0$0 = md, t0$0 == null ? this[_config][$_get](responsive_grid._GridTier.sm.index) : t0$0));
+    this[_config][$_set](responsive_grid._GridTier.lg.index, (t0$1 = lg, t0$1 == null ? this[_config][$_get](responsive_grid._GridTier.md.index) : t0$1));
+    this[_config][$_set](responsive_grid._GridTier.xl.index, (t0$2 = xl, t0$2 == null ? this[_config][$_get](responsive_grid._GridTier.lg.index) : t0$2));
+  }).prototype = responsive_grid.ResponsiveGridCol.prototype;
+  dart.addTypeTests(responsive_grid.ResponsiveGridCol);
+  dart.addTypeCaches(responsive_grid.ResponsiveGridCol);
+  dart.setMethodSignature(responsive_grid.ResponsiveGridCol, () => ({
+    __proto__: dart.getMethods(responsive_grid.ResponsiveGridCol.__proto__),
+    currentConfig: dart.fnType(dart.nullable(core.int), [framework.BuildContext]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(responsive_grid.ResponsiveGridCol, I[1]);
+  dart.setFieldSignature(responsive_grid.ResponsiveGridCol, () => ({
+    __proto__: dart.getFields(responsive_grid.ResponsiveGridCol.__proto__),
+    [_config]: dart.finalFieldType(core.List$(dart.nullable(core.int))),
+    child: dart.finalFieldType(framework.Widget)
+  }));
+  var desiredItemWidth$ = dart.privateName(responsive_grid, "ResponsiveGridList.desiredItemWidth");
+  var minSpacing$ = dart.privateName(responsive_grid, "ResponsiveGridList.minSpacing");
+  var children$0 = dart.privateName(responsive_grid, "ResponsiveGridList.children");
+  var squareCells$ = dart.privateName(responsive_grid, "ResponsiveGridList.squareCells");
+  var scroll$ = dart.privateName(responsive_grid, "ResponsiveGridList.scroll");
+  var rowMainAxisAlignment$ = dart.privateName(responsive_grid, "ResponsiveGridList.rowMainAxisAlignment");
+  responsive_grid.ResponsiveGridList = class ResponsiveGridList extends framework.StatelessWidget {
+    get desiredItemWidth() {
+      return this[desiredItemWidth$];
+    }
+    set desiredItemWidth(value) {
+      super.desiredItemWidth = value;
+    }
+    get minSpacing() {
+      return this[minSpacing$];
+    }
+    set minSpacing(value) {
+      super.minSpacing = value;
+    }
+    get children() {
+      return this[children$0];
+    }
+    set children(value) {
+      super.children = value;
+    }
+    get squareCells() {
+      return this[squareCells$];
+    }
+    set squareCells(value) {
+      super.squareCells = value;
+    }
+    get scroll() {
+      return this[scroll$];
+    }
+    set scroll(value) {
+      super.scroll = value;
+    }
+    get rowMainAxisAlignment() {
+      return this[rowMainAxisAlignment$];
+    }
+    set rowMainAxisAlignment(value) {
+      super.rowMainAxisAlignment = value;
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 166, 29, "context");
+      return new layout_builder.LayoutBuilder.new({builder: dart.fn((context, constraints) => {
+          if (context == null) dart.nullFailed(I[0], 168, 17, "context");
+          if (constraints == null) dart.nullFailed(I[0], 168, 26, "constraints");
+          if (this.children[$length] === 0) return new container.Container.new({$creationLocationd_0dea112b090073317d4: C[28] || CT.C28});
+          let width = constraints.maxWidth;
+          let N = (dart.notNull(width) - dart.notNull(this.minSpacing)) / (dart.notNull(this.desiredItemWidth) + dart.notNull(this.minSpacing));
+          let n = null;
+          let spacing = null;
+          let itemWidth = null;
+          if (N[$modulo](1) === 0) {
+            n = N[$floor]();
+            spacing = this.minSpacing;
+            itemWidth = this.desiredItemWidth;
+          } else {
+            n = N[$floor]();
+            let dw = dart.notNull(width) - (dart.notNull(n) * (dart.notNull(this.desiredItemWidth) + dart.notNull(this.minSpacing)) + dart.notNull(this.minSpacing));
+            itemWidth = dart.notNull(this.desiredItemWidth) + dw / dart.notNull(n) * (dart.notNull(this.desiredItemWidth) / (dart.notNull(this.desiredItemWidth) + dart.notNull(this.minSpacing)));
+            spacing = (dart.notNull(width) - dart.notNull(itemWidth) * dart.notNull(n)) / (dart.notNull(n) + 1);
+          }
+          if (dart.test(this.scroll)) {
+            return new scroll_view.ListView.builder({itemCount: (dart.notNull(this.children[$length]) / dart.notNull(n))[$ceil]() * 2 - 1, itemBuilder: dart.fn((context, index) => {
+                if (context == null) dart.nullFailed(I[0], 197, 29, "context");
+                if (index == null) dart.nullFailed(I[0], 197, 38, "index");
+                if (index[$modulo](2) === 1) {
+                  return new basic.SizedBox.new({height: this.minSpacing, $creationLocationd_0dea112b090073317d4: C[30] || CT.C30});
+                }
+                let rowChildren = T.JSArrayOfWidget().of([]);
+                index = (dart.notNull(index) / 2)[$truncate]();
+                for (let i = dart.notNull(index) * dart.notNull(n); i < (dart.notNull(index) + 1) * dart.notNull(n); i = i + 1) {
+                  if (i >= dart.notNull(this.children[$length])) break;
+                  rowChildren[$add](this.children[$_get](i));
+                }
+                return new responsive_grid._ResponsiveGridListItem.new({mainAxisAlignment: this.rowMainAxisAlignment, itemWidth: itemWidth, spacing: spacing, squareCells: this.squareCells, children: rowChildren, $creationLocationd_0dea112b090073317d4: C[33] || CT.C33});
+              }, T.BuildContextAndintToWidget()), $creationLocationd_0dea112b090073317d4: C[40] || CT.C40});
+          } else {
+            let rows = T.JSArrayOfWidget().of([]);
+            rows[$add](new basic.SizedBox.new({height: this.minSpacing, $creationLocationd_0dea112b090073317d4: C[44] || CT.C44}));
+            for (let j = 0; j < (dart.notNull(this.children[$length]) / dart.notNull(n))[$ceil](); j = j + 1) {
+              let rowChildren = T.JSArrayOfWidget().of([]);
+              for (let i = j * dart.notNull(n); i < (j + 1) * dart.notNull(n); i = i + 1) {
+                if (i >= dart.notNull(this.children[$length])) break;
+                rowChildren[$add](this.children[$_get](i));
+              }
+              rows[$add](new responsive_grid._ResponsiveGridListItem.new({mainAxisAlignment: this.rowMainAxisAlignment, itemWidth: itemWidth, spacing: spacing, squareCells: this.squareCells, children: rowChildren, $creationLocationd_0dea112b090073317d4: C[47] || CT.C47}));
+              rows[$add](new basic.SizedBox.new({height: this.minSpacing, $creationLocationd_0dea112b090073317d4: C[54] || CT.C54}));
+            }
+            return new basic.Column.new({children: rows, $creationLocationd_0dea112b090073317d4: C[57] || CT.C57});
+          }
+        }, T.BuildContextAndBoxConstraintsToWidget()), $creationLocationd_0dea112b090073317d4: C[60] || CT.C60});
+    }
+  };
+  (responsive_grid.ResponsiveGridList.new = function(opts) {
+    let desiredItemWidth = opts && 'desiredItemWidth' in opts ? opts.desiredItemWidth : null;
+    if (desiredItemWidth == null) dart.nullFailed(I[0], 157, 19, "desiredItemWidth");
+    let minSpacing = opts && 'minSpacing' in opts ? opts.minSpacing : 1;
+    if (minSpacing == null) dart.nullFailed(I[0], 158, 10, "minSpacing");
+    let squareCells = opts && 'squareCells' in opts ? opts.squareCells : false;
+    if (squareCells == null) dart.nullFailed(I[0], 159, 10, "squareCells");
+    let scroll = opts && 'scroll' in opts ? opts.scroll : true;
+    if (scroll == null) dart.nullFailed(I[0], 160, 10, "scroll");
+    let children = opts && 'children' in opts ? opts.children : null;
+    if (children == null) dart.nullFailed(I[0], 161, 19, "children");
+    let rowMainAxisAlignment = opts && 'rowMainAxisAlignment' in opts ? opts.rowMainAxisAlignment : C[27] || CT.C27;
+    if (rowMainAxisAlignment == null) dart.nullFailed(I[0], 162, 10, "rowMainAxisAlignment");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[desiredItemWidth$] = desiredItemWidth;
+    this[minSpacing$] = minSpacing;
+    this[squareCells$] = squareCells;
+    this[scroll$] = scroll;
+    this[children$0] = children;
+    this[rowMainAxisAlignment$] = rowMainAxisAlignment;
+    responsive_grid.ResponsiveGridList.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = responsive_grid.ResponsiveGridList.prototype;
+  dart.addTypeTests(responsive_grid.ResponsiveGridList);
+  dart.addTypeCaches(responsive_grid.ResponsiveGridList);
+  dart.setMethodSignature(responsive_grid.ResponsiveGridList, () => ({
+    __proto__: dart.getMethods(responsive_grid.ResponsiveGridList.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(responsive_grid.ResponsiveGridList, I[1]);
+  dart.setFieldSignature(responsive_grid.ResponsiveGridList, () => ({
+    __proto__: dart.getFields(responsive_grid.ResponsiveGridList.__proto__),
+    desiredItemWidth: dart.finalFieldType(core.double),
+    minSpacing: dart.finalFieldType(core.double),
+    children: dart.finalFieldType(core.List$(framework.Widget)),
+    squareCells: dart.finalFieldType(core.bool),
+    scroll: dart.finalFieldType(core.bool),
+    rowMainAxisAlignment: dart.finalFieldType(flex.MainAxisAlignment)
+  }));
+  var _buildChildren = dart.privateName(responsive_grid, "_buildChildren");
+  responsive_grid._ResponsiveGridListItem = class _ResponsiveGridListItem extends framework.StatelessWidget {
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 271, 29, "context");
+      return new basic.Row.new({crossAxisAlignment: flex.CrossAxisAlignment.start, mainAxisAlignment: this.mainAxisAlignment, children: this[_buildChildren](), $creationLocationd_0dea112b090073317d4: C[63] || CT.C63});
+    }
+    [_buildChildren]() {
+      let list = T.JSArrayOfWidget().of([]);
+      list[$add](new basic.SizedBox.new({width: this.spacing, $creationLocationd_0dea112b090073317d4: C[68] || CT.C68}));
+      this.children[$forEach](dart.fn(child => {
+        if (child == null) dart.nullFailed(I[0], 286, 23, "child");
+        list[$add](new basic.SizedBox.new({width: this.itemWidth, height: dart.test(this.squareCells) ? this.itemWidth : null, child: child, $creationLocationd_0dea112b090073317d4: C[71] || CT.C71}));
+        list[$add](new basic.SizedBox.new({width: this.spacing, $creationLocationd_0dea112b090073317d4: C[76] || CT.C76}));
+      }, T.WidgetTovoid()));
+      return list;
+    }
+  };
+  (responsive_grid._ResponsiveGridListItem.new = function(opts) {
+    let itemWidth = opts && 'itemWidth' in opts ? opts.itemWidth : null;
+    if (itemWidth == null) dart.nullFailed(I[0], 263, 19, "itemWidth");
+    let spacing = opts && 'spacing' in opts ? opts.spacing : null;
+    if (spacing == null) dart.nullFailed(I[0], 264, 19, "spacing");
+    let squareCells = opts && 'squareCells' in opts ? opts.squareCells : null;
+    if (squareCells == null) dart.nullFailed(I[0], 265, 19, "squareCells");
+    let children = opts && 'children' in opts ? opts.children : null;
+    if (children == null) dart.nullFailed(I[0], 266, 19, "children");
+    let mainAxisAlignment = opts && 'mainAxisAlignment' in opts ? opts.mainAxisAlignment : C[27] || CT.C27;
+    if (mainAxisAlignment == null) dart.nullFailed(I[0], 267, 10, "mainAxisAlignment");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this.itemWidth = itemWidth;
+    this.spacing = spacing;
+    this.squareCells = squareCells;
+    this.children = children;
+    this.mainAxisAlignment = mainAxisAlignment;
+    responsive_grid._ResponsiveGridListItem.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = responsive_grid._ResponsiveGridListItem.prototype;
+  dart.addTypeTests(responsive_grid._ResponsiveGridListItem);
+  dart.addTypeCaches(responsive_grid._ResponsiveGridListItem);
+  dart.setMethodSignature(responsive_grid._ResponsiveGridListItem, () => ({
+    __proto__: dart.getMethods(responsive_grid._ResponsiveGridListItem.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_buildChildren]: dart.fnType(core.List$(framework.Widget), [])
+  }));
+  dart.setLibraryUri(responsive_grid._ResponsiveGridListItem, I[1]);
+  dart.setFieldSignature(responsive_grid._ResponsiveGridListItem, () => ({
+    __proto__: dart.getFields(responsive_grid._ResponsiveGridListItem.__proto__),
+    spacing: dart.finalFieldType(core.double),
+    itemWidth: dart.finalFieldType(core.double),
+    children: dart.finalFieldType(core.List$(framework.Widget)),
+    squareCells: dart.finalFieldType(core.bool),
+    mainAxisAlignment: dart.finalFieldType(flex.MainAxisAlignment)
+  }));
+  responsive_grid.initScaling = function initScaling(context) {
+    if (context == null) dart.nullFailed(I[0], 15, 31, "context");
+    let mq = media_query.MediaQuery.of(context);
+    responsive_grid._width = dart.notNull(mq.size.width) < dart.notNull(mq.size.height) ? mq.size.width : mq.size.height;
+    responsive_grid._scalingFactor = dart.nullCheck(responsive_grid._width) / dart.notNull(responsive_grid._refWidth);
+    core.print("width => " + dart.str(responsive_grid._width));
+  };
+  responsive_grid.scale = function scale(dimension) {
+    if (dimension == null) dart.nullFailed(I[0], 23, 21, "dimension");
+    if (responsive_grid._width == null) {
+      dart.throw(core.Exception.new("You must call init() before any use of scale()"));
+    }
+    return dart.notNull(dimension) * dart.nullCheck(responsive_grid._scalingFactor);
+  };
+  responsive_grid._currentSize = function _currentSize(context) {
+    if (context == null) dart.nullFailed(I[0], 37, 37, "context");
+    let mediaQueryData = media_query.MediaQuery.of(context);
+    let width = mediaQueryData.size.width;
+    if (dart.notNull(width) < 576) {
+      return responsive_grid._GridTier.xs;
+    } else if (dart.notNull(width) < 768) {
+      return responsive_grid._GridTier.sm;
+    } else if (dart.notNull(width) < 992) {
+      return responsive_grid._GridTier.md;
+    } else if (dart.notNull(width) < 1200) {
+      return responsive_grid._GridTier.lg;
+    } else {
+      return responsive_grid._GridTier.xl;
+    }
+  };
+  dart.defineLazy(responsive_grid, {
+    /*responsive_grid._scalingMargin*/get _scalingMargin() {
+      return 5.0;
+    },
+    set _scalingMargin(_) {},
+    /*responsive_grid._refWidth*/get _refWidth() {
+      return 375.0;
+    },
+    set _refWidth(_) {},
+    /*responsive_grid._scalingFactor*/get _scalingFactor() {
+      return null;
+    },
+    set _scalingFactor(_) {},
+    /*responsive_grid._width*/get _width() {
+      return null;
+    },
+    set _width(_) {}
+  }, false);
+  dart.trackLibraries("packages/responsive_grid/responsive_grid.dart", {
+    "package:responsive_grid/responsive_grid.dart": responsive_grid
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["responsive_grid.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../E:/packages/responsive_grid/responsive_grid.dart.lib.js"}');
+  // Exports:
+  return {
+    responsive_grid: responsive_grid
+  };
+}));
+
+//# sourceMappingURL=responsive_grid.dart.lib.js.map

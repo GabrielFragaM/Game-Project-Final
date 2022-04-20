@@ -1,0 +1,1830 @@
+define(['dart_sdk', 'packages/flare_flutter/flare_actor.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/material/button_bar.dart', 'packages/awesome_dialog/src/anims/anims.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/will_pop_scope.dart', 'packages/awesome_dialog/src/vertical_stack_header_dialog.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/awesome_dialog/src/animated_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/widgets/icon_data.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/painting/borders.dart'], (function load__packages__awesome_dialog__src__anims__flare_header_dart(dart_sdk, packages__flare_flutter__flare_actor$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__material__button_bar$46dart, packages__awesome_dialog__src__anims__anims$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__will_pop_scope$46dart, packages__awesome_dialog__src__vertical_stack_header_dialog$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__awesome_dialog__src__animated_button$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__widgets__icon_data$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__painting__borders$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const flare_actor = packages__flare_flutter__flare_actor$46dart.flare_actor;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const navigator = packages__flutter__src__widgets__widget_span$46dart.src__widgets__navigator;
+  const dialog = packages__flutter__src__material__button_bar$46dart.src__material__dialog;
+  const anims = packages__awesome_dialog__src__anims__anims$46dart.src__anims__anims;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const will_pop_scope = packages__flutter__src__widgets__will_pop_scope$46dart.src__widgets__will_pop_scope;
+  const vertical_stack_header_dialog = packages__awesome_dialog__src__vertical_stack_header_dialog$46dart.src__vertical_stack_header_dialog;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const animated_button = packages__awesome_dialog__src__animated_button$46dart.src__animated_button;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const icon_data = packages__flutter__src__widgets__icon_data$46dart.src__widgets__icon_data;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  var flare_header = Object.create(dart.library);
+  var awesome_dialog = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    StringTovoid: () => (T.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    DialogTypeL: () => (T.DialogTypeL = dart.constFn(dart.legacy(awesome_dialog.DialogType)))(),
+    AnimTypeL: () => (T.AnimTypeL = dart.constFn(dart.legacy(awesome_dialog.AnimType)))(),
+    DismissTypeL: () => (T.DismissTypeL = dart.constFn(dart.legacy(awesome_dialog.DismissType)))(),
+    dynamicTodynamic: () => (T.dynamicTodynamic = dart.constFn(dart.fnType(dart.dynamic, [dart.dynamic])))(),
+    BuildContextToWidget: () => (T.BuildContextToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext])))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    ObjectN: () => (T.ObjectN = dart.constFn(dart.nullable(core.Object)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filename",
+        [_Location_column]: 11,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 17,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 11,
+        [_Location_line]: 18,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 19,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "callback",
+        [_Location_column]: 11,
+        [_Location_line]: 20,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 15,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/src/anims/flare_header.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: awesome_dialog.DialogType.prototype,
+        [_name$]: "DialogType.INFO",
+        index: 0
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filename",
+        [_Location_column]: 15,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 11,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 29,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 23,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/src/anims/flare_header.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: awesome_dialog.DialogType.prototype,
+        [_name$]: "DialogType.INFO_REVERSED",
+        index: 1
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filename",
+        [_Location_column]: 11,
+        [_Location_line]: 33,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 34,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 11,
+        [_Location_line]: 35,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "callback",
+        [_Location_column]: 11,
+        [_Location_line]: 37,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 32,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/src/anims/flare_header.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: awesome_dialog.DialogType.prototype,
+        [_name$]: "DialogType.QUESTION",
+        index: 5
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filename",
+        [_Location_column]: 15,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 11,
+        [_Location_line]: 45,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.constList([C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28], T._LocationL());
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[24] || CT.C24,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 40,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/src/anims/flare_header.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: awesome_dialog.DialogType.prototype,
+        [_name$]: "DialogType.WARNING",
+        index: 2
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filename",
+        [_Location_column]: 11,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 11,
+        [_Location_line]: 52,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32, C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/src/anims/flare_header.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: awesome_dialog.DialogType.prototype,
+        [_name$]: "DialogType.ERROR",
+        index: 3
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filename",
+        [_Location_column]: 15,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 11,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 56,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/src/anims/flare_header.dart"
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: awesome_dialog.DialogType.prototype,
+        [_name$]: "DialogType.SUCCES",
+        index: 4
+      });
+    },
+    get C46() {
+      return C[46] = dart.constList([], T._LocationL());
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[46] || CT.C46,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 65,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/src/anims/flare_header.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[45] || CT.C45,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: 0,
+        [SizedBox_width]: 0
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: awesome_dialog.DialogType.prototype,
+        [_name$]: "DialogType.NO_HEADER",
+        index: 6
+      });
+    },
+    get C48() {
+      return C[48] = dart.constList([C[7] || CT.C7, C[14] || CT.C14, C[29] || CT.C29, C[36] || CT.C36, C[43] || CT.C43, C[22] || CT.C22, C[47] || CT.C47], T.DialogTypeL());
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: awesome_dialog.AnimType.prototype,
+        [_name$]: "AnimType.SCALE",
+        index: 0
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: awesome_dialog.AnimType.prototype,
+        [_name$]: "AnimType.LEFTSLIDE",
+        index: 1
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: awesome_dialog.AnimType.prototype,
+        [_name$]: "AnimType.RIGHSLIDE",
+        index: 2
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: awesome_dialog.AnimType.prototype,
+        [_name$]: "AnimType.BOTTOMSLIDE",
+        index: 3
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: awesome_dialog.AnimType.prototype,
+        [_name$]: "AnimType.TOPSLIDE",
+        index: 4
+      });
+    },
+    get C54() {
+      return C[54] = dart.constList([C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51, C[52] || CT.C52, C[53] || CT.C53], T.AnimTypeL());
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: awesome_dialog.DismissType.prototype,
+        [_name$]: "DismissType.BTN_OK",
+        index: 0
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: awesome_dialog.DismissType.prototype,
+        [_name$]: "DismissType.BTN_CANCEL",
+        index: 1
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: awesome_dialog.DismissType.prototype,
+        [_name$]: "DismissType.TOP_ICON",
+        index: 2
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: awesome_dialog.DismissType.prototype,
+        [_name$]: "DismissType.OTHER",
+        index: 3
+      });
+    },
+    get C59() {
+      return C[59] = dart.constList([C[55] || CT.C55, C[56] || CT.C56, C[57] || CT.C57, C[58] || CT.C58], T.DismissTypeL());
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scale",
+        [_Location_column]: 21,
+        [_Location_line]: 172,
+        [_Location_file]: null
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fade",
+        [_Location_column]: 21,
+        [_Location_line]: 173,
+        [_Location_file]: null
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 21,
+        [_Location_line]: 174,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 175,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C[62] = dart.constList([C[63] || CT.C63, C[64] || CT.C64, C[65] || CT.C65, C[66] || CT.C66], T._LocationL());
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[62] || CT.C62,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 171,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "from",
+        [_Location_column]: 31,
+        [_Location_line]: 178,
+        [_Location_file]: null
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 53,
+        [_Location_line]: 178,
+        [_Location_file]: null
+      });
+    },
+    get C68() {
+      return C[68] = dart.constList([C[69] || CT.C69, C[70] || CT.C70], T._LocationL());
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[68] || CT.C68,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 178,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "from",
+        [_Location_column]: 31,
+        [_Location_line]: 181,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 54,
+        [_Location_line]: 181,
+        [_Location_file]: null
+      });
+    },
+    get C72() {
+      return C[72] = dart.constList([C[73] || CT.C73, C[74] || CT.C74], T._LocationL());
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[72] || CT.C72,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 181,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "from",
+        [_Location_column]: 31,
+        [_Location_line]: 184,
+        [_Location_file]: null
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 55,
+        [_Location_line]: 184,
+        [_Location_file]: null
+      });
+    },
+    get C76() {
+      return C[76] = dart.constList([C[77] || CT.C77, C[78] || CT.C78], T._LocationL());
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[76] || CT.C76,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 184,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "from",
+        [_Location_column]: 31,
+        [_Location_line]: 187,
+        [_Location_file]: null
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 52,
+        [_Location_line]: 187,
+        [_Location_file]: null
+      });
+    },
+    get C80() {
+      return C[80] = dart.constList([C[81] || CT.C81, C[82] || CT.C82], T._LocationL());
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[80] || CT.C80,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 187,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "loop",
+        [_Location_column]: 7,
+        [_Location_line]: 201,
+        [_Location_file]: null
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dialogType",
+        [_Location_column]: 7,
+        [_Location_line]: 202,
+        [_Location_file]: null
+      });
+    },
+    get C84() {
+      return C[84] = dart.constList([C[85] || CT.C85, C[86] || CT.C86], T._LocationL());
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[84] || CT.C84,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 200,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 5,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 5
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dialogBackgroundColor",
+        [_Location_column]: 11,
+        [_Location_line]: 209,
+        [_Location_file]: null
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderSide",
+        [_Location_column]: 11,
+        [_Location_line]: 210,
+        [_Location_file]: null
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderRadius",
+        [_Location_column]: 11,
+        [_Location_line]: 211,
+        [_Location_file]: null
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "header",
+        [_Location_column]: 11,
+        [_Location_line]: 212,
+        [_Location_file]: null
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 11,
+        [_Location_line]: 213,
+        [_Location_file]: null
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "desc",
+        [_Location_column]: 11,
+        [_Location_line]: 214,
+        [_Location_file]: null
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "body",
+        [_Location_column]: 11,
+        [_Location_line]: 215,
+        [_Location_file]: null
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "isDense",
+        [_Location_column]: 11,
+        [_Location_line]: 216,
+        [_Location_file]: null
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 217,
+        [_Location_file]: null
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "keyboardAware",
+        [_Location_column]: 11,
+        [_Location_line]: 218,
+        [_Location_file]: null
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 11,
+        [_Location_line]: 219,
+        [_Location_file]: null
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 11,
+        [_Location_line]: 220,
+        [_Location_file]: null
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "btnOk",
+        [_Location_column]: 11,
+        [_Location_line]: 221,
+        [_Location_file]: null
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "btnCancel",
+        [_Location_column]: 11,
+        [_Location_line]: 222,
+        [_Location_file]: null
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "showCloseIcon",
+        [_Location_column]: 11,
+        [_Location_line]: 224,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onClose",
+        [_Location_column]: 11,
+        [_Location_line]: 225,
+        [_Location_file]: null
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "closeIcon",
+        [_Location_column]: 11,
+        [_Location_line]: 229,
+        [_Location_file]: null
+      });
+    },
+    get C89() {
+      return C[89] = dart.constList([C[90] || CT.C90, C[91] || CT.C91, C[92] || CT.C92, C[93] || CT.C93, C[94] || CT.C94, C[95] || CT.C95, C[96] || CT.C96, C[97] || CT.C97, C[98] || CT.C98, C[99] || CT.C99, C[100] || CT.C100, C[101] || CT.C101, C[102] || CT.C102, C[103] || CT.C103, C[104] || CT.C104, C[105] || CT.C105, C[106] || CT.C106], T._LocationL());
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[89] || CT.C89,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 208,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onWillPop",
+        [_Location_column]: 9,
+        [_Location_line]: 207,
+        [_Location_file]: null
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 208,
+        [_Location_file]: null
+      });
+    },
+    get C108() {
+      return C[108] = dart.constList([C[109] || CT.C109, C[110] || CT.C110], T._LocationL());
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[108] || CT.C108,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 206,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278241905.0
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "isFixedHeight",
+        [_Location_column]: 9,
+        [_Location_line]: 234,
+        [_Location_file]: null
+      });
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "pressEvent",
+        [_Location_column]: 9,
+        [_Location_line]: 235,
+        [_Location_file]: null
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 9,
+        [_Location_line]: 240,
+        [_Location_file]: null
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 241,
+        [_Location_file]: null
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 9,
+        [_Location_line]: 242,
+        [_Location_file]: null
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderRadius",
+        [_Location_column]: 9,
+        [_Location_line]: 243,
+        [_Location_file]: null
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "buttonTextStyle",
+        [_Location_column]: 9,
+        [_Location_line]: 244,
+        [_Location_file]: null
+      });
+    },
+    get C113() {
+      return C[113] = dart.constList([C[114] || CT.C114, C[115] || CT.C115, C[116] || CT.C116, C[117] || CT.C117, C[118] || CT.C118, C[119] || CT.C119, C[120] || CT.C120], T._LocationL());
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[113] || CT.C113,
+        [_Location_name]: null,
+        [_Location_column]: 37,
+        [_Location_line]: 233,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "isFixedHeight",
+        [_Location_column]: 9,
+        [_Location_line]: 248,
+        [_Location_file]: null
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "pressEvent",
+        [_Location_column]: 9,
+        [_Location_line]: 249,
+        [_Location_file]: null
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 9,
+        [_Location_line]: 254,
+        [_Location_file]: null
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 255,
+        [_Location_file]: null
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 9,
+        [_Location_line]: 256,
+        [_Location_file]: null
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderRadius",
+        [_Location_column]: 9,
+        [_Location_line]: 257,
+        [_Location_file]: null
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "buttonTextStyle",
+        [_Location_column]: 9,
+        [_Location_line]: 258,
+        [_Location_file]: null
+      });
+    },
+    get C122() {
+      return C[122] = dart.constList([C[123] || CT.C123, C[124] || CT.C124, C[125] || CT.C125, C[126] || CT.C126, C[127] || CT.C127, C[128] || CT.C128, C[129] || CT.C129], T._LocationL());
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[122] || CT.C122,
+        [_Location_name]: null,
+        [_Location_column]: 41,
+        [_Location_line]: 247,
+        [_Location_file]: "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart"
+      });
+    }
+  }, false);
+  var C = Array(130).fill(void 0);
+  var I = [
+    "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/src/anims/flare_header.dart",
+    "package:awesome_dialog/src/anims/flare_header.dart",
+    "file:///C:/Users/Cliente/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/awesome_dialog-2.1.1/lib/awesome_dialog.dart",
+    "package:awesome_dialog/awesome_dialog.dart"
+  ];
+  var dialogType$ = dart.privateName(flare_header, "FlareHeader.dialogType");
+  var loop$ = dart.privateName(flare_header, "FlareHeader.loop");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _name$ = dart.privateName(awesome_dialog, "_name");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  flare_header.FlareHeader = class FlareHeader extends framework.StatelessWidget {
+    get dialogType() {
+      return this[dialogType$];
+    }
+    set dialogType(value) {
+      super.dialogType = value;
+    }
+    get loop() {
+      return this[loop$];
+    }
+    set loop(value) {
+      super.loop = value;
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 12, 29, "context");
+      switch (this.dialogType) {
+        case C[7] || CT.C7:
+        {
+          return new flare_actor.FlareActor.new("packages/awesome_dialog/assets/flare/info2.flr", {alignment: alignment.Alignment.center, fit: box_fit.BoxFit.cover, animation: dart.test(this.loop) ? "appear_loop" : "appear", callback: dart.fn(call => {
+              if (call == null) dart.nullFailed(I[0], 20, 22, "call");
+            }, T.StringTovoid()), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+        }
+        case C[14] || CT.C14:
+        {
+          return new flare_actor.FlareActor.new(dart.test(this.loop) ? "packages/awesome_dialog/assets/flare/info.flr" : "packages/awesome_dialog/assets/flare/info_without_loop.flr", {alignment: alignment.Alignment.center, fit: box_fit.BoxFit.cover, animation: "appear", $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+        }
+        case C[22] || CT.C22:
+        {
+          return new flare_actor.FlareActor.new("packages/awesome_dialog/assets/flare/question.flr", {alignment: alignment.Alignment.center, fit: box_fit.BoxFit.cover, animation: dart.test(this.loop) ? "anim_loop" : "anim", callback: dart.fn(call => {
+              if (call == null) dart.nullFailed(I[0], 37, 22, "call");
+            }, T.StringTovoid()), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15});
+        }
+        case C[29] || CT.C29:
+        {
+          return new flare_actor.FlareActor.new(dart.test(this.loop) ? "packages/awesome_dialog/assets/flare/warning.flr" : "packages/awesome_dialog/assets/flare/warning_without_loop.flr", {alignment: alignment.Alignment.center, fit: box_fit.BoxFit.cover, animation: "appear", $creationLocationd_0dea112b090073317d4: C[23] || CT.C23});
+        }
+        case C[36] || CT.C36:
+        {
+          return new flare_actor.FlareActor.new("packages/awesome_dialog/assets/flare/error.flr", {alignment: alignment.Alignment.center, fit: box_fit.BoxFit.fill, animation: dart.test(this.loop) ? "Error" : "Error_no_loop", $creationLocationd_0dea112b090073317d4: C[30] || CT.C30});
+        }
+        case C[43] || CT.C43:
+        {
+          return new flare_actor.FlareActor.new(dart.test(this.loop) ? "packages/awesome_dialog/assets/flare/succes.flr" : "packages/awesome_dialog/assets/flare/succes_without_loop.flr", {alignment: alignment.Alignment.center, fit: box_fit.BoxFit.fill, animation: "Untitled", $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
+        }
+        default:
+        {
+          return C[44] || CT.C44;
+        }
+      }
+    }
+  };
+  (flare_header.FlareHeader.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let dialogType = opts && 'dialogType' in opts ? opts.dialogType : null;
+    if (dialogType == null) dart.nullFailed(I[0], 6, 46, "dialogType");
+    let loop = opts && 'loop' in opts ? opts.loop : null;
+    if (loop == null) dart.nullFailed(I[0], 6, 72, "loop");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[dialogType$] = dialogType;
+    this[loop$] = loop;
+    flare_header.FlareHeader.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = flare_header.FlareHeader.prototype;
+  dart.addTypeTests(flare_header.FlareHeader);
+  dart.addTypeCaches(flare_header.FlareHeader);
+  dart.setMethodSignature(flare_header.FlareHeader, () => ({
+    __proto__: dart.getMethods(flare_header.FlareHeader.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(flare_header.FlareHeader, I[1]);
+  dart.setFieldSignature(flare_header.FlareHeader, () => ({
+    __proto__: dart.getFields(flare_header.FlareHeader.__proto__),
+    dialogType: dart.finalFieldType(awesome_dialog.DialogType),
+    loop: dart.finalFieldType(core.bool)
+  }));
+  awesome_dialog.DialogType = class DialogType extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (awesome_dialog.DialogType.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[2], 13, 6, "index");
+    if (_name == null) dart.nullFailed(I[2], 13, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = awesome_dialog.DialogType.prototype;
+  dart.addTypeTests(awesome_dialog.DialogType);
+  dart.addTypeCaches(awesome_dialog.DialogType);
+  dart.setLibraryUri(awesome_dialog.DialogType, I[3]);
+  dart.setFieldSignature(awesome_dialog.DialogType, () => ({
+    __proto__: dart.getFields(awesome_dialog.DialogType.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(awesome_dialog.DialogType, ['toString']);
+  awesome_dialog.DialogType.INFO = C[7] || CT.C7;
+  awesome_dialog.DialogType.INFO_REVERSED = C[14] || CT.C14;
+  awesome_dialog.DialogType.WARNING = C[29] || CT.C29;
+  awesome_dialog.DialogType.ERROR = C[36] || CT.C36;
+  awesome_dialog.DialogType.SUCCES = C[43] || CT.C43;
+  awesome_dialog.DialogType.QUESTION = C[22] || CT.C22;
+  awesome_dialog.DialogType.NO_HEADER = C[47] || CT.C47;
+  awesome_dialog.DialogType.values = C[48] || CT.C48;
+  awesome_dialog.AnimType = class AnimType extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (awesome_dialog.AnimType.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[2], 22, 6, "index");
+    if (_name == null) dart.nullFailed(I[2], 22, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = awesome_dialog.AnimType.prototype;
+  dart.addTypeTests(awesome_dialog.AnimType);
+  dart.addTypeCaches(awesome_dialog.AnimType);
+  dart.setLibraryUri(awesome_dialog.AnimType, I[3]);
+  dart.setFieldSignature(awesome_dialog.AnimType, () => ({
+    __proto__: dart.getFields(awesome_dialog.AnimType.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(awesome_dialog.AnimType, ['toString']);
+  awesome_dialog.AnimType.SCALE = C[49] || CT.C49;
+  awesome_dialog.AnimType.LEFTSLIDE = C[50] || CT.C50;
+  awesome_dialog.AnimType.RIGHSLIDE = C[51] || CT.C51;
+  awesome_dialog.AnimType.BOTTOMSLIDE = C[52] || CT.C52;
+  awesome_dialog.AnimType.TOPSLIDE = C[53] || CT.C53;
+  awesome_dialog.AnimType.values = C[54] || CT.C54;
+  awesome_dialog.DismissType = class DismissType extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (awesome_dialog.DismissType.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[2], 23, 6, "index");
+    if (_name == null) dart.nullFailed(I[2], 23, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = awesome_dialog.DismissType.prototype;
+  dart.addTypeTests(awesome_dialog.DismissType);
+  dart.addTypeCaches(awesome_dialog.DismissType);
+  dart.setLibraryUri(awesome_dialog.DismissType, I[3]);
+  dart.setFieldSignature(awesome_dialog.DismissType, () => ({
+    __proto__: dart.getFields(awesome_dialog.DismissType.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(awesome_dialog.DismissType, ['toString']);
+  awesome_dialog.DismissType.BTN_OK = C[55] || CT.C55;
+  awesome_dialog.DismissType.BTN_CANCEL = C[56] || CT.C56;
+  awesome_dialog.DismissType.TOP_ICON = C[57] || CT.C57;
+  awesome_dialog.DismissType.OTHER = C[58] || CT.C58;
+  awesome_dialog.DismissType.values = C[59] || CT.C59;
+  var context$ = dart.privateName(awesome_dialog, "AwesomeDialog.context");
+  var dialogType$0 = dart.privateName(awesome_dialog, "AwesomeDialog.dialogType");
+  var customHeader$ = dart.privateName(awesome_dialog, "AwesomeDialog.customHeader");
+  var title$ = dart.privateName(awesome_dialog, "AwesomeDialog.title");
+  var desc$ = dart.privateName(awesome_dialog, "AwesomeDialog.desc");
+  var body$ = dart.privateName(awesome_dialog, "AwesomeDialog.body");
+  var btnOkText$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnOkText");
+  var btnOkIcon$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnOkIcon");
+  var btnOkOnPress$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnOkOnPress");
+  var btnOkColor$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnOkColor");
+  var btnCancelText$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnCancelText");
+  var btnCancelIcon$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnCancelIcon");
+  var btnCancelOnPress$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnCancelOnPress");
+  var btnCancelColor$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnCancelColor");
+  var btnOk$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnOk");
+  var btnCancel$ = dart.privateName(awesome_dialog, "AwesomeDialog.btnCancel");
+  var dismissOnTouchOutside$ = dart.privateName(awesome_dialog, "AwesomeDialog.dismissOnTouchOutside");
+  var onDissmissCallback$ = dart.privateName(awesome_dialog, "AwesomeDialog.onDissmissCallback");
+  var animType$ = dart.privateName(awesome_dialog, "AwesomeDialog.animType");
+  var dialogBorderRadius$ = dart.privateName(awesome_dialog, "AwesomeDialog.dialogBorderRadius");
+  var aligment$ = dart.privateName(awesome_dialog, "AwesomeDialog.aligment");
+  var padding$ = dart.privateName(awesome_dialog, "AwesomeDialog.padding");
+  var isDense$ = dart.privateName(awesome_dialog, "AwesomeDialog.isDense");
+  var headerAnimationLoop$ = dart.privateName(awesome_dialog, "AwesomeDialog.headerAnimationLoop");
+  var useRootNavigator$ = dart.privateName(awesome_dialog, "AwesomeDialog.useRootNavigator");
+  var autoHide$ = dart.privateName(awesome_dialog, "AwesomeDialog.autoHide");
+  var keyboardAware$ = dart.privateName(awesome_dialog, "AwesomeDialog.keyboardAware");
+  var dismissOnBackKeyPress$ = dart.privateName(awesome_dialog, "AwesomeDialog.dismissOnBackKeyPress");
+  var width$ = dart.privateName(awesome_dialog, "AwesomeDialog.width");
+  var buttonsBorderRadius$ = dart.privateName(awesome_dialog, "AwesomeDialog.buttonsBorderRadius");
+  var buttonsTextStyle$ = dart.privateName(awesome_dialog, "AwesomeDialog.buttonsTextStyle");
+  var showCloseIcon$ = dart.privateName(awesome_dialog, "AwesomeDialog.showCloseIcon");
+  var closeIcon$ = dart.privateName(awesome_dialog, "AwesomeDialog.closeIcon");
+  var dialogBackgroundColor$ = dart.privateName(awesome_dialog, "AwesomeDialog.dialogBackgroundColor");
+  var borderSide$ = dart.privateName(awesome_dialog, "AwesomeDialog.borderSide");
+  var isDissmisedBySystem = dart.privateName(awesome_dialog, "AwesomeDialog.isDissmisedBySystem");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var _dismissType = dart.privateName(awesome_dialog, "_dismissType");
+  var _buildDialog = dart.privateName(awesome_dialog, "_buildDialog");
+  var _buildHeader = dart.privateName(awesome_dialog, "_buildHeader");
+  var _onWillPop = dart.privateName(awesome_dialog, "_onWillPop");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var _buildFancyButtonOk = dart.privateName(awesome_dialog, "_buildFancyButtonOk");
+  var _buildFancyButtonCancel = dart.privateName(awesome_dialog, "_buildFancyButtonCancel");
+  var Color_value = dart.privateName(ui, "Color.value");
+  awesome_dialog.AwesomeDialog = class AwesomeDialog extends core.Object {
+    get context() {
+      return this[context$];
+    }
+    set context(value) {
+      super.context = value;
+    }
+    get dialogType() {
+      return this[dialogType$0];
+    }
+    set dialogType(value) {
+      super.dialogType = value;
+    }
+    get customHeader() {
+      return this[customHeader$];
+    }
+    set customHeader(value) {
+      super.customHeader = value;
+    }
+    get title() {
+      return this[title$];
+    }
+    set title(value) {
+      super.title = value;
+    }
+    get desc() {
+      return this[desc$];
+    }
+    set desc(value) {
+      super.desc = value;
+    }
+    get body() {
+      return this[body$];
+    }
+    set body(value) {
+      super.body = value;
+    }
+    get btnOkText() {
+      return this[btnOkText$];
+    }
+    set btnOkText(value) {
+      super.btnOkText = value;
+    }
+    get btnOkIcon() {
+      return this[btnOkIcon$];
+    }
+    set btnOkIcon(value) {
+      super.btnOkIcon = value;
+    }
+    get btnOkOnPress() {
+      return this[btnOkOnPress$];
+    }
+    set btnOkOnPress(value) {
+      super.btnOkOnPress = value;
+    }
+    get btnOkColor() {
+      return this[btnOkColor$];
+    }
+    set btnOkColor(value) {
+      super.btnOkColor = value;
+    }
+    get btnCancelText() {
+      return this[btnCancelText$];
+    }
+    set btnCancelText(value) {
+      super.btnCancelText = value;
+    }
+    get btnCancelIcon() {
+      return this[btnCancelIcon$];
+    }
+    set btnCancelIcon(value) {
+      super.btnCancelIcon = value;
+    }
+    get btnCancelOnPress() {
+      return this[btnCancelOnPress$];
+    }
+    set btnCancelOnPress(value) {
+      super.btnCancelOnPress = value;
+    }
+    get btnCancelColor() {
+      return this[btnCancelColor$];
+    }
+    set btnCancelColor(value) {
+      super.btnCancelColor = value;
+    }
+    get btnOk() {
+      return this[btnOk$];
+    }
+    set btnOk(value) {
+      super.btnOk = value;
+    }
+    get btnCancel() {
+      return this[btnCancel$];
+    }
+    set btnCancel(value) {
+      super.btnCancel = value;
+    }
+    get dismissOnTouchOutside() {
+      return this[dismissOnTouchOutside$];
+    }
+    set dismissOnTouchOutside(value) {
+      super.dismissOnTouchOutside = value;
+    }
+    get onDissmissCallback() {
+      return this[onDissmissCallback$];
+    }
+    set onDissmissCallback(value) {
+      super.onDissmissCallback = value;
+    }
+    get animType() {
+      return this[animType$];
+    }
+    set animType(value) {
+      super.animType = value;
+    }
+    get dialogBorderRadius() {
+      return this[dialogBorderRadius$];
+    }
+    set dialogBorderRadius(value) {
+      super.dialogBorderRadius = value;
+    }
+    get aligment() {
+      return this[aligment$];
+    }
+    set aligment(value) {
+      super.aligment = value;
+    }
+    get padding() {
+      return this[padding$];
+    }
+    set padding(value) {
+      super.padding = value;
+    }
+    get isDense() {
+      return this[isDense$];
+    }
+    set isDense(value) {
+      super.isDense = value;
+    }
+    get headerAnimationLoop() {
+      return this[headerAnimationLoop$];
+    }
+    set headerAnimationLoop(value) {
+      super.headerAnimationLoop = value;
+    }
+    get useRootNavigator() {
+      return this[useRootNavigator$];
+    }
+    set useRootNavigator(value) {
+      super.useRootNavigator = value;
+    }
+    get autoHide() {
+      return this[autoHide$];
+    }
+    set autoHide(value) {
+      super.autoHide = value;
+    }
+    get keyboardAware() {
+      return this[keyboardAware$];
+    }
+    set keyboardAware(value) {
+      super.keyboardAware = value;
+    }
+    get dismissOnBackKeyPress() {
+      return this[dismissOnBackKeyPress$];
+    }
+    set dismissOnBackKeyPress(value) {
+      super.dismissOnBackKeyPress = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get buttonsBorderRadius() {
+      return this[buttonsBorderRadius$];
+    }
+    set buttonsBorderRadius(value) {
+      super.buttonsBorderRadius = value;
+    }
+    get buttonsTextStyle() {
+      return this[buttonsTextStyle$];
+    }
+    set buttonsTextStyle(value) {
+      super.buttonsTextStyle = value;
+    }
+    get showCloseIcon() {
+      return this[showCloseIcon$];
+    }
+    set showCloseIcon(value) {
+      super.showCloseIcon = value;
+    }
+    get closeIcon() {
+      return this[closeIcon$];
+    }
+    set closeIcon(value) {
+      super.closeIcon = value;
+    }
+    get dialogBackgroundColor() {
+      return this[dialogBackgroundColor$];
+    }
+    set dialogBackgroundColor(value) {
+      super.dialogBackgroundColor = value;
+    }
+    get borderSide() {
+      return this[borderSide$];
+    }
+    set borderSide(value) {
+      super.borderSide = value;
+    }
+    get isDissmisedBySystem() {
+      return this[isDissmisedBySystem];
+    }
+    set isDissmisedBySystem(value) {
+      this[isDissmisedBySystem] = value;
+    }
+    show() {
+      return dialog.showDialog(dart.dynamic, {context: this.context, useRootNavigator: this.useRootNavigator, barrierDismissible: this.dismissOnTouchOutside, builder: dart.fn(context => {
+          if (context == null) dart.nullFailed(I[2], 165, 34, "context");
+          if (this.autoHide != null) {
+            async.Future.delayed(dart.nullCheck(this.autoHide)).then(dart.dynamic, dart.fn(value => this.dismiss(), T.dynamicTodynamic()));
+          }
+          switch (this.animType) {
+            case C[49] || CT.C49:
+            {
+              return new anims.ScaleFade.new({scale: 0.1, fade: true, curve: curves.Curves.fastLinearToSlowEaseIn, child: this[_buildDialog], $creationLocationd_0dea112b090073317d4: C[61] || CT.C61});
+            }
+            case C[50] || CT.C50:
+            {
+              return new anims.FadeIn.new({from: anims.SlideFrom.LEFT, child: this[_buildDialog], $creationLocationd_0dea112b090073317d4: C[67] || CT.C67});
+            }
+            case C[51] || CT.C51:
+            {
+              return new anims.FadeIn.new({from: anims.SlideFrom.RIGHT, child: this[_buildDialog], $creationLocationd_0dea112b090073317d4: C[71] || CT.C71});
+            }
+            case C[52] || CT.C52:
+            {
+              return new anims.FadeIn.new({from: anims.SlideFrom.BOTTOM, child: this[_buildDialog], $creationLocationd_0dea112b090073317d4: C[75] || CT.C75});
+            }
+            case C[53] || CT.C53:
+            {
+              return new anims.FadeIn.new({from: anims.SlideFrom.TOP, child: this[_buildDialog], $creationLocationd_0dea112b090073317d4: C[79] || CT.C79});
+            }
+            default:
+            {
+              return this[_buildDialog];
+            }
+          }
+        }, T.BuildContextToWidget())}).then(dart.dynamic, dart.fn(_ => {
+        let t0;
+        this.isDissmisedBySystem = true;
+        if (this.onDissmissCallback != null) {
+          t0 = this.onDissmissCallback;
+          t0 == null ? null : t0(this[_dismissType]);
+        }
+      }, T.dynamicToNull()));
+    }
+    get [_buildHeader]() {
+      if (this.customHeader != null) return this.customHeader;
+      if (this.dialogType == awesome_dialog.DialogType.NO_HEADER) return null;
+      return new flare_header.FlareHeader.new({loop: this.headerAnimationLoop, dialogType: this.dialogType, $creationLocationd_0dea112b090073317d4: C[83] || CT.C83});
+    }
+    get [_buildDialog]() {
+      let t0, t0$, t0$0;
+      return new will_pop_scope.WillPopScope.new({onWillPop: dart.bind(this, _onWillPop), child: new vertical_stack_header_dialog.VerticalStackDialog.new({dialogBackgroundColor: this.dialogBackgroundColor, borderSide: this.borderSide, borderRadius: this.dialogBorderRadius, header: this[_buildHeader], title: this.title, desc: this.desc, body: this.body, isDense: this.isDense, alignment: this.aligment, keyboardAware: this.keyboardAware, width: this.width, padding: (t0 = this.padding, t0 == null ? C[87] || CT.C87 : t0), btnOk: (t0$ = this.btnOk, t0$ == null ? this.btnOkOnPress != null ? this[_buildFancyButtonOk] : null : t0$), btnCancel: (t0$0 = this.btnCancel, t0$0 == null ? this.btnCancelOnPress != null ? this[_buildFancyButtonCancel] : null : t0$0), showCloseIcon: this.showCloseIcon, onClose: dart.fn(() => {
+            this[_dismissType] = awesome_dialog.DismissType.TOP_ICON;
+            dart.bind(this, 'dismiss')();
+          }, T.VoidToNull()), closeIcon: this.closeIcon, $creationLocationd_0dea112b090073317d4: C[88] || CT.C88}), $creationLocationd_0dea112b090073317d4: C[107] || CT.C107});
+    }
+    get [_buildFancyButtonOk]() {
+      let t0, t0$;
+      return new animated_button.AnimatedButton.new({isFixedHeight: false, pressEvent: dart.fn(() => {
+          let t0;
+          this[_dismissType] = awesome_dialog.DismissType.BTN_OK;
+          this.dismiss();
+          t0 = this.btnOkOnPress;
+          t0 == null ? null : dart.dcall(t0, []);
+        }, T.VoidToNull()), text: (t0 = this.btnOkText, t0 == null ? "Ok" : t0), color: (t0$ = this.btnOkColor, t0$ == null ? C[111] || CT.C111 : t0$), icon: this.btnOkIcon, borderRadius: this.buttonsBorderRadius, buttonTextStyle: this.buttonsTextStyle, $creationLocationd_0dea112b090073317d4: C[112] || CT.C112});
+    }
+    get [_buildFancyButtonCancel]() {
+      let t0, t0$;
+      return new animated_button.AnimatedButton.new({isFixedHeight: false, pressEvent: dart.fn(() => {
+          let t0;
+          this[_dismissType] = awesome_dialog.DismissType.BTN_CANCEL;
+          this.dismiss();
+          t0 = this.btnCancelOnPress;
+          t0 == null ? null : dart.dcall(t0, []);
+        }, T.VoidToNull()), text: (t0 = this.btnCancelText, t0 == null ? "Cancel" : t0), color: (t0$ = this.btnCancelColor, t0$ == null ? colors.Colors.red : t0$), icon: this.btnCancelIcon, borderRadius: this.buttonsBorderRadius, buttonTextStyle: this.buttonsTextStyle, $creationLocationd_0dea112b090073317d4: C[121] || CT.C121});
+    }
+    dismiss() {
+      if (!dart.test(this.isDissmisedBySystem)) navigator.Navigator.of(this.context, {rootNavigator: this.useRootNavigator}).pop(T.ObjectN());
+    }
+    [_onWillPop]() {
+      return async.async(core.bool, (function* _onWillPop() {
+        return this.dismissOnBackKeyPress;
+      }).bind(this));
+    }
+  };
+  (awesome_dialog.AwesomeDialog.new = function(opts) {
+    let context = opts && 'context' in opts ? opts.context : null;
+    if (context == null) dart.nullFailed(I[2], 120, 19, "context");
+    let dialogType = opts && 'dialogType' in opts ? opts.dialogType : C[7] || CT.C7;
+    if (dialogType == null) dart.nullFailed(I[2], 121, 10, "dialogType");
+    let customHeader = opts && 'customHeader' in opts ? opts.customHeader : null;
+    let title = opts && 'title' in opts ? opts.title : null;
+    let desc = opts && 'desc' in opts ? opts.desc : null;
+    let body = opts && 'body' in opts ? opts.body : null;
+    let btnOk = opts && 'btnOk' in opts ? opts.btnOk : null;
+    let btnCancel = opts && 'btnCancel' in opts ? opts.btnCancel : null;
+    let btnOkText = opts && 'btnOkText' in opts ? opts.btnOkText : null;
+    let btnOkIcon = opts && 'btnOkIcon' in opts ? opts.btnOkIcon : null;
+    let btnOkOnPress = opts && 'btnOkOnPress' in opts ? opts.btnOkOnPress : null;
+    let btnOkColor = opts && 'btnOkColor' in opts ? opts.btnOkColor : null;
+    let btnCancelText = opts && 'btnCancelText' in opts ? opts.btnCancelText : null;
+    let btnCancelIcon = opts && 'btnCancelIcon' in opts ? opts.btnCancelIcon : null;
+    let btnCancelOnPress = opts && 'btnCancelOnPress' in opts ? opts.btnCancelOnPress : null;
+    let btnCancelColor = opts && 'btnCancelColor' in opts ? opts.btnCancelColor : null;
+    let onDissmissCallback = opts && 'onDissmissCallback' in opts ? opts.onDissmissCallback : null;
+    let isDense = opts && 'isDense' in opts ? opts.isDense : false;
+    if (isDense == null) dart.nullFailed(I[2], 137, 10, "isDense");
+    let dismissOnTouchOutside = opts && 'dismissOnTouchOutside' in opts ? opts.dismissOnTouchOutside : true;
+    if (dismissOnTouchOutside == null) dart.nullFailed(I[2], 138, 10, "dismissOnTouchOutside");
+    let headerAnimationLoop = opts && 'headerAnimationLoop' in opts ? opts.headerAnimationLoop : true;
+    if (headerAnimationLoop == null) dart.nullFailed(I[2], 139, 10, "headerAnimationLoop");
+    let aligment = opts && 'aligment' in opts ? opts.aligment : C[60] || CT.C60;
+    if (aligment == null) dart.nullFailed(I[2], 140, 10, "aligment");
+    let animType = opts && 'animType' in opts ? opts.animType : C[49] || CT.C49;
+    if (animType == null) dart.nullFailed(I[2], 141, 10, "animType");
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let useRootNavigator = opts && 'useRootNavigator' in opts ? opts.useRootNavigator : false;
+    if (useRootNavigator == null) dart.nullFailed(I[2], 143, 10, "useRootNavigator");
+    let autoHide = opts && 'autoHide' in opts ? opts.autoHide : null;
+    let keyboardAware = opts && 'keyboardAware' in opts ? opts.keyboardAware : true;
+    if (keyboardAware == null) dart.nullFailed(I[2], 145, 10, "keyboardAware");
+    let dismissOnBackKeyPress = opts && 'dismissOnBackKeyPress' in opts ? opts.dismissOnBackKeyPress : true;
+    if (dismissOnBackKeyPress == null) dart.nullFailed(I[2], 146, 10, "dismissOnBackKeyPress");
+    let width = opts && 'width' in opts ? opts.width : null;
+    let dialogBorderRadius = opts && 'dialogBorderRadius' in opts ? opts.dialogBorderRadius : null;
+    let buttonsBorderRadius = opts && 'buttonsBorderRadius' in opts ? opts.buttonsBorderRadius : null;
+    let showCloseIcon = opts && 'showCloseIcon' in opts ? opts.showCloseIcon : false;
+    if (showCloseIcon == null) dart.nullFailed(I[2], 150, 10, "showCloseIcon");
+    let closeIcon = opts && 'closeIcon' in opts ? opts.closeIcon : null;
+    let dialogBackgroundColor = opts && 'dialogBackgroundColor' in opts ? opts.dialogBackgroundColor : null;
+    let borderSide = opts && 'borderSide' in opts ? opts.borderSide : null;
+    let buttonsTextStyle = opts && 'buttonsTextStyle' in opts ? opts.buttonsTextStyle : null;
+    this[isDissmisedBySystem] = false;
+    this[_dismissType] = awesome_dialog.DismissType.OTHER;
+    this[context$] = context;
+    this[dialogType$0] = dialogType;
+    this[customHeader$] = customHeader;
+    this[title$] = title;
+    this[desc$] = desc;
+    this[body$] = body;
+    this[btnOk$] = btnOk;
+    this[btnCancel$] = btnCancel;
+    this[btnOkText$] = btnOkText;
+    this[btnOkIcon$] = btnOkIcon;
+    this[btnOkOnPress$] = btnOkOnPress;
+    this[btnOkColor$] = btnOkColor;
+    this[btnCancelText$] = btnCancelText;
+    this[btnCancelIcon$] = btnCancelIcon;
+    this[btnCancelOnPress$] = btnCancelOnPress;
+    this[btnCancelColor$] = btnCancelColor;
+    this[onDissmissCallback$] = onDissmissCallback;
+    this[isDense$] = isDense;
+    this[dismissOnTouchOutside$] = dismissOnTouchOutside;
+    this[headerAnimationLoop$] = headerAnimationLoop;
+    this[aligment$] = aligment;
+    this[animType$] = animType;
+    this[padding$] = padding;
+    this[useRootNavigator$] = useRootNavigator;
+    this[autoHide$] = autoHide;
+    this[keyboardAware$] = keyboardAware;
+    this[dismissOnBackKeyPress$] = dismissOnBackKeyPress;
+    this[width$] = width;
+    this[dialogBorderRadius$] = dialogBorderRadius;
+    this[buttonsBorderRadius$] = buttonsBorderRadius;
+    this[showCloseIcon$] = showCloseIcon;
+    this[closeIcon$] = closeIcon;
+    this[dialogBackgroundColor$] = dialogBackgroundColor;
+    this[borderSide$] = borderSide;
+    this[buttonsTextStyle$] = buttonsTextStyle;
+    ;
+  }).prototype = awesome_dialog.AwesomeDialog.prototype;
+  dart.addTypeTests(awesome_dialog.AwesomeDialog);
+  dart.addTypeCaches(awesome_dialog.AwesomeDialog);
+  dart.setMethodSignature(awesome_dialog.AwesomeDialog, () => ({
+    __proto__: dart.getMethods(awesome_dialog.AwesomeDialog.__proto__),
+    show: dart.fnType(async.Future, []),
+    dismiss: dart.fnType(dart.dynamic, []),
+    [_onWillPop]: dart.fnType(async.Future$(core.bool), [])
+  }));
+  dart.setGetterSignature(awesome_dialog.AwesomeDialog, () => ({
+    __proto__: dart.getGetters(awesome_dialog.AwesomeDialog.__proto__),
+    [_buildHeader]: dart.nullable(framework.Widget),
+    [_buildDialog]: framework.Widget,
+    [_buildFancyButtonOk]: framework.Widget,
+    [_buildFancyButtonCancel]: framework.Widget
+  }));
+  dart.setLibraryUri(awesome_dialog.AwesomeDialog, I[3]);
+  dart.setFieldSignature(awesome_dialog.AwesomeDialog, () => ({
+    __proto__: dart.getFields(awesome_dialog.AwesomeDialog.__proto__),
+    context: dart.finalFieldType(framework.BuildContext),
+    dialogType: dart.finalFieldType(awesome_dialog.DialogType),
+    customHeader: dart.finalFieldType(dart.nullable(framework.Widget)),
+    title: dart.finalFieldType(dart.nullable(core.String)),
+    desc: dart.finalFieldType(dart.nullable(core.String)),
+    body: dart.finalFieldType(dart.nullable(framework.Widget)),
+    btnOkText: dart.finalFieldType(dart.nullable(core.String)),
+    btnOkIcon: dart.finalFieldType(dart.nullable(icon_data.IconData)),
+    btnOkOnPress: dart.finalFieldType(dart.nullable(core.Function)),
+    btnOkColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    btnCancelText: dart.finalFieldType(dart.nullable(core.String)),
+    btnCancelIcon: dart.finalFieldType(dart.nullable(icon_data.IconData)),
+    btnCancelOnPress: dart.finalFieldType(dart.nullable(core.Function)),
+    btnCancelColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    btnOk: dart.finalFieldType(dart.nullable(framework.Widget)),
+    btnCancel: dart.finalFieldType(dart.nullable(framework.Widget)),
+    dismissOnTouchOutside: dart.finalFieldType(core.bool),
+    onDissmissCallback: dart.finalFieldType(dart.nullable(dart.fnType(dart.dynamic, [awesome_dialog.DismissType]))),
+    animType: dart.finalFieldType(awesome_dialog.AnimType),
+    dialogBorderRadius: dart.finalFieldType(dart.nullable(border_radius.BorderRadiusGeometry)),
+    aligment: dart.finalFieldType(alignment.AlignmentGeometry),
+    padding: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsetsGeometry)),
+    isDense: dart.finalFieldType(core.bool),
+    headerAnimationLoop: dart.finalFieldType(core.bool),
+    useRootNavigator: dart.finalFieldType(core.bool),
+    autoHide: dart.finalFieldType(dart.nullable(core.Duration)),
+    keyboardAware: dart.finalFieldType(core.bool),
+    dismissOnBackKeyPress: dart.finalFieldType(core.bool),
+    width: dart.finalFieldType(dart.nullable(core.double)),
+    buttonsBorderRadius: dart.finalFieldType(dart.nullable(border_radius.BorderRadiusGeometry)),
+    buttonsTextStyle: dart.finalFieldType(dart.nullable(text_style.TextStyle)),
+    showCloseIcon: dart.finalFieldType(core.bool),
+    closeIcon: dart.finalFieldType(dart.nullable(framework.Widget)),
+    dialogBackgroundColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    borderSide: dart.finalFieldType(dart.nullable(borders.BorderSide)),
+    isDissmisedBySystem: dart.fieldType(core.bool),
+    [_dismissType]: dart.fieldType(awesome_dialog.DismissType)
+  }));
+  dart.trackLibraries("packages/awesome_dialog/src/anims/flare_header.dart", {
+    "package:awesome_dialog/src/anims/flare_header.dart": flare_header,
+    "package:awesome_dialog/awesome_dialog.dart": awesome_dialog
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["flare_header.dart","../../awesome_dialog.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAOmB;;;;;;IACN;;;;;;;UAGe;AACxB,cAAQ;;;AAEJ,gBAAO,gCACL,8DACqB,iCACT,2CACD,aAAO,gBAAgB,oBACxB;kBAAC;;;;;AAGb,gBAAO,0CACL,aACM,kDACA,0EACe,iCACT,iCACD;;;;AAGb,gBAAO,gCACL,iEACqB,iCACT,2CACD,aAAO,cAAc,kBACtB;kBAAC;;;;;AAGb,gBAAO,0CACL,aACM,qDACA,6EACe,iCACT,iCACD;;;;AAGb,gBAAO,gCACL,8DACqB,iCACT,0CACD,aAAO,UAAU;;;;AAG9B,gBAAO,0CACL,aACM,oDACA,4EACe,iCACT,gCACD;;;;AAGb;;;IAEN;;;QA7DwB;QAAmB;;QAA0B;;;IAA1B;IAA0B;AAC/D,4DAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;ICcvB;;;QARK;;;;;EAQL;;;;;;;;;;;;;;;;;;;;;IACmE;;;QAA9D;;;;;EAA8D;;;;;;;;;;;;;;;;;;;IACZ;;;QAAlD;;;;;EAAkD;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAIlC;;;;;;IAGF;;;;;;IAGH;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IACE;;;;;;IACA;;;;;;IACH;;;;;;IAGC;;;;;;IACE;;;;;;IACA;;;;;;IACH;;;;;;IAGC;;;;;;IAGA;;;;;;IAGH;;;;;;IAGuB;;;;;;IAGnB;;;;;;IAGa;;;;;;IAGJ;;;;;;IAGE;;;;;;IAGf;;;;;;IAGA;;;;;;IAGA;;;;;;IAGK;;;;;;IAGL;;;;;;IAGA;;;;;;IAGG;;;;;;IAGc;;;;;;IAGX;;;;;;IAGN;;;;;;IAGG;;;;;;IAGD;;;;;;IAGK;;;;;;IAwCb;;;;;;;AAIY,YAAA,AA+BN,2CA9BW,gCACI,2CACE,qCACX;cAAc;AACrB,cAAI;AACkD,YAA7C,AAAmB,qBAAH,eAAR,mCAAgB,QAAC,SAAU;;AAE5C,kBAAQ;;;AAEJ,oBAAO,iCACI,WACD,aACQ,6CACP;;;;AAGX,oBAAO,6BAAuB,6BAAa;;;;AAG3C,oBAAO,6BAAuB,8BAAc;;;;AAG5C,oBAAO,6BAAuB,+BAAe;;;;AAG7C,oBAAO,6BAAuB,4BAAY;;;;AAG1C,oBAAO;;;0DAEL,QAAC;;AACe,QAA1B,2BAAsB;AACtB,YAAI,iCAAkE;eAAtC;8BAAoB,GAAK;;;IACzD;;AAGJ,UAAI,2BAAsB,MAAO;AACjC,UAAI,AAAW,mBAAc,qCAAW,MAAO;AAC/C,YAAO,yCACC,sCACW;IAErB;;;AAE2B,uEACV,0BACJ,iFACkB,wCACX,+BACE,iCACN,2BACI,kBACD,iBACA,oBACF,yBACE,8BACI,2BACR,sBACU,mBAAR,4CACI,kBAAN,cAAU,AAAa,4BAAU,4BAAsB,yBACzC,uBAAV,eACN,AAAiB,gCAAU,gCAA0B,6BACtC,6BACX;AAC4B,YAAnC,qBAA2B;AACb,YAAN,UAAR;yCAES;IAEd;;;AAE6B,oEACb,mBACH;;AACuB,UAAjC,qBAA2B;AAClB,UAAT;AACoB,eAApB;8BAAc;mCAEA,qBAAV,aAAa,oBACD,uBAAX,8CACD,8BACQ,2CACG;IAClB;;;AAEiC,oEACjB,mBACH;;AAC2B,UAArC,qBAA2B;AAClB,UAAT;AACwB,eAAxB;8BAAkB;mCAEA,yBAAd,aAAiB,wBACD,2BAAf,cAAyB,gCAC1B,kCACQ,2CACG;IAClB;;AAGH,qBAAK,2BACO,AAA6C,AAAK,uBAA/C,8BAAwB;IACzC;;AAEuB;AAAY;MAAqB;;;;QAlJxC;;QACT;;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;QACA;;QACA;;QACA;;QACA;;QACA;QACA;;QACA;QACA;;QACA;;QACA;QACA;QACA;QACA;;QACA;QACA;QACA;QACA;IAGF,4BAAsB;IAEf,qBAA2B;IAvCvB;IACT;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EACL","file":"../../../../../../../../../../../../../E:/packages/awesome_dialog/src/anims/flare_header.dart.lib.js"}');
+  // Exports:
+  return {
+    src__anims__flare_header: flare_header,
+    awesome_dialog: awesome_dialog
+  };
+}));
+
+//# sourceMappingURL=flare_header.dart.lib.js.map
