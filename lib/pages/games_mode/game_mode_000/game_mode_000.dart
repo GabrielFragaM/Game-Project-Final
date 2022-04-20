@@ -395,7 +395,7 @@ class GamePageMode000State extends State<GamePageMode000> {
                                                                   .collection(
                                                                   'rooms')
                                                                   .doc(user_local['room']).collection('participants')
-                                                                  .where('plays', isLessThan: updates_player['plays'])
+                                                                  .where('plays', isLessThan: updates_player['plays']).where('in_game', isEqualTo: true)
                                                                   .get();
 
                                                               Map<String, dynamic> updates_next_player = {};
@@ -404,28 +404,28 @@ class GamePageMode000State extends State<GamePageMode000> {
                                                               //SE NAO ACHAR PROXIMO JOGADOR A PARTIDA ACABA E VERIFICA SE EXISTE UM EMPATE
                                                               if (all_players.docs.length != 0) {
                                                                 //MUDANDO A PREFERENCIA PARA O JOGADOR
-                                                                updates_next_player['preference'] =
-                                                                true;
+                                                                updates_next_player['preference'] = true;
 
                                                                 //SALVANDO QUEM JOGARA NA PROXIMA PARTIDA PARA AS CONFIG DA SALA
-                                                                room_config_updates['name_playing'] =
-                                                                all_players.docs[0]
-                                                                    .data()['user_name'];
 
-                                                                //SALVANDO AS NOVAS CONFIG DO JOGADOR
-                                                                await FirebaseFirestore
-                                                                    .instance
-                                                                    .collection(
-                                                                    'rooms')
-                                                                    .doc(
-                                                                    user_local['room'])
-                                                                    .collection(
-                                                                    'participants')
-                                                                    .doc(
-                                                                    all_players
-                                                                        .docs[0].id)
-                                                                    .update(
-                                                                    updates_next_player);
+                                                                  room_config_updates['name_playing'] = all_players.docs[0].data()['user_name'];
+
+                                                                  //SALVANDO AS NOVAS CONFIG DO JOGADOR
+                                                                  await FirebaseFirestore
+                                                                      .instance
+                                                                      .collection(
+                                                                      'rooms')
+                                                                      .doc(
+                                                                      user_local['room'])
+                                                                      .collection(
+                                                                      'participants')
+                                                                      .doc(
+                                                                      all_players
+                                                                          .docs[0].id)
+                                                                      .update(
+                                                                      updates_next_player);
+
+
 
                                                                 //SALVANDO AS NOVAS CONFIG DA SALA
                                                                 await FirebaseFirestore

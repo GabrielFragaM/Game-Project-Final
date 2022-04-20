@@ -168,41 +168,7 @@ class StartGameState extends State<StartGame> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 30),
-                  child: Material(
-                    elevation: 5.0,
-                    shadowColor: Colors.black,
-                    borderRadius: BorderRadius.circular(20),
-                    child: TextField(
-                      onChanged: (valor) async {
-                        setState(() {
-                          input_text_room = valor;
-                        });
-                      },
-                      autofocus: false,
-                      style: TextStyle(
-                          fontSize: 15.0, color: Colors.black),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
-                        ),
-                        contentPadding: EdgeInsets.only(
-                            left: 14.0, bottom: 8.0, top: 8.0),
-                        suffixIcon: Icon(
-                            Icons.vpn_key),
-                        labelText: "Código da Sala",
-                        hintText: "Código da Sala",
-                      ),
-                    ),
-                  ),
-                ),
+
                 Padding(
                   padding: EdgeInsets.only(bottom: 10),
                   child: InkWell(
@@ -264,73 +230,7 @@ class StartGameState extends State<StartGame> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 110),
-                  child: InkWell(
-                    onTap: () async {
 
-                      setState(() {
-                        is_loading2 =true;
-                      });
-
-                      //PROCURANDO A SALA
-                      QuerySnapshot rooms =  await FirebaseFirestore.instance.collection('rooms')
-                          .where('room', isEqualTo: input_text_room).get();
-
-                      if(input_text_name != ''){
-                        if(rooms.docs.length != 0){
-
-                          //CRIANDO PARTICIPANTE
-                          Map <String, dynamic> user_config = await define_participant_config(input_text_name, rooms.docs[0]);
-
-                          //SALVANDO
-                          DocumentReference _user = await FirebaseFirestore.instance.collection('rooms')
-                              .doc(rooms.docs[0].id).collection('participants').add(user_config);
-
-                          //SALVANDO AS INFO DO PARTICIPANTE NO STORAGE DO NAVEGADOR
-                          setState((){
-                            user_local['name'] = input_text_name;
-                            user_local['id'] = _user.id;
-                            user_local['room'] = input_text_room;
-                            user_local['host'] = false;
-                          });
-                          await save_local_storage(input_text_name, _user.id, input_text_room, 'false');
-
-                          if(rooms.docs[0].data()['game_mode'] == 1) {
-                            //MUDANDANDO PARA A PAGINA DA SALA DO JOGO
-                            change_screen(context, GamePageMode001());
-                          }else{
-                            //MUDANDANDO PARA A PAGINA DA SALA DO JOGO
-                            change_screen(context, GamePageMode000());
-                          }
-                        }else{
-                          message_room_not_found(context);
-                        }
-                      }else{
-                        message_name_empty(context);
-                      }
-
-                      setState(() {
-                        is_loading2 = false;
-                      });
-
-
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(color: Colors.blue,
-                          borderRadius: BorderRadius.circular(20)),
-                      alignment: Alignment.center,
-                      width: double.maxFinite,
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      child: is_loading2 == false ? Text("Entrar em uma Sala", style: TextStyle(color: Colors.white))
-                          : Container(
-                          height: 16,
-                          width: 16,
-                          child: CircularProgressIndicator(color: Colors.white,)
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           )
